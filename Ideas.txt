@@ -1,0 +1,23 @@
+Technonology
+	-MangoDB/Postgresssql/multer(Image Handling Localy)
+	-Express Js
+	-React Native
+	-Node Js
+	-TypeScript(??)
+	-Docker
+	
+Ideas:
+
+	- Learning Management System
+	- E commerece
+	- Resturant Website(Final)
+	
+		
+Approch
+	- Iteritive
+
+Name
+	Resturant Ordering and Tracking.(Provisnal)
+	
+
+
