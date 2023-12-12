@@ -1,0 +1,3 @@
+# Ignore files/folders starting with a dot
+.txt
+node_modules/
