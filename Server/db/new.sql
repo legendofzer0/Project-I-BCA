@@ -16,3 +16,12 @@ CREATE TABLE public.users
     CONSTRAINT users_pkey PRIMARY KEY (user_id),
     CONSTRAINT users_email_key UNIQUE (email)
 )
+-- items
+-- CREATE TABLE IF NOT EXISTS public.items
+-- (
+--     item_id integer NOT NULL GENERATED ALWAYS AS IDENTITY ( INCREMENT 1 START 1 MINVALUE 1 MAXVALUE 2147483647 CACHE 1 ),
+--     itemname "char"[] NOT NULL,
+--     ingrediants text[] COLLATE pg_catalog."default" NOT NULL,
+--     tags "char"[],
+--     CONSTRAINT items_pkey PRIMARY KEY (item_id)
+-- )

@@ -4,11 +4,23 @@ const getAllUserNameDb = async () => {
   const { rows: users } = await pool.query("SELECT username from users");
   return users;
 };
+const getUserByEmailDb = async (email) => {
+  const { rows: users } = await pool.query(
+    `SELECT username from users WHERE email=$1`[email]
+  );
+  return users;
+};
+const getUserByIdDb = async (ID) => {
+  const { rows: users } = await pool.query(
+    `SELECT username from users WHERE user_id =$1`[ID]
+  );
+  return users;
+};
 const createUserDb = async ({ username, password, email, phone_number }) => {
   const { rows: users } = await pool.query(
     `
-  INSERT INTO USERS(username,email,password) 
-  VALUES ($1,$2,$3,$4,$5)
+    INSERT INTO USERS(username,email,password,phone_number) 
+    VALUES ($1,$2,$3,$4)
   returning username,email,phone_number,created_at)`[
       (username, password, email, phone_number)
     ]
@@ -41,6 +53,8 @@ const deleteUserByID = async (user_id) => {
 
 module.exports = {
   getAllUserNameDb,
+  getUserByEmailDb,
+  getUserByIdDb,
   createUserDb,
   updateUserByID,
   deleteUserByID,
