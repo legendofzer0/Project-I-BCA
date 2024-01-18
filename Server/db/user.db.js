@@ -16,13 +16,13 @@ const getUserByIdDb = async (ID) => {
   );
   return users;
 };
-const createUserDb = async ({ username, password, email, phone_number }) => {
+const createUserDb = async ({ username, password, email, phone_number,Full_Name}) => {
   const { rows: users } = await pool.query(
     `
-    INSERT INTO USERS(username,email,password,phone_number) 
-    VALUES ($1,$2,$3,$4)
+    INSERT INTO USERS(username,email,password,phone_number,Full_Name) 
+    VALUES ($1,$2,$3,$4,$5)
   returning username,email,phone_number,created_at)`[
-      (username, password, email, phone_number)
+      (username, password, email, phone_number, Full_Name)
     ]
   );
   return user[0];
@@ -30,16 +30,16 @@ const createUserDb = async ({ username, password, email, phone_number }) => {
 
 const updateUserByID = async ({ user_id, username, email, phone_number }) => {
   const { rows: users } = await pool.query(
-    "UPDATE users SET username=$1,email=$2,phone_number=$3 WHERE user_id =$5",
-    [username, email, phone_number, user_id]
+    "UPDATE users SET username=$1,email=$2,phone_number=$3,Full_Name=$4 WHERE user_id =$5",
+    [username, email, phone_number, Full_Name, user_id]
   );
   return users[0];
 };
 
-const changeUserPasswordDB = async ({ user_id, password }) => {
-  return await pool.query("UPDATE users set password =$1 where user_id=$2", [
+const changeUserPasswordDB = async ({ email, password }) => {
+  return await pool.query("UPDATE users set password =$1 where email=$2", [
     password,
-    user_id,
+    email,
   ]);
 };
 

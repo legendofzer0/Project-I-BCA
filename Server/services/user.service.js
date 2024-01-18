@@ -1,6 +1,7 @@
 const {
-  getUserByEmailDb,
+  getAllUserNameDb,
   getUserByIdDb,
+  getUserByEmailDb,
   createUserDb,
   updateUserByID,
   deleteUserByID,
@@ -9,6 +10,13 @@ const {
 const { EventHandler } = require("../helper/error");
 
 class UserService {
+  getAllUser = async () => {
+    try {
+      return await getAllUserNameDb();
+    } catch (error) {
+      throw new EventHandler(error.statusCode, error.message);
+    }
+  };
   createUser = async (user) => {
     try {
       return await createUserDb(user);
@@ -32,4 +40,30 @@ class UserService {
       throw new EventHandler(error.statusCode, error.message);
     }
   };
+  updateUserByID = async (ID) => {
+    try {
+      const user = await updateUserByID(ID);
+      return user;
+    } catch (error) {
+      throw new EventHandler(error.statusCode, error.message);
+    }
+  };
+  deleteUserByID = async (ID) => {
+    try {
+      const user = await deleteUserByID(ID);
+      return user;
+    } catch (error) {
+      throw new EventHandler(error.statusCode, error.message);
+    }
+  };
+  changeUserPassword = async (ID) => {
+    try {
+      const user = await changeUserPasswordDB(ID);
+      return user;
+    } catch (error) {
+      throw new EventHandler(error.statusCode, error.message);
+    }
+  };
 }
+
+module.exports = new UserService();
