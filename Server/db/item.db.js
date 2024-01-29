@@ -1,38 +1,51 @@
-const pool = require("./conn.db");
+// const express = require(`express`);
+const pool = require(`./conn.db`);
 
-const getAllItemNameDb = async () => {
-  const { rows: items } = await pool.query("SELECT itemname from item");
+const getAllItemDb = async () => {
+  const { rows: items } = await pool.query(`SELECT item_name from items`);
   return items;
 };
-const createItemDb = async ({ item_name, tags }) => {
+const getItemByIdDb = async (id) => {
+  const { rows: items } = await pool.query(
+    `SELECT item_name,tags,price FROM items WHERE item_id = ${id}`
+  );
+  return items;
+};
+
+const createItemDb = async ({ item_name, tags, price, image }) => {
   const { rows: items } = await pool.query(
     `
-  INSERT INTO USERS(item_name, tags) 
-  VALUES ($1,$2)
-  returning item_id,item_name, tags)`[(item_name, tags)]
+    INSERT INTO items(item_name,tags,price,) 
+    VALUES ('${item_name}','${tags}',${price},'${image}')`
   );
   return items[0];
 };
 
-const updateItemByID = async ({ item_id, itemname, ingrediant, tags }) => {
+const updateItemByIdDb = async ({ id, item_name, tags, price }) => {
   const { rows: items } = await pool.query(
-    "UPDATE items SET itemname=$1,tags=$2 WHERE user_id =$3",
-    [itemname, tags, item_id]
+    `UPDATE items SET item_name='${item_name}',tags='${tags}',price=${price} WHERE item_id =${id}`
   );
   return items[0];
 };
 
-const deleteItemByID = async (item_id) => {
+const changeItemImageDB = async ({ id, image }) => {
+  return await pool.query(
+    `UPDATE items set image ='${image}' where item_id=${id}`
+  );
+};
+
+const deleteItemByID = async (id) => {
   const { rows: items } = await pool.query(
-    "DELETE FROM items where item_id = $1 returning *",
-    [item_id]
+    `DELETE FROM items where item_id = ${id} returning *`
   );
   return items[0];
 };
 
 module.exports = {
-  getAllItemNameDb,
+  getAllItemDb,
+  getItemByIdDb,
   createItemDb,
-  updateItemByID,
+  updateItemByIdDb,
+  changeItemImageDB,
   deleteItemByID,
 };

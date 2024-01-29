@@ -1,4 +1,5 @@
-const { logger } = require("../utils/logger");
+// const { logger } = require("../utils/logger");
+
 class ErrorHandler extends Error {
   constructor(statusCode, message) {
     super();
@@ -8,16 +9,17 @@ class ErrorHandler extends Error {
   }
 }
 
-const handleError = (err, req, res, next) => {
+const handleError = (err, req, res) => {
   const { statusCode, message } = err;
-  logger.error(err);
+  // logger.error(err); // Uncomment if you have a logger
+  console.log(err);
   res.status(statusCode || 500).json({
     status: "error",
     statusCode: statusCode || 500,
     message: statusCode === 500 ? "An error occurred" : message,
   });
-  next();
 };
+
 module.exports = {
   ErrorHandler,
   handleError,

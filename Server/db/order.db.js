@@ -1,45 +1,115 @@
-const pool = require("./conn.db");
+// const express = require(`express`);
+const pool = require(`./conn.db`);
 
 const getAllOrderDb = async () => {
-  const { rows: orders } = await pool.query("SELECT * from orders");
+  const { rows: orders } = await pool.query(` SELECT 
+      u.username,
+      i.item_name,
+      o.delivery_address,
+      o.quantity,
+      o.status
+    FROM 
+      orders o
+    JOIN 
+      users u ON o.f_user_id = u.user_id
+    JOIN 
+      items i ON o.f_item_id = i.item_id`);
   return orders;
 };
-const createItemDb = async ({ itemname, ingrediant, tags }) => {
-  const { rows: items } = await pool.query(
+const getOrderByIdDb = async (id) => {
+  const { rows: orders } = await pool.query(
+    `  
+    Selects
+    o.order_id,
+      u.username,
+      i.item_name,
+      o.delivery_address,
+      o.quantity,
+      o.status
+    FROM 
+      orders o
+    JOIN 
+      users u ON o.f_user_id = u.user_id
+    JOIN 
+      items i ON o.f_item_id = i.item_id
+    WHERE 
+      o.order_id = ${id}`
+  );
+  return orders;
+};
+const getOrderByUserIdDb = async (id) => {
+  const { rows: orders } = await pool.query(
+    `SELECT 
+      o.order_id,
+      i.item_name,
+      o.delivery_address,
+      o.quantity,
+      o.status
+    FROM 
+      orders o
+    JOIN 
+      items i ON o.f_item_id = i.item_id
+    WHERE 
+      o.f_user_id = ${id}`
+  );
+  return orders;
+};
+const getOrderByStatusDb = async (stat) => {
+  const { rows: orders } = await pool.query(
+    `SELECT 
+      o.order_id,
+      u.username,
+      i.item_name,
+      o.delivery_address,
+      o.quantity,
+      o.status
+    FROM 
+      orders o
+    JOIN 
+      users u ON o.f_user_id = u.user_id
+    JOIN 
+      items i ON o.f_item_id = i.item_id
+    WHERE 
+      o.status = '${stat}'
+  `
+  );
+  return orders;
+};
+
+const createOrderDb = async ({
+  f_item_id,
+  f_user_id,
+  delivery_address,
+  quantity,
+}) => {
+  const { rows: orders } = await pool.query(
     `
-  INSERT INTO USERS(itemname, ingrediant, tags) 
-  VALUES ($1,$2,$3)
-  returning itemname, ingrediant, tags)`[(itemname, ingrediant, tags)]
+    INSERT INTO orders(f_item_id,f_user_id,delivery_address,quantity) 
+    VALUES (${f_item_id},${f_user_id},'${delivery_address}',${quantity})`
   );
-  return items[0];
+  return orders[0];
 };
 
-const updateItemByID = async ({ item_id, itemname, ingrediant, tags }) => {
-  const { rows: items } = await pool.query(
-    "UPDATE items SET itemname=$1,ingrediants=$2,tags=$3 WHERE user_id =$5",
-    [itemname, ingrediant, tags, item_id]
+const updateOrderStatusByIdDb = async ({ id, status }) => {
+  const { rows: orders } = await pool.query(
+    `UPDATE orders SET status='${status}' WHERE order_id =${id}`
   );
-  return items[0];
-};
-const updateTrackByID = async ({ item_id, order_status }) => {
-  const { rows: items } = await pool.query(
-    "UPDATE items SET itemname=$1,ingrediants=$2,tags=$3 WHERE user_id =$5",
-    [itemname, ingrediant, tags, item_id]
-  );
-  return items[0];
+  return orders[0];
 };
 
-const deleteItemByID = async (item_id) => {
-  const { rows: items } = await pool.query(
-    "DELETE FROM items where item_id = $1 returning *",
-    [item_id]
+const deleteOrderByID = async (id) => {
+  const { rows: orders } = await pool.query(
+    `DELETE FROM orders where order_id = ${id} returning *`
   );
-  return items[0];
+  return orders[0];
 };
 
 module.exports = {
-  getAllItemNameDb,
-  createItemDb,
-  updateItemByID,
-  deleteItemByID,
+  getAllOrderDb,
+  getOrderByIdDb,
+  getOrderByUserIdDb,
+  getOrderByStatusDb,
+  createOrderDb,
+  updateOrderStatusByIdDb,
+  deleteOrderByID,
 };

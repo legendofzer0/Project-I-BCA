@@ -8,14 +8,13 @@ const {
 } = require("../controller/user.controller");
 
 const router = require("express").Router();
-const verifyAdmin = require("../middleware/verifyAdmin");
-const verifyToken = require("../middleware/verifyToken");
+// const verifyAdmin = require("../middleware/verifyAdmin");
+// const verifyToken = require("../middleware/verifyToken");
 
-router.use(verifyToken);
-router.route("/").get(verifyAdmin, getAllUser).post(verifyAdmin, createUser);
-router.route("/profile").get(getUserByProfile);
+// router.use(verifyToken);
+router.route("/user").get(getAllUser).post(createUser);
 router
-  .route("/:id")
+  .route("/user/:id")
   .get(getUserByID)
   .put(updateUserByID)
   .delete(deleteUserByID);
