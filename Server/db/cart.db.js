@@ -2,7 +2,7 @@
 const pool = require(`./conn.db`);
 
 const getAllCartDb = async () => {
-  const { rows: carts } = await pool.query(`SELECT 
+  const { rows: cart } = await pool.query(`SELECT 
       c.cart_id,
       c.c_user_id,
       u.username,
@@ -15,11 +15,11 @@ const getAllCartDb = async () => {
       users u ON c.c_user_id = u.user_id
     JOIN 
       items i ON c.c_item_id = i.item_id`);
-  return carts;
+  return cart;
 };
 
 const getCartByIdDb = async (id) => {
-  const { rows: carts } = await pool.query(
+  const { rows: cart } = await pool.query(
     `SELECT 
       c.cart_id,
       c.c_user_id,
@@ -36,11 +36,11 @@ const getCartByIdDb = async (id) => {
     WHERE 
       c.cart_id = ${id}`
   );
-  return carts;
+  return cart;
 };
 
 const getCartByUserIdDb = async (user_id) => {
-  const { rows: carts } = await pool.query(
+  const { rows: cart } = await pool.query(
     ` SELECT 
       c.cart_id,
       c.c_user_id,
@@ -54,30 +54,30 @@ const getCartByUserIdDb = async (user_id) => {
     WHERE 
       c.c_user_id = ${user_id}`
   );
-  return carts;
+  return cart;
 };
 
 const createCartDb = async ({ c_user_id, c_item_id, quantity }) => {
-  const { rows: carts } = await pool.query(
+  const { rows: cart } = await pool.query(
     `
-    INSERT INTO carts(c_user_id, c_item_id, quantity) 
+    INSERT INTO cart(c_user_id, c_item_id, quantity) 
     VALUES (${c_user_id},${c_item_id},${quantity})`
   );
-  return carts;
+  return cart;
 };
 
 const updateCartQuantityByIdDb = async ({ id, quantity }) => {
-  const { rows: carts } = await pool.query(
-    `UPDATE carts SET quantity=${quantity} WHERE cart_id =${id}`
+  const { rows: cart } = await pool.query(
+    `UPDATE cart SET quantity=${quantity} WHERE cart_id =${id}`
   );
-  return carts[0];
+  return cart[0];
 };
 
 const deleteCartByID = async (id) => {
-  const { rows: carts } = await pool.query(
-    `DELETE FROM carts where cart_id = ${id} returning *`
+  const { rows: cart } = await pool.query(
+    `DELETE FROM cart where cart_id = ${id} returning *`
   );
-  return carts[0];
+  return cart[0];
 };
 
 module.exports = {

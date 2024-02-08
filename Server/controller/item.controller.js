@@ -7,14 +7,14 @@ const getAllItem = async (req, res) => {
 };
 
 const createItem = async (req, res) => {
-  const { item_name, tags, price, image } = req.body;
+  const { item_name, tags, price, description } = req.body;
   console.log(req.body);
   // try {
   const item = await itemService.createItem({
     item_name,
     tags,
     price,
-    image,
+    description,
   });
   res.status(201).json({
     status: "success",
@@ -38,10 +38,19 @@ const getItemByID = async (req, res) => {
   // throw new ErrorHandler(401, "Unauthorized");
 };
 
+const getItemInfoByID = async (req, res) => {
+  const { id } = req.params;
+  try {
+    const item = await itemService.getItemInfoById(id);
+    return res.status(200).json(item);
+  } catch (error) {
+    throw new ErrorHandler(error.statusCode, "item Not Found");
+  }
+};
+
 const updateItemByID = async (req, res) => {
   const { id } = req.params;
-  console.log(id);
-  const { item_name, tags, price } = req.body;
+  const { item_name, tags, price, description } = req.body;
   // if (req.item.role.includes("admin")) {
   try {
     const item = await itemService.updateItemById({
@@ -49,6 +58,7 @@ const updateItemByID = async (req, res) => {
       item_name,
       tags,
       price,
+      description,
     });
 
     return res.status(200).json(item);
@@ -74,13 +84,18 @@ const deleteItemByID = async (req, res) => {
 
 const changeItemImage = async (req, res) => {
   const { id } = req.params;
-  const { image } = req.body;
+  const { filename } = req.body;
+  // console.log(id);
+  // console.log(filename);
   // if (req.item.role.includes("admin")) {
   try {
-    const item = await itemService.changeItemImage({ id, image });
+    const item = await itemService.changeItemImage({ id, filename });
     return res.status(200).json(item);
   } catch (error) {
-    throw new ErrorHandler(error.statusCode, "item Not Found");
+    throw new ErrorHandler(
+      error.statusCode,
+      "item Not Found or image not uploaded"
+    );
   }
   // }
   // throw new ErrorHandler(401, "Unauthorized");
@@ -89,6 +104,7 @@ const changeItemImage = async (req, res) => {
 module.exports = {
   getAllItem,
   createItem,
+  getItemInfoByID,
   getItemByID,
   updateItemByID,
   deleteItemByID,

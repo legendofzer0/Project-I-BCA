@@ -11,19 +11,32 @@ const getItemByIdDb = async (id) => {
   );
   return items;
 };
+const getItemInfoByIdDb = async (id) => {
+  const { rows: items } = await pool.query(
+    `SELECT item_name,tags,price,description FROM items WHERE item_id = ${id}`
+  );
+  return items;
+};
 
-const createItemDb = async ({ item_name, tags, price, image }) => {
+const createItemDb = async ({ item_name, tags, price, description }) => {
+  console.log(description);
   const { rows: items } = await pool.query(
     `
-    INSERT INTO items(item_name,tags,price,) 
-    VALUES ('${item_name}','${tags}',${price},'${image}')`
+    INSERT INTO items(item_name,tags,price,description) 
+    VALUES ('${item_name}','${tags}',${price},'${description}')`
   );
   return items[0];
 };
 
-const updateItemByIdDb = async ({ id, item_name, tags, price }) => {
+const updateItemByIdDb = async ({
+  id,
+  item_name,
+  tags,
+  price,
+  description,
+}) => {
   const { rows: items } = await pool.query(
-    `UPDATE items SET item_name='${item_name}',tags='${tags}',price=${price} WHERE item_id =${id}`
+    `UPDATE items SET item_name='${item_name}',tags='${tags}',price=${price},description='${description}' WHERE item_id =${id}`
   );
   return items[0];
 };
@@ -44,6 +57,7 @@ const deleteItemByID = async (id) => {
 module.exports = {
   getAllItemDb,
   getItemByIdDb,
+  getItemInfoByIdDb,
   createItemDb,
   updateItemByIdDb,
   changeItemImageDB,

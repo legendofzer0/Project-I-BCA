@@ -1,6 +1,7 @@
 const {
   getAllItemDb,
   getItemByIdDb,
+  getItemInfoByIdDb,
   createItemDb,
   updateItemByIdDb,
   changeItemImageDB,
@@ -31,6 +32,15 @@ class ItemService {
       throw new ErrorHandler(error.statusCode, error.message);
     }
   };
+
+  getItemInfoById = async (id) => {
+    try {
+      const item = await getItemInfoByIdDb(id);
+      return item;
+    } catch (error) {
+      throw new ErrorHandler(error.statusCode, error.message);
+    }
+  };
   updateItemById = async (id) => {
     try {
       const item = await updateItemByIdDb(id);
@@ -48,10 +58,9 @@ class ItemService {
       throw new ErrorHandler(error.statusCode, error.message);
     }
   };
-  changeItemImage = async (id) => {
+  changeItemImage = async (id, newImageFilename) => {
     try {
-      const item = await changeItemImageDB(id);
-      return item;
+      return await changeItemImageDB(id, newImageFilename);
     } catch (error) {
       throw new ErrorHandler(error.statusCode, error.message);
     }

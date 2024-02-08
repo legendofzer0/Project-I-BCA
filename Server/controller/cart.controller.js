@@ -52,6 +52,7 @@ const getCartUserByID = async (req, res) => {
 const updateCartQuantityByID = async (req, res) => {
   const { id } = req.params;
   const { quantity } = req.body;
+  console.log(id);
   // if (req.cart.role.includes("admin")) {
   try {
     const cart = await cartService.updateCartQuantityById({

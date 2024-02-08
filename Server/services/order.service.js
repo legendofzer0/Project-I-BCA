@@ -17,50 +17,50 @@ class OrderService {
       throw new ErrorHandler(error.statusCode, error.message);
     }
   };
-  createOrder = async (item) => {
+  createOrder = async (order) => {
     try {
-      return await createOrderDb(item);
+      return await createOrderDb(order);
     } catch (error) {
       throw new ErrorHandler(error.statusCode, error.message);
     }
   };
   getOrderById = async (id) => {
     try {
-      const item = await getOrderByIdDb(id);
-      return item;
+      const order = await getOrderByIdDb(id);
+      return order;
     } catch (error) {
       throw new ErrorHandler(error.statusCode, error.message);
     }
   };
   getOrderByUserId = async (id) => {
     try {
-      const item = await getOrderByUserIdDb(id);
-      return item;
+      const order = await getOrderByUserIdDb(id);
+      return order;
     } catch (error) {
       throw new ErrorHandler(error.statusCode, error.message);
     }
   };
   getOrderByStatus = async (id) => {
     try {
-      const item = await getOrderByStatusDb(id);
-      return item;
+      const order = await getOrderByStatusDb(id);
+      return order;
     } catch (error) {
       throw new ErrorHandler(error.statusCode, error.message);
     }
   };
   updateOrderStatusById = async (id) => {
     try {
-      const item = await updateOrderStatusByIdDb(id);
-      console.log(item);
-      return item;
+      const order = await updateOrderStatusByIdDb(id);
+      console.log(order);
+      return order;
     } catch (error) {
       throw new ErrorHandler(error.statusCode, error.message);
     }
   };
   deleteOrderById = async (id) => {
     try {
-      const item = await deleteOrderByID(id);
-      return item;
+      const order = await deleteOrderByID(id);
+      return order;
     } catch (error) {
       throw new ErrorHandler(error.statusCode, error.message);
     }

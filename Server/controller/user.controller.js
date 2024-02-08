@@ -12,8 +12,8 @@ const createUser = async (req, res) => {
   // try {
   const user = await userService.createUser({
     username,
-    password,
     email,
+    password,
     phone_number,
     full_name,
   });
@@ -31,6 +31,20 @@ const getUserByID = async (req, res) => {
   // if (req.user.role.includes("admin")) {
   try {
     const user = await userService.getUserById(id);
+    return res.status(200).json(user);
+  } catch (error) {
+    throw new ErrorHandler(error.statusCode, "User Not Found");
+  }
+  // }
+  // throw new ErrorHandler(401, "Unauthorized");
+};
+
+const getUserByUsername = async (req, res) => {
+  const { username } = req.body;
+  console.log(username);
+  // if (req.user.role.includes("admin")) {
+  try {
+    const user = await userService.getUserByUsername(username);
     return res.status(200).json(user);
   } catch (error) {
     throw new ErrorHandler(error.statusCode, "User Not Found");
@@ -60,6 +74,25 @@ const updateUserByID = async (req, res) => {
   // throw new ErrorHandler(401, "Unauthorized");
 };
 
+const changeUserPassword = async (req, res) => {
+  const { id } = req.params;
+  const { password } = req.body;
+
+  // if (req.user.role.includes("admin")) {
+  try {
+    const user = await userService.changeUserPassword({
+      id,
+      password,
+    });
+
+    return res.status(200).json(user);
+  } catch (error) {
+    throw new ErrorHandler(error.statusCode, "User Not Found");
+  }
+  // }
+  // throw new ErrorHandler(401, "Unauthorized");
+};
+
 const deleteUserByID = async (req, res) => {
   const { id } = req.params;
   // if (req.user.role.includes("admin")) {
@@ -77,6 +110,8 @@ module.exports = {
   getAllUser,
   createUser,
   getUserByID,
+  getUserByUsername,
   updateUserByID,
   deleteUserByID,
+  changeUserPassword,
 };

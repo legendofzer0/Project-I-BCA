@@ -1,6 +1,7 @@
 const {
   getAllUserNameDb,
   getUserByIdDb,
+  getUserByUsernameDb,
   createUserDb,
   updateUserByID,
   deleteUserByID,
@@ -32,6 +33,15 @@ class UserService {
       throw new ErrorHandler(error.statusCode, error.message);
     }
   };
+  getUserByUsername = async (username) => {
+    try {
+      const user = await getAllUserNameDb(username);
+      console.log(user);
+      return user;
+    } catch (error) {
+      throw new ErrorHandler(error.statusCode, error.message);
+    }
+  };
   updateUserByID = async (id) => {
     try {
       const user = await updateUserByID(id);
@@ -49,9 +59,9 @@ class UserService {
       throw new ErrorHandler(error.statusCode, error.message);
     }
   };
-  changeUserPassword = async (ID) => {
+  changeUserPassword = async (id) => {
     try {
-      const user = await changeUserPasswordDB(ID);
+      const user = await changeUserPasswordDB(id);
       return user;
     } catch (error) {
       throw new ErrorHandler(error.statusCode, error.message);

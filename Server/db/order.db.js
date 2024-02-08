@@ -19,7 +19,7 @@ const getAllOrderDb = async () => {
 const getOrderByIdDb = async (id) => {
   const { rows: orders } = await pool.query(
     `  
-    Selects
+    Select
     o.order_id,
       u.username,
       i.item_name,
