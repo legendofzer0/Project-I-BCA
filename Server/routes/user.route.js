@@ -4,6 +4,7 @@ const {
   getUserByID,
   getUserByUsername,
   updateUserByID,
+  updateUserRoleByID,
   deleteUserByID,
   changeUserPassword,
 } = require("../controller/user.controller");
@@ -20,5 +21,6 @@ router
   .get(getUserByID)
   .put(updateUserByID)
   .delete(deleteUserByID);
+router.route("/user/role/:id").put(updateUserRoleByID);
 router.route("/user/pass/:id").put(changeUserPassword);
 module.exports = router;

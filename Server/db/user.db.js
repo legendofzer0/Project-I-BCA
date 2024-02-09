@@ -16,7 +16,7 @@ const getUserByIdDb = async (id) => {
 
 const getUserByUsernameDb = async ({ username }) => {
   const { rows: users } = await pool.query(
-    `SELECT  username, full_name, role FROM users WHERE username = '${username}'`
+    `SELECT  * FROM users WHERE username = '${username}'`
   );
   return users;
 };
@@ -51,6 +51,20 @@ const updateUserByID = async ({
   return users[0];
 };
 
+const updateUserRoleByID = async ({
+  id,
+  username,
+  email,
+  phone_number,
+  role,
+  full_name,
+}) => {
+  const { rows: users } = await pool.query(
+    `UPDATE users SET username='${username}',email='${email}',phone_number=${phone_number},full_name='${full_name}', role='${role}' WHERE user_id =${id}`
+  );
+  return users[0];
+};
+
 const changeUserPasswordDB = async ({ id, password }) => {
   console.log(id, password);
   return await pool.query(
@@ -72,6 +86,7 @@ module.exports = {
   getAllUserNameDb,
   createUserDb,
   updateUserByID,
+  updateUserRoleByID,
   getUserByUsernameDb,
   deleteUserByID,
   changeUserPasswordDB,

@@ -4,6 +4,7 @@ const {
   getUserByUsernameDb,
   createUserDb,
   updateUserByID,
+  updateUserRoleByID,
   deleteUserByID,
   changeUserPasswordDB,
 } = require("../db/user.db.js");
@@ -35,7 +36,7 @@ class UserService {
   };
   getUserByUsername = async (username) => {
     try {
-      const user = await getAllUserNameDb(username);
+      const user = await getUserByUsernameDb(username);
       console.log(user);
       return user;
     } catch (error) {
@@ -45,6 +46,15 @@ class UserService {
   updateUserByID = async (id) => {
     try {
       const user = await updateUserByID(id);
+      console.log(user);
+      return user;
+    } catch (error) {
+      throw new ErrorHandler(error.statusCode, error.message);
+    }
+  };
+  updateUserRoleByID = async (id) => {
+    try {
+      const user = await updateUserRoleByID(id);
       console.log(user);
       return user;
     } catch (error) {

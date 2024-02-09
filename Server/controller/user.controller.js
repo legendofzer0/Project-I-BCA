@@ -74,6 +74,29 @@ const updateUserByID = async (req, res) => {
   // throw new ErrorHandler(401, "Unauthorized");
 };
 
+const updateUserRoleByID = async (req, res) => {
+  const { id } = req.params;
+  const { username, email, phone_number, full_name, role } = req.body;
+  // if (req.user.role.includes("admin")) {
+  console.log(id, username, email, phone_number, role, full_name);
+
+  try {
+    const user = await userService.updateUserRoleByID({
+      id,
+      username,
+      email,
+      phone_number,
+      role,
+      full_name,
+    });
+    return res.status(200).json(user);
+  } catch (error) {
+    throw new ErrorHandler(error.statusCode, "User Not Found");
+  }
+  // }
+  // throw new ErrorHandler(401, "Unauthorized");
+};
+
 const changeUserPassword = async (req, res) => {
   const { id } = req.params;
   const { password } = req.body;
@@ -112,6 +135,7 @@ module.exports = {
   getUserByID,
   getUserByUsername,
   updateUserByID,
+  updateUserRoleByID,
   deleteUserByID,
   changeUserPassword,
 };
