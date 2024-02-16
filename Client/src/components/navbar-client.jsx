@@ -1,11 +1,11 @@
+import "  ";
 function ClientNavbar() {
   return (
     <>
       <nav>
         <a href="/"> Home |</a>
-        <a href="/"> Menu |</a>
-        <a href="/"> Cart |</a>
-        <a href="/"> MyAccount</a>
+        <a href="/cart"> Cart |</a>
+        <a href="/detail"> MyAccount</a>
       </nav>
     </>
   );

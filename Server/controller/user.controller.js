@@ -40,8 +40,7 @@ const getUserByID = async (req, res) => {
 };
 
 const getUserByUsername = async (req, res) => {
-  const { username } = req.body;
-  console.log(username);
+  const { username } = req.query;
   // if (req.user.role.includes("admin")) {
   try {
     const user = await userService.getUserByUsername(username);

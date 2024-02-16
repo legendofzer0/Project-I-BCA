@@ -15,7 +15,7 @@ const router = require("express").Router();
 
 // router.use(verifyToken);
 router.route("/user").get(getAllUser).post(createUser);
-router.route("/user/sin").get(getUserByUsername);
+router.route("/user/search").get(getUserByUsername);
 router
   .route("/user/:id")
   .get(getUserByID)

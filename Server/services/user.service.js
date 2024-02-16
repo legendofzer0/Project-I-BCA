@@ -37,7 +37,6 @@ class UserService {
   getUserByUsername = async (username) => {
     try {
       const user = await getUserByUsernameDb(username);
-      console.log(user);
       return user;
     } catch (error) {
       throw new ErrorHandler(error.statusCode, error.message);

@@ -14,7 +14,8 @@ const getUserByIdDb = async (id) => {
   return users;
 };
 
-const getUserByUsernameDb = async ({ username }) => {
+const getUserByUsernameDb = async (username) => {
+  console.log(username);
   const { rows: users } = await pool.query(
     `SELECT  * FROM users WHERE username = '${username}'`
   );
