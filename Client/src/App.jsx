@@ -5,6 +5,8 @@ import UserRoute from "./private/UserRoute";
 import PageNotFound from "./pages/PageNotFound";
 import KitchenRoute from "./private/KitchenRoute";
 import RiderRoute from "./private/RiderRoute";
+import SignUp from './components/SignUp';
+import Login from './components/Login';
 
 function App() {
   const CurrentUser = "Customer";
