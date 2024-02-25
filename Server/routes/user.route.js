@@ -2,7 +2,9 @@ const {
   getAllUser,
   createUser,
   getUserByID,
+  getUserByEmail,
   getUserByUsername,
+  getUserByPhone,
   updateUserByID,
   updateUserRoleByID,
   deleteUserByID,
@@ -21,6 +23,8 @@ router
   .get(getUserByID)
   .put(updateUserByID)
   .delete(deleteUserByID);
+router.route("/user/email").post(getUserByEmail);
+router.route("/user/phone").post(getUserByPhone);
 router.route("/user/role/:id").put(updateUserRoleByID);
 router.route("/user/pass/:id").put(changeUserPassword);
 module.exports = router;

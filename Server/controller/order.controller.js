@@ -1,5 +1,4 @@
 const orderService = require("../services/order.service");
-const { ErrorHandler } = require("../helper/error");
 
 const getAllOrder = async (req, res) => {
   const result = await orderService.getAllOrders();
@@ -21,7 +20,7 @@ const createOrder = async (req, res) => {
     order,
   });
   // } catch (error) {
-  // throw new ErrorHandler(error.statusCode, "create error");
+  // console.log( "create error");
   // }
 };
 
@@ -32,7 +31,7 @@ const getOrderByID = async (req, res) => {
     const order = await orderService.getOrderById(id);
     return res.status(200).json(order);
   } catch (error) {
-    throw new ErrorHandler(error.statusCode, "order Not Found");
+    console.log("order Not Found");
   }
   // }
   // throw new ErrorHandler(401, "Unauthorized");
@@ -44,7 +43,7 @@ const getOrderByUserID = async (req, res) => {
     const order = await orderService.getOrderByUserId(id);
     return res.status(200).json(order);
   } catch (error) {
-    throw new ErrorHandler(error.statusCode, "order Not Found");
+    console.log("order Not Found");
   }
   // }
   // throw new ErrorHandler(401, "Unauthorized");
@@ -65,14 +64,14 @@ const getOrderByStatus = async (req, res) => {
     stat = "delivered";
     console.log(stat);
   } else {
-    throw new ErrorHandler(error.statusCode, "status does not exist");
+    console.log("status does not exist");
   }
   // if (req.order.role.includes("admin")) {
   try {
     const order = await orderService.getOrderByStatus(stat);
     return res.status(200).json(order);
   } catch (error) {
-    throw new ErrorHandler(error.statusCode, "order Not Found");
+    console.log("order Not Found");
   }
   // }
   // throw new ErrorHandler(401, "Unauthorized");
@@ -90,7 +89,7 @@ const updateOrderStatusByID = async (req, res) => {
 
     return res.status(200).json(order);
   } catch (error) {
-    throw new ErrorHandler(error.statusCode, "order Not Found");
+    console.log("order Not Found");
   }
   // }
   // throw new ErrorHandler(401, "Unauthorized");
@@ -103,7 +102,7 @@ const deleteOrderByID = async (req, res) => {
     const order = await orderService.deleteOrderById(id);
     return res.status(200).json(order);
   } catch (error) {
-    throw new ErrorHandler(error.statusCode, "order Not Found");
+    console.log("order Not Found");
   }
   // }
   // throw new ErrorHandler(401, "Unauthorized");

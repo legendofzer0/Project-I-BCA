@@ -2,14 +2,29 @@
 const pool = require(`./conn.db`);
 
 const getAllUserNameDb = async () => {
-  const { rows: users } = await pool.query(
-    `SELECT username, full_name, role from users `
-  );
+  const { rows: users } = await pool.query(`SELECT * from users `);
   return users;
 };
 const getUserByIdDb = async (id) => {
   const { rows: users } = await pool.query(
     `SELECT * FROM users WHERE user_id = ${id}`
+  );
+  return users;
+};
+
+const getUserByEmailDb = async (email) => {
+  // console.log(email + "testD");
+  const { rows: users } = await pool.query(
+    `SELECT * FROM users WHERE email = $1`,
+    [email]
+  );
+  return users;
+};
+
+const getUserByPhoneDb = async (phone_number) => {
+  const { rows: users } = await pool.query(
+    `SELECT * FROM users WHERE phone_number = $1`,
+    [phone_number]
   );
   return users;
 };
@@ -84,6 +99,8 @@ const deleteUserByID = async (user_id) => {
 module.exports = {
   getAllUserNameDb,
   getUserByIdDb,
+  getUserByEmailDb,
+  getUserByPhoneDb,
   getAllUserNameDb,
   createUserDb,
   updateUserByID,

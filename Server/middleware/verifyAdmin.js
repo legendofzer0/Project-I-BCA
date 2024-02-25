@@ -1,5 +1,3 @@
-const { ErrorHandler } = require("../helper/error");
-
 module.exports = (req, res, next) => {
   const { roles } = req.user;
   if (roles.includes("admin")) {

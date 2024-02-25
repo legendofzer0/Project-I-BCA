@@ -1,5 +1,4 @@
 const itemService = require("../services/item.service");
-const { ErrorHandler } = require("../helper/error");
 
 const getAllItem = async (req, res) => {
   const result = await itemService.getAllItems();
@@ -21,7 +20,7 @@ const createItem = async (req, res) => {
     item,
   });
   // } catch (error) {
-  // throw new ErrorHandler(error.statusCode, "create error");
+  // console.log( "create error");
   // }
 };
 
@@ -32,7 +31,7 @@ const getItemByID = async (req, res) => {
     const item = await itemService.getItemById(id);
     return res.status(200).json(item);
   } catch (error) {
-    throw new ErrorHandler(error.statusCode, "item Not Found");
+    console.log("item Not Found");
   }
   // }
   // throw new ErrorHandler(401, "Unauthorized");
@@ -44,7 +43,7 @@ const getItemInfoByID = async (req, res) => {
     const item = await itemService.getItemInfoById(id);
     return res.status(200).json(item);
   } catch (error) {
-    throw new ErrorHandler(error.statusCode, "item Not Found");
+    console.log("item Not Found");
   }
 };
 
@@ -63,7 +62,7 @@ const updateItemByID = async (req, res) => {
 
     return res.status(200).json(item);
   } catch (error) {
-    throw new ErrorHandler(error.statusCode, "item Not Found");
+    console.log("item Not Found");
   }
   // }
   // throw new ErrorHandler(401, "Unauthorized");
@@ -76,7 +75,7 @@ const deleteItemByID = async (req, res) => {
     const item = await itemService.deleteItemByID(id);
     return res.status(200).json(item);
   } catch (error) {
-    throw new ErrorHandler(error.statusCode, "item Not Found");
+    console.log("item Not Found");
   }
   // }
   // throw new ErrorHandler(401, "Unauthorized");

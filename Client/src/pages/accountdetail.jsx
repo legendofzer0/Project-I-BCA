@@ -5,10 +5,12 @@ function Detail({ CurrentUser }) {
     <>SignIn/SignUp</>
   ) : (
     <>
-      <div>WELCOME</div>
-      <div>Role: {CurrentUser}</div>
-      <div>
-        <form action=""></form>
+      <div className="body">
+        <div>WELCOME</div>
+        <div>Role: {CurrentUser}</div>
+        <div>
+          <form></form>
+        </div>
       </div>
     </>
   );

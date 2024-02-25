@@ -1,5 +1,4 @@
 const cartService = require("../services/cart.service");
-const { ErrorHandler } = require("../helper/error");
 
 const getAllCart = async (req, res) => {
   const result = await cartService.getAllCarts();
@@ -19,7 +18,7 @@ const createCart = async (req, res) => {
     cart,
   });
   // } catch (error) {
-  // throw new ErrorHandler(error.statusCode, "create error");
+  // console.log( "create error");
   // }
 };
 
@@ -30,7 +29,7 @@ const getCartByID = async (req, res) => {
     const cart = await cartService.getCartById(id);
     return res.status(200).json(cart);
   } catch (error) {
-    throw new ErrorHandler(error.statusCode, "cart Not Found");
+    console.log("cart Not Found");
   }
   // }
   // throw new ErrorHandler(401, "Unauthorized");
@@ -43,7 +42,7 @@ const getCartUserByID = async (req, res) => {
     const cart = await cartService.getCartByUserId(f_user_id);
     return res.status(200).json(cart);
   } catch (error) {
-    throw new ErrorHandler(error.statusCode, "cart Not Found");
+    console.log("cart Not Found");
   }
   // }
   // throw new ErrorHandler(401, "Unauthorized");
@@ -62,7 +61,7 @@ const updateCartQuantityByID = async (req, res) => {
 
     return res.status(200).json(cart);
   } catch (error) {
-    throw new ErrorHandler(error.statusCode, "cart Not Found");
+    console.log("cart Not Found");
   }
   // }
   // throw new ErrorHandler(401, "Unauthorized");
@@ -75,7 +74,7 @@ const deleteCartByID = async (req, res) => {
     const cart = await cartService.deleteCartById(id);
     return res.status(200).json(cart);
   } catch (error) {
-    throw new ErrorHandler(error.statusCode, "cart Not Found");
+    console.log("cart Not Found");
   }
   // }
   // throw new ErrorHandler(401, "Unauthorized");

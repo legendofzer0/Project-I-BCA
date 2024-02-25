@@ -1,5 +1,4 @@
 const userService = require("../services/user.service");
-const { ErrorHandler } = require("../helper/error");
 
 const getAllUser = async (req, res) => {
   const result = await userService.getAllUser();
@@ -22,7 +21,7 @@ const createUser = async (req, res) => {
     user,
   });
   // } catch (error) {
-  // throw new ErrorHandler(error.statusCode, "create error");
+  // console.log( "create error");
   // }
 };
 
@@ -33,7 +32,22 @@ const getUserByID = async (req, res) => {
     const user = await userService.getUserById(id);
     return res.status(200).json(user);
   } catch (error) {
-    throw new ErrorHandler(error.statusCode, "User Not Found");
+    console.log("User Not Found");
+  }
+  // }
+  // throw new ErrorHandler(401, "Unauthorized");
+};
+
+const getUserByEmail = async (req, res) => {
+  const { email } = req.body;
+
+  // if (req.user.role.includes("admin")) {
+  try {
+    const user = await userService.getUserByEmail(email);
+    return res.status(200).json(user);
+  } catch (error) {
+    console.log("User Not Found");
+    return error;
   }
   // }
   // throw new ErrorHandler(401, "Unauthorized");
@@ -46,12 +60,25 @@ const getUserByUsername = async (req, res) => {
     const user = await userService.getUserByUsername(username);
     return res.status(200).json(user);
   } catch (error) {
-    throw new ErrorHandler(error.statusCode, "User Not Found");
+    console.log("User Not Found");
   }
   // }
   // throw new ErrorHandler(401, "Unauthorized");
 };
 
+const getUserByPhone = async (req, res) => {
+  const { phone_number } = req.body;
+  console.log(phone_number);
+  // if (req.user.role.includes("admin")) {
+  try {
+    const user = await userService.getUserByPhone(phone_number);
+    return res.status(200).json(user);
+  } catch (error) {
+    console.log("User Not Found");
+  }
+  // }
+  // throw new ErrorHandler(401, "Unauthorized");
+};
 const updateUserByID = async (req, res) => {
   const { id } = req.params;
   const { username, email, phone_number, full_name } = req.body;
@@ -67,7 +94,7 @@ const updateUserByID = async (req, res) => {
 
     return res.status(200).json(user);
   } catch (error) {
-    throw new ErrorHandler(error.statusCode, "User Not Found");
+    console.log("User Not Found");
   }
   // }
   // throw new ErrorHandler(401, "Unauthorized");
@@ -90,7 +117,7 @@ const updateUserRoleByID = async (req, res) => {
     });
     return res.status(200).json(user);
   } catch (error) {
-    throw new ErrorHandler(error.statusCode, "User Not Found");
+    console.log("User Not Found");
   }
   // }
   // throw new ErrorHandler(401, "Unauthorized");
@@ -109,7 +136,7 @@ const changeUserPassword = async (req, res) => {
 
     return res.status(200).json(user);
   } catch (error) {
-    throw new ErrorHandler(error.statusCode, "User Not Found");
+    console.log("User Not Found");
   }
   // }
   // throw new ErrorHandler(401, "Unauthorized");
@@ -122,7 +149,7 @@ const deleteUserByID = async (req, res) => {
     const user = await userService.deleteUserByID(id);
     return res.status(200).json(user);
   } catch (error) {
-    throw new ErrorHandler(error.statusCode, "User Not Found");
+    console.log("User Not Found");
   }
   // }
   // throw new ErrorHandler(401, "Unauthorized");
@@ -132,6 +159,8 @@ module.exports = {
   getAllUser,
   createUser,
   getUserByID,
+  getUserByPhone,
+  getUserByEmail,
   getUserByUsername,
   updateUserByID,
   updateUserRoleByID,

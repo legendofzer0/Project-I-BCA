@@ -6,21 +6,22 @@ const {
   updateCartQuantityByIdDb,
   deleteCartByID,
 } = require("../db/cart.db");
-const { ErrorHandler } = require("../helper/error");
 
 class CartService {
   getAllCarts = async () => {
     try {
       return await getAllCartDb();
     } catch (error) {
-      throw new ErrorHandler(error.statusCode, error.message);
+      console.log(error.message);
+      return;
     }
   };
   createCart = async (cart) => {
     try {
       return await createCartDb(cart);
     } catch (error) {
-      throw new ErrorHandler(error.statusCode, error.message);
+      console.log(error.message);
+      return;
     }
   };
   getCartById = async (id) => {
@@ -28,7 +29,8 @@ class CartService {
       const cart = await getCartByIdDb(id);
       return cart;
     } catch (error) {
-      throw new ErrorHandler(error.statusCode, error.message);
+      console.log(error.message);
+      return;
     }
   };
   getCartByUserId = async (user_id) => {
@@ -36,7 +38,8 @@ class CartService {
       const cart = await getCartByUserIdDb(user_id);
       return cart;
     } catch (error) {
-      throw new ErrorHandler(error.statusCode, error.message);
+      console.log(error.message);
+      return;
     }
   };
   updateCartQuantityById = async (id) => {
@@ -44,7 +47,8 @@ class CartService {
       const cart = await updateCartQuantityByIdDb(id);
       return cart;
     } catch (error) {
-      throw new ErrorHandler(error.statusCode, error.message);
+      console.log(error.message);
+      return;
     }
   };
   deleteCartById = async (id) => {
@@ -52,7 +56,8 @@ class CartService {
       const cart = await deleteCartByID(id);
       return cart;
     } catch (error) {
-      throw new ErrorHandler(error.statusCode, error.message);
+      console.log(error.message);
+      return;
     }
   };
   changeCartImage = async (id) => {
@@ -60,7 +65,8 @@ class CartService {
       const cart = await changeCartImageDB(id);
       return cart;
     } catch (error) {
-      throw new ErrorHandler(error.statusCode, error.message);
+      console.log(error.message);
+      return;
     }
   };
 }

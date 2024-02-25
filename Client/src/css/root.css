@@ -1,17 +1,14 @@
-$main-yellow: #ffff00;
-$main-blue: #001aff;
-$main-gold: #c6bf16;
-
 :root {
   font-family: "Poppins";
   src: url("https://fonts.googleapis.com/css2?family=Mukta:wght@800&family=Poppins&family=Roboto&family=Ubuntu&display=swap");
 }
 
 button {
-  background-color: $main-yellow;
-  color: $main-gold;
+  background-color: #ffff00;
+  color: #c6bf16;
   cursor: pointer;
 }
+
 .submit {
   width: 100%;
   height: 2.5em;
@@ -25,18 +22,16 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  .login {
-    text-decoration: none;
-    color: $main-yellow;
-  }
-
-  .line {
-    background-color: #000;
-    margin-top: 1em;
-    width: 100%;
-    height: 1px;
-  }
+}
+.center .login {
+  text-decoration: none;
+  color: #ffff00;
+}
+.center .line {
+  background-color: #000;
+  margin-top: 1em;
+  width: 100%;
+  height: 1px;
 }
 
 @keyframes modal_animate {
@@ -49,35 +44,32 @@ button {
     transform: translateY(0px);
   }
 }
-
 .form {
   width: 400px;
   height: auto;
   padding: 20px;
   border-radius: 10px;
-  color: $main-gold;
-  background-color: lighten($color: #fff, $amount: 10%);
-  filter: drop-shadow(0 8px 32px rgba(31, 38, 135, 30%));
+  color: #c6bf16;
+  background-color: white;
+  filter: drop-shadow(0 8px 32px rgba(31, 38, 135, 0.3));
   animation: 0.8s ease-out 0s 1 modal_animate;
-
-  input {
-    width: 98%;
-    height: 30px;
-    border-radius: 5px;
-    border-color: $main-blue;
-  }
+}
+.form input {
+  width: 98%;
+  height: 30px;
+  border-radius: 5px;
+  border-color: #001aff;
 }
 
 nav {
   transform: translateX(5%);
   margin-top: 2%;
   margin-bottom: 2%;
-
-  .nav-element {
-    padding: 10px;
-    text-decoration: none;
-    color: #000;
-  }
+}
+nav .nav-element {
+  padding: 10px;
+  text-decoration: none;
+  color: #000;
 }
 
 .error-message {
@@ -90,8 +82,9 @@ nav {
 .body {
   margin: 3%;
 }
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   appearance: none;
-}
+}/*# sourceMappingURL=root.css.map */

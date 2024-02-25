@@ -7,21 +7,22 @@ const {
   changeItemImageDB,
   deleteItemByID,
 } = require("../db/item.db");
-const { ErrorHandler } = require("../helper/error");
 
 class ItemService {
   getAllItems = async () => {
     try {
       return await getAllItemDb();
     } catch (error) {
-      throw new ErrorHandler(error.statusCode, error.message);
+      console.log(error.message);
+      return;
     }
   };
   createItem = async (item) => {
     try {
       return await createItemDb(item);
     } catch (error) {
-      throw new ErrorHandler(error.statusCode, error.message);
+      console.log(error.message);
+      return;
     }
   };
   getItemById = async (id) => {
@@ -29,7 +30,8 @@ class ItemService {
       const item = await getItemByIdDb(id);
       return item;
     } catch (error) {
-      throw new ErrorHandler(error.statusCode, error.message);
+      console.log(error.message);
+      return;
     }
   };
 
@@ -38,7 +40,8 @@ class ItemService {
       const item = await getItemInfoByIdDb(id);
       return item;
     } catch (error) {
-      throw new ErrorHandler(error.statusCode, error.message);
+      console.log(error.message);
+      return;
     }
   };
   updateItemById = async (id) => {
@@ -47,7 +50,8 @@ class ItemService {
       console.log(item);
       return item;
     } catch (error) {
-      throw new ErrorHandler(error.statusCode, error.message);
+      console.log(error.message);
+      return;
     }
   };
   deleteItemById = async (id) => {
@@ -55,14 +59,16 @@ class ItemService {
       const item = await deleteItemByID(id);
       return item;
     } catch (error) {
-      throw new ErrorHandler(error.statusCode, error.message);
+      console.log(error.message);
+      return;
     }
   };
   changeItemImage = async (id, newImageFilename) => {
     try {
       return await changeItemImageDB(id, newImageFilename);
     } catch (error) {
-      throw new ErrorHandler(error.statusCode, error.message);
+      console.log(error.message);
+      return;
     }
   };
 }

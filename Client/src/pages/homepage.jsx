@@ -1,26 +1,50 @@
+import MenuItem from "../components/ItemCard";
+import "../css/card.css";
 const Homepage = () => {
-  // Example list of menu items
   const menuItems = [
     {
-      name: 'Vegetarian Dish',
-      priceInNepaliRupees: 250,
-      isVeg: true,
-      description: 'A delicious vegetarian dish.'
+      name: "Vegetarian Dish",
+      price: 250,
+      tag: "veg",
+      description: "A delicious vegetarian dish.",
     },
     {
-      name: 'Non-Vegetarian Dish',
-      priceInNepaliRupees: 300,
-      isVeg: false,
-      description: 'A tasty non-vegetarian dish.'
+      name: "Vegetarian Dish",
+      price: 250,
+      tag: "veg",
+      description: "A delicious vegetarian dish.",
+      image: "image-not-found.png",
     },
-    // Add more menu items as needed
+    {
+      name: "Vegetarian Dish",
+      price: 250,
+      tag: "veg",
+      description: "A delicious vegetarian dish.",
+      image: "image-not-found",
+    },
+    {
+      name: "Non-Vegetarian Dish",
+      priceInNepaliRupees: 300,
+      tag: "nonVeg",
+      description: "A tasty non-vegetarian dish.",
+    },
+    {
+      name: "Non-Vegetarian Dish",
+      priceInNepaliRupees: 300,
+      tag: "nonVeg",
+      description: "A tasty non-vegetarian dish.",
+    },
   ];
 
   return (
-    <div>
+    <div className="body">
       <h1>Welcome to Our Restaurant</h1>
-      {/* Render the MenuList component with the menuItems as a prop */}
-      <MenuList items={menuItems} />
+      <div className="cards">
+        {menuItems.map((element) => {
+          // console.log("test " + element.name);
+          return <MenuItem item={element} />;
+        })}
+      </div>
     </div>
   );
 };
