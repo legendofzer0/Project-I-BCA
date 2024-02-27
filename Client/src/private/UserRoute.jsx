@@ -5,6 +5,7 @@ import Detail from "../pages/accountdetail";
 import Homepage from "../pages/homepage";
 import SignUp from "../components/SignUp";
 import Login from "../components/Login";
+import PageNotFound from "../pages/PageNotFound";
 
 function UserRoute(props) {
   return props.user === "Customer" ? (
@@ -16,7 +17,7 @@ function UserRoute(props) {
           path="/MyAccount"
           element={<Detail CurrentUser={props.user} />}
         />
-        <Route path="*" element="<PageNotFound>" />;
+        <Route path="*" element={<PageNotFound />} />;
       </Routes>
     </>
   ) : (
@@ -26,7 +27,7 @@ function UserRoute(props) {
         <Route path="/" element={<Homepage />} />
         <Route path="/SignUp" element={<SignUp modalState="false" />} />
         <Route path="/SignIn" element={<Login modalState="false" />} />
-        <Route path="*" element="<PageNotFound>" />;
+        <Route path="*" element={<PageNotFound />} />;
       </Routes>
     </>
   );

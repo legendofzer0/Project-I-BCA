@@ -2,7 +2,6 @@ import { useState } from "react";
 import axios from "axios";
 import Role from "../private/role";
 import UpdateUserModal from "../components/updateModal";
-import Modal from "@mui/joy/Modal";
 
 function Detail({ CurrentUser }) {
   const [Username, setUsername] = useState();
