@@ -27,7 +27,7 @@ function ClientNavbar({ CurrentUser }) {
           Cart
         </Link>
 
-        <Link to="/SignUp" className="nav-element">
+        <Link to="/SignIn" className="nav-element">
           MyAccount
         </Link>
       </nav>

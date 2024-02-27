@@ -78,73 +78,75 @@ const SignUp = ({ modalState }) => {
   return (
     <>
       {isModalOpen && (
-        <div className="center modal">
-          <form className="form">
-            <h2>Sign Up</h2>
-            <label>Name:</label>
-            <br />
+        <div className="center">
+          <div className=" modal">
+            <form className="form">
+              <h2>Sign Up</h2>
+              <label>Name:</label>
+              <br />
 
-            <input
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <br />
-            <br />
-            <label>Email:</label>
-            <br />
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <br />
+              <br />
+              <label>Email:</label>
+              <br />
 
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <br />
-            <br />
-            <label>Password:</label>
-            <br />
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
+              <br />
+              <br />
+              <label>Password:</label>
+              <br />
 
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
-            <br />
-            <br />
-            <label>User Name:</label>
-            <br />
+              <input
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <br />
+              <br />
+              <label>User Name:</label>
+              <br />
 
-            <input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
-            <br />
-            <br />
-            <label>Phone Number:</label>
-            <br />
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
+              <br />
+              <br />
+              <label>Phone Number:</label>
+              <br />
 
-            <input
-              type="number"
-              value={phoneNumber}
-              onChange={(e) => setPhoneNumber(e.target.value)}
-            />
-            {error && <div className="error-message">{error}</div>}
-            <br />
+              <input
+                type="number"
+                value={phoneNumber}
+                onChange={(e) => setPhoneNumber(e.target.value)}
+              />
+              {error && <div className="error-message">{error}</div>}
+              <br />
 
-            <button className="submit" onClick={handleSignUp}>
-              Sign Up
-            </button>
+              <button className="submit" onClick={handleSignUp}>
+                Sign Up
+              </button>
 
-            <div className="center line"></div>
+              <div className="center line"></div>
 
-            <p className="center">Already have an account?</p>
-            <span className="center">
-              <Link to="/SignIn" className="login">
-                Login
-              </Link>
-            </span>
-          </form>
+              <p className="center">Already have an account?</p>
+              <span className="center">
+                <Link to="/SignIn" className="login">
+                  Login
+                </Link>
+              </span>
+            </form>
+          </div>
         </div>
       )}
       ;

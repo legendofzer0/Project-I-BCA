@@ -10,7 +10,7 @@ function Detail({ CurrentUser }) {
   const [fullname, setFullName] = useState();
   const [Password, setPassword] = useState();
   const [isOpen, setIsOpen] = useState(false);
-  const id = 9;
+  const id = 25;
   const user = {
     username: Username,
     email: Email,

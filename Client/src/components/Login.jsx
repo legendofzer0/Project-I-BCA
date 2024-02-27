@@ -29,7 +29,7 @@ const Login = ({ toggleForm }) => {
         email === getUser.data[0].email &&
         password === getUser.data[0].password
       ) {
-        console.log("enter");
+        console.log(getUser.data[0]);
         setError("");
         navigate("/");
       } else {
@@ -42,38 +42,40 @@ const Login = ({ toggleForm }) => {
   };
 
   return (
-    <div className="center modal">
-      <form className="form">
-        <h2>Login</h2>
-        <label>Email:</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <br />
-        <br />
+    <div className="center">
+      <div className="modal">
+        <form className="form">
+          <h2>Login</h2>
+          <label>Email:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <br />
+          <br />
 
-        <label>Password:</label>
-        <input
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        {error && <div className="error-message">{error}</div>}
-        <br />
-        <button className="submit" onClick={handleLogin}>
-          Login
-        </button>
-        <div className="center line"></div>
+          <label>Password:</label>
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {error && <div className="error-message">{error}</div>}
+          <br />
+          <button className="submit" onClick={handleLogin}>
+            Login
+          </button>
+          <div className="center line"></div>
 
-        <p className="center">Don't have an account?</p>
-        <div className="center">
-          <Link to="/SignUp" className="login">
-            Sign Up
-          </Link>
-        </div>
-      </form>
+          <p className="center">Don't have an account?</p>
+          <div className="center">
+            <Link to="/SignUp" className="login">
+              Sign Up
+            </Link>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };
