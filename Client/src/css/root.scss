@@ -20,7 +20,19 @@ button {
   font-weight: bold;
   border-radius: 5px;
 }
-
+.edit {
+  width: 2.5em;
+  height: 2.5em;
+  border: 0px;
+  background-color: #fff;
+  border: 1px;
+  border-color: #000;
+}
+.pen {
+  width: 1em;
+  background-repeat: no-repeat;
+  background-image: url("../assets/pen-solid.svg");
+}
 .center {
   display: flex;
   align-items: center;
@@ -46,7 +58,6 @@ button {
   }
   100% {
     opacity: 1;
-    transform: translateY(0px);
   }
 }
 
@@ -59,11 +70,31 @@ button {
   background-color: lighten($color: #fff, $amount: 10%);
   filter: drop-shadow(0 8px 32px rgba(31, 38, 135, 30%));
   animation: 0.8s ease-out 0s 1 modal_animate;
-
   input {
     width: 98%;
     height: 30px;
     border-radius: 5px;
+    border-color: $main-blue;
+  }
+}
+
+.detail {
+  display: table;
+  width: 500px;
+  height: auto;
+  p {
+    display: table-row;
+  }
+  label {
+    display: table-cell;
+  }
+  input {
+    display: table-cell;
+    width: 80%;
+    height: 30px;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: #fff;
     border-color: $main-blue;
   }
 }

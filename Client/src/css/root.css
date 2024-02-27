@@ -18,6 +18,21 @@ button {
   border-radius: 5px;
 }
 
+.edit {
+  width: 2.5em;
+  height: 2.5em;
+  border: 0px;
+  background-color: #fff;
+  border: 1px;
+  border-color: #000;
+}
+
+.pen {
+  width: 1em;
+  background-repeat: no-repeat;
+  background-image: url("../assets/pen-solid.svg");
+}
+
 .center {
   display: flex;
   align-items: center;
@@ -58,6 +73,27 @@ button {
   width: 98%;
   height: 30px;
   border-radius: 5px;
+  border-color: #001aff;
+}
+
+.detail {
+  display: table;
+  width: 500px;
+  height: auto;
+}
+.detail p {
+  display: table-row;
+}
+.detail label {
+  display: table-cell;
+}
+.detail input {
+  display: table-cell;
+  width: 80%;
+  height: 30px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: #fff;
   border-color: #001aff;
 }
 

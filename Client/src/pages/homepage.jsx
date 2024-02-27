@@ -1,51 +1,34 @@
+import { useState, useEffect } from 'react'; // Import useState and useEffect
 import MenuItem from "../components/ItemCard";
+import axios from 'axios';
 import "../css/card.css";
-const Homepage = () => {
-  const menuItems = [
-    {
-      name: "Vegetarian Dish",
-      price: 250,
-      tag: "veg",
-      description: "A delicious vegetarian dish.",
-    },
-    {
-      name: "Vegetarian Dish",
-      price: 250,
-      tag: "veg",
-      description: "A delicious vegetarian dish.",
-      image: "image-not-found.png",
-    },
-    {
-      name: "Vegetarian Dish",
-      price: 250,
-      tag: "veg",
-      description: "A delicious vegetarian dish.",
-      image: "image-not-found",
-    },
-    {
-      name: "Non-Vegetarian Dish",
-      priceInNepaliRupees: 300,
-      tag: "nonVeg",
-      description: "A tasty non-vegetarian dish.",
-    },
-    {
-      name: "Non-Vegetarian Dish",
-      priceInNepaliRupees: 300,
-      tag: "nonVeg",
-      description: "A tasty non-vegetarian dish.",
-    },
-  ];
 
+const Homepage = () => {
+  const [items, setItems] = useState([]); // State to hold menu items
+
+  // Effect to fetch menu items when the component mounts
+  useEffect(() => {
+    const fetchMenuItems = async () => {
+      try {
+        const response = await axios.get("/api/item");
+        setItems(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchMenuItems();
+  }, []); 
   return (
     <div className="body">
       <h1>Welcome to Our Restaurant</h1>
       <div className="cards">
-        {menuItems.map((element) => {
-          // console.log("test " + element.name);
-          return <MenuItem item={element} />;
-        })}
+        {items.map((element) => (
+          <MenuItem key={element.id} item={element} /> // Assuming each element has a unique 'id' for the key
+        ))}
       </div>
     </div>
   );
 };
+
 export default Homepage;

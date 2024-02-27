@@ -1,0 +1,11 @@
+@import "./root.scss";
+
+.modal {
+  width: 30%;
+  height: auto;
+  background-color: white;
+  padding: 20px;
+}
+.middle {
+  transform: translateY(30%);
+}

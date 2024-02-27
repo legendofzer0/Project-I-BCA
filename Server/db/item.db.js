@@ -2,7 +2,7 @@
 const pool = require(`./conn.db`);
 
 const getAllItemDb = async () => {
-  const { rows: items } = await pool.query(`SELECT item_name from items`);
+  const { rows: items } = await pool.query(`SELECT * from items`);
   return items;
 };
 const getItemByIdDb = async (id) => {

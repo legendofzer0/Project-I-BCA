@@ -8,9 +8,9 @@ const MenuItem = ({ item }) => {
 
   useEffect(() => {
     // console.log(item.name);
-    setName(item.name);
+    setName(item.item_name);
     setPrice(item.price);
-    setTag(item.tag);
+    setTag(item.tags);
     const timer = setTimeout(() => {
       setImage(item.image);
       // console.log(item.image);
@@ -21,10 +21,13 @@ const MenuItem = ({ item }) => {
   return (
     <div className="card">
       <img src={'"../assets/' + image + '"'} />
-      {console.log('"../assets/' + image + '" ' + name)}
-      <h3 className="name">{name}</h3>
-      <span>Price: NRS. {price}</span>
-      <span>{tag}</span>
+      {console.log('"../assets/' + image + '" ' + name)
+      }
+        <h3 className="name center">{name}</h3>
+        <span className="price center">{price} RS.</span>
+        <div className="tagBack center">
+        <span className="tag center">{tag}</span>
+        </div>
     </div>
   );
 };
