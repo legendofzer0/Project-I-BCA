@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import "../css/root.css";
+
 function RiderNavbar() {
   return (
     <>

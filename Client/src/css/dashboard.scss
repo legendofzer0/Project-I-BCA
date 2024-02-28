@@ -1,0 +1,55 @@
+@import "./root.scss";
+
+.admin-sidebar {
+  background-color: $main-yellow;
+  height: 100%;
+  width: 16%;
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 100px;
+  margin-top: 100px;
+  .sidebar-element {
+    color: $main-blue;
+    text-decoration: none;
+    font-size: 32px;
+    font-weight: 500;
+  }
+}
+ul {
+  list-style-type: none;
+}
+
+.content {
+  margin-left: 20%;
+}
+
+h2 {
+  color: $main-gold;
+  text-align: center;
+}
+
+.form-group {
+  width: 60%;
+  display: grid;
+  label {
+    color: $main-gold;
+    display: table-cell;
+  }
+
+  .input {
+    width: 99%;
+    height: 30px;
+    border-radius: 5px;
+    border-color: $main-blue;
+    display: table-cell;
+  }
+}
+
+.sucess-message {
+  color: #3cff00;
+  font-weight: bold;
+  text-transform: uppercase;
+}

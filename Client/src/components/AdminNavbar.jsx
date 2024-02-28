@@ -1,11 +1,19 @@
 import { Link } from "react-router-dom";
+import "../css/root.css";
+
 function AdminNavbar() {
   return (
     <>
       <nav>
-        <Link to="/"> Home |</Link>
-        <Link to="/Admin"> Dashboard |</Link>
-        <Link to="/MyAccount"> MyAccount</Link>
+        <Link to="/" className="nav-element">
+          Home
+        </Link>
+        <Link to="/Admin" className="nav-element">
+          Dashboard
+        </Link>
+        <Link to="/MyAccount" className="nav-element">
+          MyAccount
+        </Link>
       </nav>
     </>
   );
