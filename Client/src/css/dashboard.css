@@ -113,13 +113,18 @@ nav .nav-element {
   text-transform: uppercase;
   margin-top: 1.5em;
 }
-
+.success-message {
+  color: rgb(0, 255, 0);
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-top: 1.5em;
+}
 .body {
   margin: 3%;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   appearance: none;
 }
@@ -222,4 +227,4 @@ table {
   border-color: #000;
   background-repeat: no-repeat;
   background-image: url("../assets/trash-solid.svg");
-}/*# sourceMappingURL=dashboard.css.map */
+} /*# sourceMappingURL=dashboard.css.map */
