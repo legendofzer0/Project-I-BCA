@@ -118,8 +118,8 @@ nav .nav-element {
   margin: 3%;
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   appearance: none;
 }
@@ -174,7 +174,52 @@ h2 {
 
 .sucess-message {
   color: #3cff00;
-  font-size: 20px;
   font-weight: bold;
   text-transform: uppercase;
-} /*# sourceMappingURL=dashboard.css.map */
+}
+
+table {
+  background-color: #ffff00;
+  margin-left: 20%;
+  width: 70%;
+  border-collapse: collapse;
+  color: rgba(0, 26, 255, 0.5);
+}
+
+.column {
+  border-right: 1px solid rgba(0, 26, 255, 0.5);
+}
+
+.bottom {
+  border-bottom: 1px solid rgba(0, 26, 255, 0.5);
+}
+
+.btn-back {
+  width: 5em;
+  background-color: rgb(255, 255, 255);
+  margin: 10px;
+  border-radius: 7px;
+  padding: 2px;
+}
+
+.edit2 {
+  width: 1em;
+  height: 1em;
+  border: 0px;
+  background-color: #fff;
+  border: 1px;
+  border-color: #000;
+  background-repeat: no-repeat;
+  background-image: url("../assets/pen-solid.svg");
+}
+
+.del {
+  width: 1em;
+  height: 1em;
+  border: 0px;
+  background-color: #fff;
+  border: 1px;
+  border-color: #000;
+  background-repeat: no-repeat;
+  background-image: url("../assets/trash-solid.svg");
+}/*# sourceMappingURL=dashboard.css.map */
