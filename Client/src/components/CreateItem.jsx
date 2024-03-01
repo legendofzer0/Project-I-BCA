@@ -45,7 +45,7 @@ const CreateItem = () => {
           description: description,
         };
 
-        // const response = await axios.post("/api/item", formData);
+        const response = await axios.post("/api/item", formData);
         setSuccess("Item created successfully");
       } catch (error) {
         console.error("Error submitting form:", error);

@@ -11,6 +11,7 @@ import ListUser from "../components/ListUser";
 
 import PageNotFound from "../pages/PageNotFound";
 import CreateItem from "../components/CreateItem";
+import ListItem from "../components/listItems";
 const AdminRoute = (props) => {
   console.log("Admin");
   return (
@@ -23,6 +24,7 @@ const AdminRoute = (props) => {
           <Route path="CreateUser" element={<CreateUser />} />
           <Route path="CreateItem" element={<CreateItem />} />
           <Route path="ListUser" element={<ListUser />} />
+          <Route path="ListItem" element={<ListItem />} />
         </Route>
         <Route
           path="/MyAccount"

@@ -113,18 +113,13 @@ nav .nav-element {
   text-transform: uppercase;
   margin-top: 1.5em;
 }
-.success-message {
-  color: rgb(0, 255, 0);
-  font-weight: bold;
-  text-transform: uppercase;
-  margin-top: 1.5em;
-}
+
 .body {
   margin: 3%;
 }
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   appearance: none;
 }
@@ -177,7 +172,7 @@ h2 {
   display: table-cell;
 }
 
-.sucess-message {
+.success-message {
   color: #3cff00;
   font-weight: bold;
   text-transform: uppercase;
@@ -190,12 +185,29 @@ table {
   border-collapse: collapse;
   color: rgba(0, 26, 255, 0.5);
 }
-
-.column {
-  border-right: 1px solid rgba(0, 26, 255, 0.5);
+table .column {
+  padding: 8px;
+  border-right: 1px solid #ddd;
 }
-
-.bottom {
+table .column:first-child {
+  width: 1.5em;
+}
+table .column:nth-child(2) {
+  width: 3em;
+}
+table .column:nth-child(3) {
+  width: 4em;
+}
+table .column:nth-child(4) {
+  width: 4em;
+}
+table .column:nth-child(4) {
+  width: 6em;
+}
+table .column .Description {
+  width: 5em;
+}
+table .bottom {
   border-bottom: 1px solid rgba(0, 26, 255, 0.5);
 }
 
@@ -227,4 +239,4 @@ table {
   border-color: #000;
   background-repeat: no-repeat;
   background-image: url("../assets/trash-solid.svg");
-} /*# sourceMappingURL=dashboard.css.map */
+}/*# sourceMappingURL=dashboard.css.map */

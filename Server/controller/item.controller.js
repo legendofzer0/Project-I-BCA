@@ -72,7 +72,7 @@ const deleteItemByID = async (req, res) => {
   const { id } = req.params;
   // if (req.item.role.includes("admin")) {
   try {
-    const item = await itemService.deleteItemByID(id);
+    const item = await itemService.deleteItemById(id);
     return res.status(200).json(item);
   } catch (error) {
     console.log("item Not Found");
