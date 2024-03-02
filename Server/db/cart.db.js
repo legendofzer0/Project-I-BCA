@@ -8,6 +8,8 @@ const getAllCartDb = async () => {
       u.username,
       c.c_item_id,
       i.item_name,
+      i.price,
+      i.image,
       c.quantity
     FROM 
       cart c
@@ -26,6 +28,8 @@ const getCartByIdDb = async (id) => {
       u.username,
       c.c_item_id,
       i.item_name,
+      i.price,
+      i.image,
       c.quantity
     FROM 
       cart c
@@ -46,6 +50,8 @@ const getCartByUserIdDb = async (user_id) => {
       c.c_user_id,
       c.c_item_id,
       i.item_name,
+      i.price,
+      i.image,
       c.quantity
     FROM 
       cart c

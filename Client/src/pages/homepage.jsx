@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react'; // Import useState and useEffect
+import { useState, useEffect } from "react"; // Import useState and useEffect
 import MenuItem from "../components/ItemCard";
-import axios from 'axios';
+import axios from "axios";
 import "../css/card.css";
 
 const Homepage = () => {
@@ -18,13 +18,13 @@ const Homepage = () => {
     };
 
     fetchMenuItems();
-  }, []); 
+  }, []);
   return (
     <div className="body">
       <h1>Welcome to Our Restaurant</h1>
       <div className="cards">
         {items.map((element) => (
-          <MenuItem key={element.id} item={element} /> // Assuming each element has a unique 'id' for the key
+          <MenuItem key={element.id} item={element} />
         ))}
       </div>
     </div>
