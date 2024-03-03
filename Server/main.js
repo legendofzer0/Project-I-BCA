@@ -4,6 +4,7 @@ const cors = require("cors");
 require("dotenv").config();
 const PORT = process.env.PORT;
 const app = express(cors("*"));
+app.use(express.static("images"));
 // const dbConnection = require("./db/conn.db");
 
 // //Connect to DB

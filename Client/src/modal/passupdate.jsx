@@ -1,21 +1,23 @@
-import React, { useState } from 'react';
+import { useState } from "react";
 
 const PasswordUpdateModal = ({ isOpen, onClose }) => {
-  const [newPassword, setNewPassword] = useState('');
+  const [newPassword, setNewPassword] = useState("");
 
   const handlePasswordChange = (e) => {
     setNewPassword(e.target.value);
   };
 
   const handleUpdatePassword = () => {
-    console.log('Updating password:', newPassword);
+    console.log("Updating password:", newPassword);
     onClose();
   };
 
   return (
-    <div className={`modal ${isOpen ? 'open' : ''}`}>
+    <div className={`modal ${isOpen ? "open" : ""}`}>
       <div className="modal-content">
-        <span className="close" onClick={onClose}>&times;</span>
+        <span className="close" onClick={onClose}>
+          &times;
+        </span>
         <h2>Update Password</h2>
         <label htmlFor="newPassword">New Password:</label>
         <input

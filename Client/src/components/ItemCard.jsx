@@ -15,7 +15,6 @@ const MenuItem = ({ item }) => {
     setTag(item.tags);
     const timer = setTimeout(() => {
       setImage(item.image);
-      // console.log(item.image);
     }, 10);
     setId(item.item_id);
     return () => clearTimeout(timer);
@@ -24,8 +23,10 @@ const MenuItem = ({ item }) => {
   return (
     <Link to={"/item/" + id}>
       <div className="card">
-        <img src={'"../assets/' + image + '"'} />
-        {console.log('"../assets/' + image + '" ' + name)}
+        <div className="center">
+          <img className="image" src={`api/${image}`} />
+        </div>
+
         <h3 className="name center">{name}</h3>
         <span className="price center">{price} RS.</span>
         <div className="tagBack center">

@@ -124,6 +124,11 @@ input[type=number]::-webkit-outer-spin-button {
   appearance: none;
 }
 
+.image {
+  width: 50%;
+  height: auto;
+}
+
 .cards {
   display: grid;
   grid-template-columns: 25em 25em 25em;

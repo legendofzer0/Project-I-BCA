@@ -83,7 +83,7 @@ const deleteItemByID = async (req, res) => {
 
 const changeItemImage = async (req, res) => {
   const { id } = req.params;
-  const { filename } = req.body;
+  const { filename } = req.file;
   // console.log(id);
   // console.log(filename);
   // if (req.item.role.includes("admin")) {

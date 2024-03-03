@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import Modal from 'react-modal';
-import { useDropzone } from 'react-dropzone';
+import { useState } from "react";
+import Modal from "react-modal";
+import { useDropzone } from "react-dropzone";
 
 const ItemModal = ({ isOpen, onClose }) => {
-  const [itemName, setItemName] = useState('');
+  const [itemName, setItemName] = useState("");
   const [itemPicture, setItemPicture] = useState(null);
 
   const onDrop = (acceptedFiles) => {
@@ -11,17 +11,21 @@ const ItemModal = ({ isOpen, onClose }) => {
     setItemPicture(file);
   };
 
-  const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, accept: 'image/*', maxSize: 1080 * 1080 });
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    onDrop,
+    accept: "image/*",
+    maxSize: 1080 * 1080,
+  });
 
   const closeModal = () => {
-    setItemName('');
+    setItemName("");
     setItemPicture(null);
     onClose();
   };
 
   const handleSave = () => {
-    console.log('Item Name:', itemName);
-    console.log('Item Picture:', itemPicture);
+    console.log("Item Name:", itemName);
+    console.log("Item Picture:", itemPicture);
 
     closeModal();
   };
@@ -35,7 +39,11 @@ const ItemModal = ({ isOpen, onClose }) => {
       <h2>Add Item</h2>
       <label>
         Item Name:
-        <input type="text" value={itemName} onChange={(e) => setItemName(e.target.value)} />
+        <input
+          type="text"
+          value={itemName}
+          onChange={(e) => setItemName(e.target.value)}
+        />
       </label>
 
       <div {...getRootProps()} style={dropzoneStyles}>
@@ -50,7 +58,11 @@ const ItemModal = ({ isOpen, onClose }) => {
       {itemPicture && (
         <div>
           <p>Selected Image:</p>
-          <img src={URL.createObjectURL(itemPicture)} alt="Item" style={imageStyles} />
+          <img
+            src={URL.createObjectURL(itemPicture)}
+            alt="Item"
+            style={imageStyles}
+          />
         </div>
       )}
 
@@ -61,17 +73,17 @@ const ItemModal = ({ isOpen, onClose }) => {
 };
 
 const dropzoneStyles = {
-  marginTop: '10px',
-  border: '2px dashed #cccccc',
-  padding: '20px',
-  textAlign: 'center',
-  cursor: 'pointer',
+  marginTop: "10px",
+  border: "2px dashed #cccccc",
+  padding: "20px",
+  textAlign: "center",
+  cursor: "pointer",
 };
 
 const imageStyles = {
-  maxWidth: '100%',
-  maxHeight: '200px',
-  marginTop: '10px',
+  maxWidth: "100%",
+  maxHeight: "200px",
+  marginTop: "10px",
 };
 
 export default ItemModal;
