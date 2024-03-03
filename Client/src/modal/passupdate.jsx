@@ -1,24 +1,36 @@
 import { useState } from "react";
-
-const PasswordUpdateModal = ({ isOpen, onClose }) => {
+import axios from "axios";
+import "../css/modal.css";
+const PasswordUpdateModal = ({ user }) => {
   const [newPassword, setNewPassword] = useState("");
-
+  const [error, setError] = useState("");
   const handlePasswordChange = (e) => {
     setNewPassword(e.target.value);
   };
 
   const handleUpdatePassword = () => {
-    console.log("Updating password:", newPassword);
-    onClose();
+    try {
+      setError("");
+      if (!newPassword || newPassword.length <= 3) {
+        setError("Password need to be more than 3 characters");
+        throw new Error("Error in password");
+      }
+      const response = axios.put("api/user/pass/" + user, {
+        password: newPassword,
+      });
+      console.log(response);
+      window.location.reload(false);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   return (
-    <div className={`modal ${isOpen ? "open" : ""}`}>
-      <div className="modal-content">
-        <span className="close" onClick={onClose}>
-          &times;
-        </span>
+    <div className="center middle">
+      <div className="modal form">
         <h2>Update Password</h2>
+        <div className="error-message"> {error}</div>
+
         <label htmlFor="newPassword">New Password:</label>
         <input
           type="password"
@@ -26,7 +38,9 @@ const PasswordUpdateModal = ({ isOpen, onClose }) => {
           value={newPassword}
           onChange={handlePasswordChange}
         />
-        <button onClick={handleUpdatePassword}>Update Password</button>
+        <button className="submit" onClick={handleUpdatePassword}>
+          Update Password
+        </button>
       </div>
     </div>
   );
