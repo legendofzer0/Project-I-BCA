@@ -13,6 +13,8 @@ const UpdateUserModal = ({ user }) => {
   const handleSubmit = async () => {
     setError("");
     try {
+      const getPhone = await axios.get("/api/user/" + id);
+      const phone = getPhone.data[0].phone_number;
       if (
         username === "" ||
         email === "" ||
@@ -28,6 +30,10 @@ const UpdateUserModal = ({ user }) => {
       }
       if (phoneNumber.length != 10) {
         setError("Number Should be 10 character's long");
+        return;
+      }
+      if (phoneNumber === phone) {
+        setError("Number Already exist");
         return;
       }
 

@@ -1,10 +1,15 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "../css/dashboard.css";
+import { Modal } from "@mui/material";
+import UpdateModal from "../modal/modal2";
 
 const UserList = () => {
   const [userList, setUserList] = useState([]);
-
+  const [user_id, setUserId] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
+  const handleOpen = () => setIsOpen(true);
+  const handleClose = () => setIsOpen(false);
   useEffect(() => {
     fetchUsers();
   }, []);
@@ -30,7 +35,9 @@ const UserList = () => {
   };
 
   const handleEditUser = (id) => {
+    handleOpen();
     console.log("Edit user " + id);
+    setUserId(id);
   };
 
   return (
@@ -71,6 +78,11 @@ const UserList = () => {
           ))}
         </tbody>
       </table>
+      <Modal open={isOpen} onClose={handleClose}>
+        <div>
+          <UpdateModal user={user_id} isOpen={isOpen} />
+        </div>
+      </Modal>
     </div>
   );
 };
