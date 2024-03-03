@@ -1,21 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../css/modal.css";
 import axios from "axios";
+
 const UpdateModal = ({ user }) => {
-  const [full_name, setName] = useState();
-  const [email, setEmail] = useState();
-  const [username, setUsername] = useState();
-  const [phoneNumber, setPhoneNumber] = useState();
-  const [role, setRole] = useState();
+  const [full_name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [role, setRole] = useState("");
   const [error, setError] = useState("");
   const isValidEmail = /\S+@\S+\.\S+/;
   const id = user;
 
-  useState(() => {
+  useEffect(() => {
     const getUser = async () => {
       try {
         const response = await axios.get("/api/user/" + id);
-        console.log(response);
         setUsername(response.data[0].username);
         setEmail(response.data[0].email);
         setPhoneNumber(response.data[0].phone_number);
@@ -26,53 +26,46 @@ const UpdateModal = ({ user }) => {
       }
     };
     getUser();
-  }, []);
+  }, [id]);
 
   const handleUpdate = async () => {
     setError("");
     try {
-      const getPhone = await axios.get("/api/user/" + id);
-      const phone = getPhone.data[0].phone_number;
-      if (
-        username === "" ||
-        email === "" ||
-        phoneNumber === "" ||
-        full_name === ""
-      ) {
-        setError("Fill all the field");
+      if (!username || !email || !phoneNumber || !full_name) {
+        setError("Fill all fields");
         return;
       }
       if (!email.match(isValidEmail)) {
         setError("Email is invalid");
         return;
       }
-      if (phoneNumber.length != 10) {
-        setError("Number Should be 10 character's long");
+      if (phoneNumber.length !== 10) {
+        setError("Number should be 10 characters long");
         return;
       }
-      if (phoneNumber === phone && phoneNumber) {
-        setError("Number Already exist");
-        return;
-      }
+
       const response = await axios.put("/api/user/role/" + id, {
-        username: username,
-        email: email,
+        username,
+        email,
         phone_number: phoneNumber,
-        full_name: full_name,
-        role: role,
+        full_name,
+        role,
       });
       console.log(response);
+      return;
     } catch (error) {
       console.error("Error fetching user:", error);
+      setError("An error occurred while updating the user.");
     }
   };
+
   return (
     <>
       <div className="center middle">
         <div className="modal form">
           <h2>Update User Data</h2>
           <form>
-            {error}
+            <div className="error">{error}</div>
             <label>
               Name:
               <input
@@ -111,8 +104,8 @@ const UpdateModal = ({ user }) => {
             <br />
             <label>
               Role:
-              <select onChange={(e) => setRole(e.target.value)}>
-                <option value="Customer">customer</option>
+              <select value={role} onChange={(e) => setRole(e.target.value)}>
+                <option value="Customer">Customer</option>
                 <option value="Admin">Admin</option>
                 <option value="Kitchen">Kitchen</option>
                 <option value="Rider">Rider</option>

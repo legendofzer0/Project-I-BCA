@@ -235,6 +235,17 @@ table .bottom {
   background-image: url("../assets/pen-solid.svg");
 }
 
+.add {
+  width: 1em;
+  height: 1em;
+  border: 0px;
+  background-color: #fff;
+  border: 1px;
+  border-color: #000;
+  background-repeat: no-repeat;
+  background-image: url("../assets/plus-solid.svg");
+}
+
 .del {
   width: 1em;
   height: 1em;
@@ -244,4 +255,8 @@ table .bottom {
   border-color: #000;
   background-repeat: no-repeat;
   background-image: url("../assets/trash-solid.svg");
+}
+
+.action {
+  width: 12%;
 }/*# sourceMappingURL=dashboard.css.map */

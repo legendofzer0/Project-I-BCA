@@ -32,6 +32,9 @@ const ListItem = () => {
   const handleEditUser = (id) => {
     console.log("Edit item " + id);
   };
+  const handleAddImage = (id) => {
+    console.log("Add item " + id);
+  };
 
   return (
     <div className="user-list">
@@ -55,12 +58,18 @@ const ListItem = () => {
               <td className="column">{item.tags}</td>
               <td className="column">{item.price}</td>
               <td className="column Description">{item.description}</td>
-              <td className="column">
+              <td className="action">
                 <span className="btn-back">
                   <button
                     className="edit2"
                     onClick={() => handleEditUser(item.item_id)}
-                  ></button>
+                  />
+                </span>
+                <span className="btn-back">
+                  <button
+                    className="add"
+                    onClick={() => handleAddImage(item.item_id)}
+                  />
                 </span>
                 <span className="btn-back">
                   <button

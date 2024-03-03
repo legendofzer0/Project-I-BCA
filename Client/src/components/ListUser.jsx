@@ -50,7 +50,7 @@ const UserList = () => {
             <th className="column bottom">Full Name</th>
             <th className="column bottom">Username</th>
             <th className="column bottom">Role</th>
-            <th className="bottom">Actions</th>
+            <th className="action bottom">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -60,7 +60,7 @@ const UserList = () => {
               <td className="column">{user.full_name}</td>
               <td className="column">{user.username}</td>
               <td className="column">{user.role}</td>
-              <td>
+              <td className="action">
                 <span className="btn-back">
                   <button
                     className="edit2"

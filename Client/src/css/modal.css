@@ -129,6 +129,10 @@ input[type=number]::-webkit-outer-spin-button {
   height: auto;
 }
 
+.action {
+  width: 10%;
+}
+
 .modal {
   width: 30%;
   height: auto;
