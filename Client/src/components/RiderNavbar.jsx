@@ -6,10 +6,10 @@ function RiderNavbar() {
     <>
       <nav>
         <Link className="nav-element" to="/">
-          Home |
+          Home
         </Link>
         <Link className="nav-element" to="/Rider">
-          Dashboard |
+          Dashboard
         </Link>
         <Link className="nav-element" to="/MyAccount">
           MyAccount

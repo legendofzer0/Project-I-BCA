@@ -5,6 +5,7 @@ const getAllOrderDb = async () => {
   const { rows: orders } = await pool.query(` SELECT 
       o.order_id,
       u.username,
+      u.phone_number,
       i.item_name,
       o.delivery_address,
       o.quantity,
