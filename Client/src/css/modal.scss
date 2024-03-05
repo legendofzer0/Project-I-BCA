@@ -9,3 +9,10 @@
 .middle {
   transform: translateY(30%);
 }
+
+select {
+  border-color: $main-blue;
+  width: 40%;
+  height: 2em;
+  margin: 1em;
+}

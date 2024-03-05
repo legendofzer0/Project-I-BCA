@@ -1,17 +1,18 @@
 import { Routes, Route } from "react-router-dom";
 
-import AdminNavbar from "../components/AdminNavbar";
 import Detail from "../pages/accountdetail";
 import Homepage from "../pages/homepage";
+import KitchenDashboard from "../pages/KitchenDashboard";
 import PageNotFound from "../pages/PageNotFound";
+import KitchenNavbar from "../components/KitchenNavbar";
 const KitchenRoute = (props) => {
   console.log("Admin");
   return (
     <>
-      <AdminNavbar />
+      <KitchenNavbar />
       <Routes>
         <Route path="/" element={<Homepage />} />
-        <Route path="/Kitchen" element={<Homepage />} />
+        <Route path="/Kitchen" element={<KitchenDashboard />} />
         <Route
           path="/MyAccount"
           element={<Detail CurrentUser={props.user} />}

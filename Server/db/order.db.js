@@ -3,6 +3,7 @@ const pool = require(`./conn.db`);
 
 const getAllOrderDb = async () => {
   const { rows: orders } = await pool.query(` SELECT 
+      o.order_id,
       u.username,
       i.item_name,
       o.delivery_address,

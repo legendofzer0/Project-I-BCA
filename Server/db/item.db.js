@@ -41,9 +41,9 @@ const updateItemByIdDb = async ({
   return items[0];
 };
 
-const changeItemImageDB = async ({ id, image }) => {
+const changeItemImageDB = async ({ id, filename }) => {
   return await pool.query(
-    `UPDATE items set image ='${image}' where item_id=${id}`
+    `UPDATE items set image ='${filename}' where item_id=${id}`
   );
 };
 

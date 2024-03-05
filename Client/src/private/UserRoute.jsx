@@ -27,6 +27,7 @@ function UserRoute(props) {
       <ClientNavbar />
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/cart" element={<PageNotFound />} />
         <Route path="/SignUp" element={<SignUp modalState="false" />} />
         <Route path="/SignIn" element={<Login modalState="false" />} />
         <Route path="*" element={<PageNotFound />} />;

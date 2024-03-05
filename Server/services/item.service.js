@@ -63,9 +63,9 @@ class ItemService {
       return;
     }
   };
-  changeItemImage = async (id, newImageFilename) => {
+  changeItemImage = async (id, filename) => {
     try {
-      return await changeItemImageDB(id, newImageFilename);
+      return await changeItemImageDB(id, filename);
     } catch (error) {
       console.log(error.message);
       return;

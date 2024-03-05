@@ -5,7 +5,7 @@ const allowedFileTypes = ["image/png", "image/jpeg"];
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "D:/4th sem/Project I/Code/images");
+    cb(null, "./images");
   },
   filename: (req, file, cb) => {
     const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
