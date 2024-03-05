@@ -41,16 +41,14 @@ const getUserByID = async (req, res) => {
 const getUserByEmail = async (req, res) => {
   const { email } = req.body;
 
-  // if (req.user.role.includes("admin")) {
   try {
     const user = await userService.getUserByEmail(email);
+
     return res.status(200).json(user);
   } catch (error) {
-    console.log("User Not Found");
-    return error;
+    console.log("Error retrieving user by email:", error);
+    return res.status(500).json({ message: "Internal Server Error" });
   }
-  // }
-  // throw new ErrorHandler(401, "Unauthorized");
 };
 
 const getUserByUsername = async (req, res) => {

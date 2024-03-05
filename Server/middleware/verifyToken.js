@@ -1,18 +1,14 @@
+// verifyToken.js
 const jwt = require("jsonwebtoken");
-const { ErrorHandler } = require("../helpers/error");
+require("dotenv").config();
 
-const verifyToken = (req, res, next) => {
-  const token = req.header("auth-token");
-  if (!token) {
-    throw new ErrorHandler(401, "Token missing");
-  }
-
+const verifyToken = (token) => {
   try {
-    const verified = jwt.verify(token, secret);
-    req.user = verified;
-    next();
-  } catch (error) {
-    throw new ErrorHandler(401, error.message || "Invalid Token");
+    const verified = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+    return true;
+  } catch (e) {
+    console.error(e);
+    return false;
   }
 };
 

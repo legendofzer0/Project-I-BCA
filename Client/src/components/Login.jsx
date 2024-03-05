@@ -12,6 +12,9 @@ const Login = ({ toggleForm }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
+      console.log(email);
+      console.log(password);
+
       setError("");
       if (email === "" || password === "") {
         setError("fill everything");
@@ -20,6 +23,8 @@ const Login = ({ toggleForm }) => {
       const getUser = await axios.post("/api/user/email", {
         email: email,
       });
+
+      console.log(getUser);
       if (getUser.data.length === 0) {
         console.log("User doesn't exists");
         setError("User doesn't exists");

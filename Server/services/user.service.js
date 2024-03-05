@@ -42,7 +42,7 @@ class UserService {
     try {
       // console.log(email + "testS");
       const user = await getUserByEmailDb(email);
-      console.log(user);
+      // console.log(user);
       return user;
     } catch (error) {
       console.log(error.message);
