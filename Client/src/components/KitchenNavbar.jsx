@@ -6,10 +6,10 @@ function KitchenNavbar() {
     <>
       <nav>
         <Link className="nav-element" to="/">
-          Home |
+          Home
         </Link>
         <Link className="nav-element" to="/Kitchen">
-          Dashboard |
+          Dashboard
         </Link>
         <Link className="nav-element" to="/MyAccount">
           MyAccount

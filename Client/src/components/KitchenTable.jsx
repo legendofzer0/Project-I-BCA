@@ -1,21 +1,55 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import "../css/dashboard.css";
 
 const KitchenTable = () => {
-  const [pendingItems, setPendingItems] = useState([
-    { itemName: "PendingItem1" },
-    { itemName: "PendingItem2" },
-  ]);
+  const [orderItems, setOrderItems] = useState([]);
+  const [pendingItems, setPendingItems] = useState([]);
+  const [cookingItems, setCookingItems] = useState([]);
 
-  const [cookingItems, setCookingItems] = useState([
-    { itemName: "CookingItem1" },
-    { itemName: "CookingItem2" },
-  ]);
+  useEffect(() => {
+    const fetchOrderItems = async () => {
+      try {
+        const response = await axios.get("/api/order");
+        setOrderItems(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
 
-  const handlePlusClick = (section, index) => {
-    if (section === "pending") {
-      const selectedItem = pendingItems[index];
-      setPendingItems((prevItems) => prevItems.filter((_, i) => i !== index));
-      setCookingItems((prevItems) => [...prevItems, selectedItem]);
+    fetchOrderItems();
+    const intervalId = setInterval(fetchOrderItems, 1000); // Fetch orderItems every 5 seconds
+
+    return () => clearInterval(intervalId); // Cleanup interval on component unmount
+  }, []);
+
+  useEffect(() => {
+    setPendingItems([]);
+    setCookingItems([]);
+    setPendingItems(orderItems.filter((item) => item.status === "pending"));
+    setCookingItems(orderItems.filter((item) => item.status === "cooking"));
+  }, [orderItems]);
+
+  const handlePendingAdd = (id) => async () => {
+    console.log("pending", id);
+    try {
+      const handleChange = await axios.put("/api/order/" + id, {
+        status: "cooking",
+      });
+      console.log(handleChange);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  const handleCookingAdd = (id) => async () => {
+    console.log("cooking", id);
+    try {
+      const handleChange = await axios.put("/api/order/" + id, {
+        status: "on-route",
+      });
+      console.log(handleChange);
+    } catch (e) {
+      console.log(e);
     }
   };
 
@@ -26,9 +60,10 @@ const KitchenTable = () => {
         <ul>
           {pendingItems.map((item, index) => (
             <li key={index}>
-              {item.itemName}
-              <button onClick={() => handlePlusClick("pending", index)}>
-                Plus
+              <span> {item.item_name}</span>
+              <span> x{item.quantity}</span>
+              <button onClick={handlePendingAdd(item.order_id)} className="add">
+                +
               </button>
             </li>
           ))}
@@ -39,7 +74,13 @@ const KitchenTable = () => {
         <h2>Cooking</h2>
         <ul>
           {cookingItems.map((item, index) => (
-            <li key={index}>{item.itemName}</li>
+            <li key={index}>
+              <span> {item.item_name}</span>
+              <span> x{item.quantity}</span>
+              <button onClick={handleCookingAdd(item.order_id)} className="add">
+                +
+              </button>
+            </li>
           ))}
         </ul>
       </div>

@@ -1,4 +1,5 @@
 import "../css/dashboard.css";
+import axios from "axios";
 const RiderTable = () => {
   return (
     <div className="center">
