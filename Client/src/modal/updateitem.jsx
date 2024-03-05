@@ -1,57 +1,60 @@
 import { useState } from "react";
+import axios from "axios";
 
-const UpdateItemModal = ({ isOpen, onClose, currentItem }) => {
-  const [itemName, setItemName] = useState(currentItem.name || "");
-  const [tags, setTags] = useState(currentItem.tags || []);
-  const [price, setPrice] = useState(currentItem.price || "");
-  const [description, setDescription] = useState(currentItem.description || "");
+const UpdateItemModal = ({ editData }) => {
+  console.log(editData);
+  const [itemName, setItemName] = useState(editData.name);
+  const [tags, setTags] = useState(editData.tags);
+  const [price, setPrice] = useState(editData.price);
+  const [description, setDescription] = useState(editData.description);
+  const id = editData.Id;
 
-  const handleTagChange = (selectedTags) => {
-    setTags(selectedTags);
-  };
-
-  const handleUpdateItem = () => {
-    onClose();
+  const handleUpdateItem = async () => {
+    const updateData = {
+      item_name: itemName,
+      tags: tags,
+      price: price,
+      description: description,
+    };
+    const response = await axios.put("/api/item/" + id, updateData);
+    console.log(response);
+    window.location.reload(false);
   };
 
   return (
     <>
-      {isOpen && (
-        <div className="">
-          <div className="">
-            <h2>Update Item</h2>
-            <label>
-              Item Name:
-              <input
-                type="text"
-                value={itemName}
-                onChange={(e) => setItemName(e.target.value)}
-              />
-            </label>
-            <label>
-              Tags:
-              <input type="text" value={tags.join(",")} readOnly />
-            </label>
-            <label>
-              Price:
-              <input
-                type="text"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
-              />
-            </label>
-            <label>
-              Description:
-              <textarea
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              />
-            </label>
-            <button onClick={handleUpdateItem}>Update</button>
-            <button onClick={onClose}>Cancel</button>
-          </div>
+      <div className="center middle">
+        <div className="modal form">
+          <h2>Update Item</h2>
+          <label>Item Name:</label>
+          <input
+            type="text"
+            value={itemName}
+            onChange={(e) => setItemName(e.target.value)}
+          />
+          <label>Tags:</label>
+          <select value={tags} onChange={(e) => setTags(e.target.value)}>
+            <option value="Veg">Veg</option>
+            <option value="Non-Veg">Non-Veg</option>
+          </select>
+          <br />
+          <label>Price:</label>
+          <input
+            type="text"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
+          />
+          <br />
+          <label>Description:</label>
+          <textarea
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+          <button className="submit" onClick={handleUpdateItem}>
+            Update
+          </button>
         </div>
-      )}
+      </div>
     </>
   );
 };

@@ -1,19 +1,18 @@
+import { useState } from "react";
 
-import React, { useState } from 'react';
-
-const Kitchen = () => {
+const KitchenTable = () => {
   const [pendingItems, setPendingItems] = useState([
-    { itemName: 'PendingItem1' },
-    { itemName: 'PendingItem2' },
+    { itemName: "PendingItem1" },
+    { itemName: "PendingItem2" },
   ]);
 
   const [cookingItems, setCookingItems] = useState([
-    { itemName: 'CookingItem1' },
-    { itemName: 'CookingItem2' },
+    { itemName: "CookingItem1" },
+    { itemName: "CookingItem2" },
   ]);
 
   const handlePlusClick = (section, index) => {
-    if (section === 'pending') {
+    if (section === "pending") {
       const selectedItem = pendingItems[index];
       setPendingItems((prevItems) => prevItems.filter((_, i) => i !== index));
       setCookingItems((prevItems) => [...prevItems, selectedItem]);
@@ -28,7 +27,9 @@ const Kitchen = () => {
           {pendingItems.map((item, index) => (
             <li key={index}>
               {item.itemName}
-              <button onClick={() => handlePlusClick('pending', index)}>Plus</button>
+              <button onClick={() => handlePlusClick("pending", index)}>
+                Plus
+              </button>
             </li>
           ))}
         </ul>
@@ -38,9 +39,7 @@ const Kitchen = () => {
         <h2>Cooking</h2>
         <ul>
           {cookingItems.map((item, index) => (
-            <li key={index}>
-              {item.itemName}
-            </li>
+            <li key={index}>{item.itemName}</li>
           ))}
         </ul>
       </div>
@@ -48,4 +47,4 @@ const Kitchen = () => {
   );
 };
 
-export default Kitchen;
+export default KitchenTable;

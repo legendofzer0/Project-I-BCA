@@ -7,7 +7,7 @@ import KitchenRoute from "./private/KitchenRoute";
 import RiderRoute from "./private/RiderRoute";
 
 function App() {
-  const CurrentUser = "Admin";
+  const CurrentUser = "Rider";
   return CurrentUser === Role.Customer || CurrentUser === Role.Public ? (
     <UserRoute user={CurrentUser} />
   ) : CurrentUser === Role.Admin ? (

@@ -5,9 +5,15 @@ function RiderNavbar() {
   return (
     <>
       <nav>
-        <Link to="/"> Home |</Link>
-        <Link to="/Rider"> Dashboard |</Link>
-        <Link to="/MyAccount"> MyAccount</Link>
+        <Link className="nav-element" to="/">
+          Home |
+        </Link>
+        <Link className="nav-element" to="/Rider">
+          Dashboard |
+        </Link>
+        <Link className="nav-element" to="/MyAccount">
+          MyAccount
+        </Link>
       </nav>
     </>
   );

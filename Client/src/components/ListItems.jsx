@@ -4,11 +4,14 @@ import "../css/dashboard.css";
 import { Modal } from "@mui/material";
 
 import ItemModal from "../modal/picturemodal";
+import UpdateItemModal from "../modal/updateitem";
 
 const ListItem = () => {
   const [itemList, setItemList] = useState([]);
   const [isAdd, setIsAdd] = useState(false);
+  const [isEdit, setIsEdit] = useState(false);
   const [addData, setAddData] = useState({});
+  const [editData, setEditData] = useState({});
 
   useEffect(() => {
     fetchItems();
@@ -34,9 +37,28 @@ const ListItem = () => {
     }
   };
 
-  const handleEditUser = (id) => {
+  const handleEditUser = async (id) => {
+    const response = await axios.get("/api/item/info/" + id);
     console.log("Edit item " + id);
+    console.log(response);
+    const name = response.data[0].item_name;
+    const tags = response.data[0].tags;
+    const price = response.data[0].price;
+    const description = response.data[0].description;
+    setEditData({
+      name: name,
+      tags: tags,
+      price: price,
+      description: description,
+      Id: id,
+    });
+    setIsEdit(true);
   };
+
+  const handleEdit = () => {
+    setIsEdit(false);
+  };
+
   const handleAddImage = async (id) => {
     const response = await axios.get("/api/item/" + id);
     console.log("Add item " + id);
@@ -48,6 +70,7 @@ const ListItem = () => {
     });
     setIsAdd(true);
   };
+
   const handleAdd = () => setIsAdd(false);
 
   return (
@@ -101,6 +124,11 @@ const ListItem = () => {
       <Modal open={isAdd} onClose={handleAdd}>
         <div>
           <ItemModal addData={addData} />
+        </div>
+      </Modal>
+      <Modal open={isEdit} onClose={handleEdit}>
+        <div>
+          <UpdateItemModal editData={editData} fetchItems={fetchItems} />
         </div>
       </Modal>
     </>
