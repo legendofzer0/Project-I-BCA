@@ -5,6 +5,7 @@ import Homepage from "../pages/homepage";
 import KitchenDashboard from "../pages/KitchenDashboard";
 import PageNotFound from "../pages/PageNotFound";
 import KitchenNavbar from "../components/KitchenNavbar";
+import DescriptionPage from "../pages/DescriptionPage";
 const KitchenRoute = (props) => {
   console.log("Admin");
   return (
@@ -12,6 +13,8 @@ const KitchenRoute = (props) => {
       <KitchenNavbar />
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/item/:id" element={<DescriptionPage />} />
+
         <Route path="/Kitchen" element={<KitchenDashboard />} />
         <Route
           path="/MyAccount"

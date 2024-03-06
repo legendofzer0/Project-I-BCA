@@ -9,15 +9,11 @@ const MenuItem = ({ item }) => {
   const [id, setId] = useState("");
 
   useEffect(() => {
-    // console.log(item.name);
     setName(item.item_name);
     setPrice(item.price);
     setTag(item.tags);
-    const timer = setTimeout(() => {
-      setImage(item.image);
-    }, 10);
+    setImage(item.image);
     setId(item.item_id);
-    return () => clearTimeout(timer);
   }, [item]);
 
   return (
@@ -26,7 +22,6 @@ const MenuItem = ({ item }) => {
         <div className="center">
           <img className="image" src={`api/${image}`} />
         </div>
-
         <h3 className="name center">{name}</h3>
         <span className="price center">{price} RS.</span>
         <div className="tagBack center">

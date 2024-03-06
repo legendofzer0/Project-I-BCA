@@ -7,6 +7,7 @@ import SignUp from "../components/SignUp";
 import Login from "../components/Login";
 import PageNotFound from "../pages/PageNotFound";
 import Cart from "../pages/Cart";
+import DescriptionPage from "../pages/DescriptionPage";
 
 function UserRoute(props) {
   return props.user === "Customer" ? (
@@ -14,6 +15,7 @@ function UserRoute(props) {
       <ClientNavbar CurrentUser={props.user} />
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/item/:id" element={<DescriptionPage />} />
         <Route path="/cart" element={<Cart />} />
         <Route
           path="/MyAccount"
@@ -27,6 +29,7 @@ function UserRoute(props) {
       <ClientNavbar />
       <Routes>
         <Route path="/" element={<Homepage />} />
+        <Route path="/item/:id" element={<DescriptionPage />} />
         <Route path="/cart" element={<PageNotFound />} />
         <Route path="/SignUp" element={<SignUp modalState="false" />} />
         <Route path="/SignIn" element={<Login modalState="false" />} />

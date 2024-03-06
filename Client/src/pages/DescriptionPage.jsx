@@ -2,11 +2,18 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import "../css/card.css";
+import Buy from "../modal/buy";
+import { Modal } from "@mui/material";
 
 function DescriptionPage() {
   const navigate = useNavigate();
   const [item, setItem] = useState([]);
+  const [image, setImage] = useState();
+  const [isOpen, setIsOpen] = useState(false);
   let { id } = useParams();
+  const handleClose = () => {
+    setIsOpen(false);
+  };
   useEffect(() => {
     const fetchMenuItems = async () => {
       try {
@@ -15,6 +22,7 @@ function DescriptionPage() {
           navigate("*");
         }
         setItem(response.data[0]);
+        setImage(response.data[0].image);
       } catch (err) {
         console.log(err);
       }
@@ -22,30 +30,42 @@ function DescriptionPage() {
 
     fetchMenuItems();
   }, [id]);
-  console.log(item);
+
+  const clickBuy = () => {
+    setIsOpen(true);
+  };
 
   return (
-    <div className="flex">
-      <div>
+    <>
+      <div className="flex">
         <div>
-          <h1 className="mid2">{item.item_name}</h1>
-          <div className="mid2">
-            <div className="tag center">{item.tags}</div>
+          <div>
+            <h1 className="mid2">{item.item_name}</h1>
+            <div className="mid2">
+              <div className="tag center">{item.tags}</div>
+            </div>
+          </div>
+          <div className="card">
+            <img className="image" src={`/api/${image}`} alt={item.item_name} />
+            <h3 className="center name">{item.item_name}</h3>
+            <span className="price center">{item.price}NRS.</span>
           </div>
         </div>
-        <div className="card">
-          <img src={"../assets/" + item.image} alt={item.item_name} />
-          <h3 className="center name">{item.item_name}</h3>
-          <span className="price center">{item.price}NRS.</span>
+        <div className="card2">
+          <p className="description">{item.description}</p>
+          <br />
+          <button className="btn1" onClick={clickBuy}>
+            BUY NOW
+          </button>
+          <button className="btn2">ADD TO CART</button>
         </div>
       </div>
-      <div className="card2">
-        <p className="description">{item.description}</p>
-        <br />
-        <button className="btn1">BUY NOW</button>
-        <button className="btn2">ADD TO CART</button>
-      </div>
-    </div>
+      <Modal open={isOpen} onClose={handleClose}>
+        <div>
+          <Buy itemId={id} />
+        </div>
+      </Modal>
+    </>
   );
 }
 

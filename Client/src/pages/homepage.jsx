@@ -4,9 +4,7 @@ import axios from "axios";
 import "../css/card.css";
 
 const Homepage = () => {
-  const [items, setItems] = useState([]); // State to hold menu items
-
-  // Effect to fetch menu items when the component mounts
+  const [items, setItems] = useState([]);
   useEffect(() => {
     const fetchMenuItems = async () => {
       try {

@@ -13,7 +13,7 @@ const getItemByIdDb = async (id) => {
 };
 const getItemInfoByIdDb = async (id) => {
   const { rows: items } = await pool.query(
-    `SELECT item_name,tags,price,description FROM items WHERE item_id = ${id}`
+    `SELECT * FROM items WHERE item_id = ${id}`
   );
   return items;
 };
