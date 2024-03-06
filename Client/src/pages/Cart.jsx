@@ -19,6 +19,8 @@ function Cart() {
     };
 
     fetchCartItems();
+    const intervalId = setInterval(fetchCartItems, 1000);
+    return () => clearInterval(intervalId);
   }, []);
   return (
     <>

@@ -6,7 +6,8 @@ function CartTile({ item }) {
 
   const handleDecrease = async () => {
     if (quantity === 1) {
-      console.log("it is now empty");
+      console.log("it is empty");
+      const response = await axios.delete(`/api/cart/${item.cart_id}`);
     } else {
       const newQuantity = quantity - 1;
       try {
@@ -27,7 +28,7 @@ function CartTile({ item }) {
       const response = await axios.put(`/api/cart/${item.cart_id}`, {
         quantity: newQuantity,
       });
-      setQuantity(newQuantity); // Update local state with the new quantity
+      setQuantity(newQuantity);
       console.log(response.data);
     } catch (error) {
       console.error("Error:", error);
