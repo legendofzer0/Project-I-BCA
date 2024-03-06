@@ -6,6 +6,7 @@ import Buy from "../modal/buy";
 import { Modal } from "@mui/material";
 
 function DescriptionPage() {
+  const userId = 8;
   const navigate = useNavigate();
   const [item, setItem] = useState([]);
   const [image, setImage] = useState();
@@ -30,9 +31,18 @@ function DescriptionPage() {
 
     fetchMenuItems();
   }, [id]);
+  const itemId = parseInt(id);
+  const cartPayload = { c_user_id: userId, c_item_id: itemId, quantity: 1 };
 
   const clickBuy = () => {
     setIsOpen(true);
+  };
+  const clickCart = async () => {
+    try {
+      const cartAdd = await axios.post("/api/cart", cartPayload);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -57,7 +67,9 @@ function DescriptionPage() {
           <button className="btn1" onClick={clickBuy}>
             BUY NOW
           </button>
-          <button className="btn2">ADD TO CART</button>
+          <button className="btn2" onClick={clickCart}>
+            ADD TO CART
+          </button>
         </div>
       </div>
       <Modal open={isOpen} onClose={handleClose}>
