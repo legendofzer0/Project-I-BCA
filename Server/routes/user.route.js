@@ -11,7 +11,8 @@ const {
   changeUserPassword,
 } = require("../controller/user.controller");
 const genToken = require("../middleware/genToken");
-var payload;
+const verifyToken = require("../middleware/verifyToken");
+
 const router = require("express").Router();
 // const verifyAdmin = require("../middleware/verifyAdmin");
 // const verifyToken = require("../middleware/verifyToken");
@@ -28,5 +29,7 @@ router.route("/user/email").post(getUserByEmail);
 router.route("/user/phone").post(getUserByPhone);
 router.route("/user/role/:id").put(updateUserRoleByID);
 router.route("/user/pass/:id").put(changeUserPassword);
+router.route("/user/genToken").post(genToken);
+router.route("/user/verifyToken").post(verifyToken);
 
 module.exports = router;
