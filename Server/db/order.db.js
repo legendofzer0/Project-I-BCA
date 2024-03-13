@@ -44,6 +44,8 @@ const getOrderByUserIdDb = async (id) => {
     `SELECT 
       o.order_id,
       i.item_name,
+      i.price,
+      i.image,
       o.delivery_address,
       o.quantity,
       o.status

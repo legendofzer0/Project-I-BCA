@@ -2,8 +2,11 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Role from "../private/role";
 import UpdateUserModal from "../components/updateModal";
+import OrderTrack from "../components/OrderTrack";
 import HandleUpdatePassword from "../modal/passupdate"; // Ensure this is exported as a component
 import { Modal } from "@mui/material";
+
+import "../css/card.css";
 
 function Detail({ CurrentUser }) {
   const [Username, setUsername] = useState("");
@@ -14,13 +17,13 @@ function Detail({ CurrentUser }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isChange, setIsChange] = useState(false);
 
-  const id = 25;
+  const id = 6;
 
   useEffect(() => {
     const getUser = async () => {
       try {
         const response = await axios.get(`/api/user/${id}`);
-        console.log(response);
+        // console.log(response);
         setUsername(response.data[0].username);
         setEmail(response.data[0].email);
         setPhoneNumber(response.data[0].phone_number);
@@ -49,39 +52,44 @@ function Detail({ CurrentUser }) {
     fullname: fullname,
     Id: id,
   };
-  console.log(user);
+  // console.log(user);
   return CurrentUser === Role.Public ? (
     <div>SignIn/SignUp</div>
   ) : (
-    <div className="body">
-      <div>Welcome {Username}</div>
-      <div>
-        Role: {CurrentUser}
-        <button className="edit pen" onClick={handleOpen}></button>
-        <div className="detail">
-          <form>
-            <p>
-              <label>Name:</label>
-              <input type="text" disabled value={fullname} />
-            </p>
-            <p>
-              <label>Email:</label>
-              <input type="email" disabled value={Email} />
-            </p>
-            <p>
-              <label>Username:</label>
-              <input type="text" disabled value={Username} />
-            </p>
-            <p>
-              <label>Phone Number:</label>
-              <input type="number" disabled value={PhoneNumber} />
-            </p>
-            <p>
-              <label>Password:</label>
-              <input type="password" disabled value={Password} />
-              <button className="edit pen" onClick={handleOpChange}></button>
-            </p>
-          </form>
+    <div>
+      <div className="body flex">
+        <div>Welcome {Username}</div>
+        <div>
+          Role: {CurrentUser}
+          <button className="edit pen" onClick={handleOpen}></button>
+          <div className="detail">
+            <form>
+              <p>
+                <label>Name:</label>
+                <input type="text" disabled value={fullname} />
+              </p>
+              <p>
+                <label>Email:</label>
+                <input type="email" disabled value={Email} />
+              </p>
+              <p>
+                <label>Username:</label>
+                <input type="text" disabled value={Username} />
+              </p>
+              <p>
+                <label>Phone Number:</label>
+                <input type="number" disabled value={PhoneNumber} />
+              </p>
+              <p>
+                <label>Password:</label>
+                <input type="password" disabled value={Password} />
+                <button className="edit pen" onClick={handleOpChange}></button>
+              </p>
+            </form>
+          </div>
+        </div>
+        <div className="order">
+          <OrderTrack id={id} />
         </div>
       </div>
       <Modal open={isOpen} onClose={handleClose}>

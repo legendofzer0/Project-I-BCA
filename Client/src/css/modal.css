@@ -118,12 +118,11 @@ nav .nav-element {
   margin: 3%;
 }
 
-input[type=number]::-webkit-inner-spin-button,
-input[type=number]::-webkit-outer-spin-button {
+/* input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   appearance: none;
-}
-
+} */
 .image {
   width: 50%;
   height: auto;

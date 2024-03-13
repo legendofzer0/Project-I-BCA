@@ -52,6 +52,7 @@ const Buy = ({ itemId }) => {
     setError("");
     if (address === "") {
       setError("Please Fill Out everything");
+      return;
     }
     try {
       const order = axios.post("/api/order", orderPayload);
