@@ -24,7 +24,7 @@ const Login = ({ toggleForm }) => {
         email: email,
       });
 
-      console.log(getUser);
+      // console.log(getUser);
       if (getUser.data.length === 0) {
         console.log("User doesn't exists");
         setError("User doesn't exists");
@@ -34,9 +34,15 @@ const Login = ({ toggleForm }) => {
         email === getUser.data[0].email &&
         password === getUser.data[0].password
       ) {
-        console.log(getUser.data[0]);
+        const login = {
+          userId: getUser.data[0].user_id,
+          role: getUser.data[0].role,
+        };
+        const token = await axios.post("/api/user/genToken", login);
+        document.cookie = `token=${token}`;
+        console.log(token.data);
         setError("");
-        navigate("/");
+        // navigate("/");
       } else {
         setError("Email or Password is incorrect");
         throw new Error("Email or Password is incorrect");

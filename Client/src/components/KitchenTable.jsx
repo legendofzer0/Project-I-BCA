@@ -57,32 +57,67 @@ const KitchenTable = () => {
     <div className="kitchen">
       <div className="section">
         <h2>Pending</h2>
-        <ul>
-          {pendingItems.map((item, index) => (
-            <li key={index}>
-              <span> {item.item_name}</span>
-              <span> x{item.quantity}</span>
-              <button onClick={handlePendingAdd(item.order_id)} className="add">
-                +
-              </button>
-            </li>
-          ))}
-        </ul>
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ul>
+              {pendingItems.map((item, index) => (
+                <li key={index}>
+                  <tr>
+                    <th>
+                      {" "}
+                      <span> {item.item_name}</span>
+                      <span> x{item.quantity}</span>
+                    </th>
+                    <th>
+                      <button
+                        onClick={handlePendingAdd(item.order_id)}
+                        className="add"
+                      />
+                    </th>
+                  </tr>
+                </li>
+              ))}
+            </ul>
+          </tbody>
+        </table>
       </div>
 
       <div className="section">
         <h2>Cooking</h2>
-        <ul>
-          {cookingItems.map((item, index) => (
-            <li key={index}>
-              <span> {item.item_name}</span>
-              <span> x{item.quantity}</span>
-              <button onClick={handleCookingAdd(item.order_id)} className="add">
-                +
-              </button>
-            </li>
-          ))}
-        </ul>
+        <table>
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <ul>
+              <tr>
+                {cookingItems.map((item, index) => (
+                  <li key={index}>
+                    <th>
+                      <span> {item.item_name}</span>
+                      <span> x{item.quantity}</span>
+                    </th>
+                    <th>
+                      <button
+                        onClick={handleCookingAdd(item.order_id)}
+                        className="add"
+                      />
+                    </th>
+                  </li>
+                ))}
+              </tr>
+            </ul>
+          </tbody>
+        </table>
       </div>
     </div>
   );

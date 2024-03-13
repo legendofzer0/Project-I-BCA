@@ -1,10 +1,12 @@
 const express = require("express");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
 
 require("dotenv").config();
 const PORT = process.env.PORT;
 const app = express(cors("*"));
 app.use(express.static("images"));
+app.use(cookieParser());
 // const dbConnection = require("./db/conn.db");
 
 // //Connect to DB

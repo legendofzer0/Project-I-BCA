@@ -12,6 +12,7 @@ const {
 } = require("../controller/user.controller");
 const genToken = require("../middleware/genToken");
 const verifyToken = require("../middleware/verifyToken");
+const cookieGet = require("../middleware/cookieGet");
 
 const router = require("express").Router();
 // const verifyAdmin = require("../middleware/verifyAdmin");
