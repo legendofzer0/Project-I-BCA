@@ -2,8 +2,10 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../css/root.css";
 import axios from "axios";
+import Cookies from "universal-cookie";
 
 const Login = ({ toggleForm }) => {
+  const cookie = new Cookies();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,8 +14,8 @@ const Login = ({ toggleForm }) => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      console.log(email);
-      console.log(password);
+      // console.log(email);
+      // console.log(password);
 
       setError("");
       if (email === "" || password === "") {
@@ -39,10 +41,10 @@ const Login = ({ toggleForm }) => {
           role: getUser.data[0].role,
         };
         const token = await axios.post("/api/user/genToken", login);
-        document.cookie = `token=${token}`;
-        console.log(token.data);
+        cookie.set("token", token);
+        // console.log(token.data);
         setError("");
-        // navigate("/");
+        navigate("/");
       } else {
         setError("Email or Password is incorrect");
         throw new Error("Email or Password is incorrect");
