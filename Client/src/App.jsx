@@ -21,17 +21,17 @@ function App() {
       const token = cookie.get("token");
       // console.log(token);
       const parseData = token.data;
-      console.log(parseData);
+      // console.log(parseData);
       if (token) {
         try {
           const response = await axios.post("/api/user/verifyToken", {
             token: parseData,
           });
           if (isMounted) {
-            console.log(response);
+            // console.log(response);
             const string = response.data.role;
             const role = string.charAt(0).toUpperCase() + string.slice(1);
-            console.log(role);
+            // console.log(role);
             setUser(role || "Public");
           }
         } catch (error) {
