@@ -4,7 +4,7 @@ require("dotenv").config();
 
 const verifyToken = (req, res) => {
   const { token } = req.body;
-  console.log(token);
+  // console.log(token);
   try {
     const verified = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
     // console.log(verified);

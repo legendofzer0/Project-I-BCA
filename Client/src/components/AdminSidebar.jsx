@@ -6,12 +6,12 @@ const AdminSidebar = () => {
     <div className="admin-sidebar">
       <ul>
         <li>
-          <Link to="/Admin/CreateUser" className="sidebar-element">
+          <Link to="/CreateUser" className="sidebar-element">
             Create User
           </Link>
         </li>
         <li>
-          <Link to="ListUser" className="sidebar-element">
+          <Link to="/ListUser" className="sidebar-element">
             List Users
           </Link>
         </li>
@@ -21,12 +21,12 @@ const AdminSidebar = () => {
         <br />
         <br />
         <li>
-          <Link to="CreateItem" className="sidebar-element">
+          <Link to="/CreateItem" className="sidebar-element">
             Create Item
           </Link>
         </li>
         <li>
-          <Link to="ListItem" className="sidebar-element">
+          <Link to="/ListItem" className="sidebar-element">
             List Items
           </Link>
         </li>

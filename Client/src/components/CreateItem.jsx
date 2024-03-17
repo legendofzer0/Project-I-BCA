@@ -2,6 +2,8 @@ import { useState } from "react";
 import axios from "axios";
 import "../css/dashboard.css";
 
+import AdminSidebar from "../components/AdminSidebar";
+
 const CreateItem = () => {
   const [itemName, setItemName] = useState("");
   const [price, setPrice] = useState("");
@@ -56,6 +58,7 @@ const CreateItem = () => {
 
   return (
     <>
+      {/* <AdminSidebar /> */}
       <div className="content">
         <form onSubmit={handleSubmit}>
           <div className="form-group">

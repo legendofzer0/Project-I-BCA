@@ -4,18 +4,16 @@ const path = require("path");
 const allowedFileTypes = ["image/png", "image/jpeg"];
 
 const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "./images");
+  destination: function (req, file, cb) {
+    return cb(null, "./images");
   },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    const fileExtension = path.extname(file.originalname);
-    const fileName = file.fieldname + "-" + uniqueSuffix + fileExtension;
-    cb(null, fileName);
+  filename: function (req, file, cb) {
+    return cb(null, `${Date.now()}_${file.originalname}`);
   },
 });
 
 const fileFilter = (req, file, cb) => {
+  // const filename = req.body;
   if (allowedFileTypes.includes(file.mimetype)) {
     cb(null, true);
   } else {
@@ -23,11 +21,7 @@ const fileFilter = (req, file, cb) => {
   }
 };
 
-const upload = multer({
-  dest: "uploads//",
-  storage: storage,
-  fileFilter: fileFilter,
-});
+const upload = multer({ storage });
 
 const loggingMiddleware = (req, res, next) => {
   console.log("Logging middleware is running");

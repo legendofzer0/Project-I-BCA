@@ -25,5 +25,5 @@ router
 router.route("/item/info/:id").get(getItemInfoByID);
 router
   .route("/item/img/:id")
-  .put(upload.single("filename"), loggingMiddleware, changeItemImage);
+  .put(upload.single("file"), loggingMiddleware, changeItemImage);
 module.exports = router;

@@ -5,6 +5,7 @@ import { Modal } from "@mui/material";
 
 import ItemModal from "../modal/picturemodal";
 import UpdateItemModal from "../modal/updateitem";
+import AdminSidebar from "../components/AdminSidebar";
 
 const ListItem = () => {
   const [itemList, setItemList] = useState([]);
@@ -75,6 +76,7 @@ const ListItem = () => {
 
   return (
     <>
+      {/* <AdminSidebar /> */}
       <div className="user-list">
         <h2>Item List</h2>
         <table className="table">

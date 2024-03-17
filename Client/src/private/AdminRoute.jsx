@@ -20,12 +20,11 @@ const AdminRoute = (props) => {
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/item/:id" element={<DescriptionPage />} />
-        <Route path="/Admin" element={<AdminDashboard />}>
-          <Route path="CreateUser" element={<CreateUser />} />
-          <Route path="CreateItem" element={<CreateItem />} />
-          <Route path="ListUser" element={<ListUser />} />
-          <Route path="ListItem" element={<ListItem />} />
-        </Route>
+        <Route path="/Admin" element={<AdminDashboard />}></Route>{" "}
+        <Route path="/CreateUser" element={<CreateUser />} />
+        <Route path="/CreateItem" element={<CreateItem />} />
+        <Route path="/ListUser" element={<ListUser />} />
+        <Route path="/ListItem" element={<ListItem />} />
         <Route
           path="/MyAccount"
           element={<Detail CurrentUser={props.user} />}

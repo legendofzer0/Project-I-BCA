@@ -73,6 +73,7 @@ const CreateUser = () => {
 
   return (
     <>
+      {/* <AdminSidebar /> */}
       <div className="content">
         <form onSubmit={handleSubmit}>
           <div className="form-group">
