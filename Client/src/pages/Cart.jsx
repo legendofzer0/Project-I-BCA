@@ -1,36 +1,62 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import CartTile from "../components/CartTile";
+import Cookies from "universal-cookie";
+import "../css/card.css";
 
 function Cart() {
-  const userId = 8;
+  const cookie = new Cookies();
+  const [userId, setUserId] = useState(null);
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
+    const tokenData = cookie.get("token")?.data;
+    if (!tokenData) return;
+
+    const verifyToken = async () => {
+      try {
+        const response = await axios.post("/api/user/verifyToken", {
+          token: tokenData,
+        });
+        setUserId(response.data.userId);
+      } catch (error) {
+        console.error("Error verifying token:", error);
+      }
+    };
+
+    verifyToken();
+  }, [cookie]);
+
+  useEffect(() => {
     const fetchCartItems = async () => {
+      if (!userId) return; // Don't fetch if userId is null
+
       try {
         const response = await axios.get(`/api/cart/user/${userId}`);
-        console.log(response);
         setCart(response.data);
       } catch (err) {
         console.log(err);
       }
-      console.log(cart);
     };
 
     fetchCartItems();
     const intervalId = setInterval(fetchCartItems, 1000);
     return () => clearInterval(intervalId);
-  }, []);
+  }, [userId]);
+
   return (
     <>
-      <div>
+      <div className=" cartBack">
         <h1>CART</h1>
-        <div className="line"></div>
+        <span className="center">
+          <div className="line"></div>
+        </span>
         <div>
-          {cart.map((element) => (
-            <CartTile key={element.id} item={element} />
-          ))}
+          {cart.length === 0 ? (
+            <h3>Cart is empty</h3>
+          ) : (
+            cart.map((element) => <CartTile key={element.id} item={element} />)
+          )}
         </div>
       </div>
     </>

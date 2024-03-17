@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import "../css/modal.css";
 import axios from "axios";
 
-const Buy = ({ itemId }) => {
-  const userId = 6;
+const Buy = ({ itemId, userId }) => {
   const [item, setItem] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [itemPrice, setItemPrice] = useState(0); // Ensure itemPrice is initialized to a number to avoid NaN errors
@@ -33,7 +32,7 @@ const Buy = ({ itemId }) => {
   }, [itemId]);
 
   useEffect(() => {
-    calculateTotalPrice(); // Call calculateTotalPrice directly without arguments
+    calculateTotalPrice();
   }, [itemPrice, quantity]);
 
   const handleQuantityChange = (e) => {
@@ -54,10 +53,17 @@ const Buy = ({ itemId }) => {
       setError("Please Fill Out everything");
       return;
     }
+    if (userId === "" || userId === null || userId === undefined) {
+      // console.log(userId);
+      setError("Please LogIn");
+      return;
+    }
     try {
+      // console.log(userId);
+
       const order = axios.post("/api/order", orderPayload);
-      document.location.reload(true);
-      console.log(order);
+      // document.location.reload(true);
+      // console.log(order);
     } catch (error) {
       console.log(error);
     }

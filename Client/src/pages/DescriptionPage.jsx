@@ -1,20 +1,41 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Cookies from "universal-cookie";
+
 import { useNavigate, useParams } from "react-router-dom";
 import "../css/card.css";
 import Buy from "../modal/buy";
 import { Modal } from "@mui/material";
 
 function DescriptionPage() {
-  const userId = 8;
   const navigate = useNavigate();
+  const [userId, setUserId] = useState();
   const [item, setItem] = useState([]);
   const [image, setImage] = useState();
   const [isOpen, setIsOpen] = useState(false);
   let { id } = useParams();
+  const cookie = new Cookies();
+
   const handleClose = () => {
     setIsOpen(false);
   };
+  useEffect(() => {
+    const tokenData = cookie.get("token")?.data;
+    if (!tokenData) return;
+
+    const verifyToken = async () => {
+      try {
+        const response = await axios.post("/api/user/verifyToken", {
+          token: tokenData,
+        });
+        setUserId(response.data.userId);
+      } catch (error) {
+        console.error("Error verifying token:", error);
+      }
+    };
+
+    verifyToken();
+  }, [cookie]);
   useEffect(() => {
     const fetchMenuItems = async () => {
       try {
@@ -74,7 +95,7 @@ function DescriptionPage() {
       </div>
       <Modal open={isOpen} onClose={handleClose}>
         <div>
-          <Buy itemId={id} />
+          <Buy itemId={id} userId={userId} />
         </div>
       </Modal>
     </>

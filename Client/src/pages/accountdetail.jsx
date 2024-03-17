@@ -6,20 +6,16 @@ import UpdateUserModal from "../components/updateModal";
 import OrderTrack from "../components/OrderTrack";
 import HandleUpdatePassword from "../modal/passupdate"; // Ensure this is properly exported as a component
 import { Modal } from "@mui/material";
-import "../css/card.css";
 import { useNavigate } from "react-router-dom";
+import "../css/root.css";
 
 function Detail({ CurrentUser }) {
   const cookie = new Cookies();
   const navigate = useNavigate();
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
-  const [fullName, setFullName] = useState("");
-  const [password, setPassword] = useState(""); // Consider security implications
+  const [user, setUser] = useState({});
+  const [userId, setUserId] = useState(null); // Initialize to null
   const [isOpen, setIsOpen] = useState(false);
   const [isChange, setIsChange] = useState(false);
-  const [id, setId] = useState(null);
 
   useEffect(() => {
     const tokenData = cookie.get("token")?.data;
@@ -30,111 +26,147 @@ function Detail({ CurrentUser }) {
         const response = await axios.post("/api/user/verifyToken", {
           token: tokenData,
         });
-        setId(response.data.userId);
+        setUserId(response.data.userId);
       } catch (error) {
         console.error("Error verifying token:", error);
       }
     };
 
     verifyToken();
-  }, []);
+  }, [cookie]);
 
   useEffect(() => {
-    if (id) {
-      const fetchUser = async () => {
-        try {
-          const response = await axios.get(`/api/user/${id}`);
-          const userData = response.data[0];
-          setUsername(userData.username);
-          setEmail(userData.email);
-          setPhoneNumber(userData.phone_number);
-          setFullName(userData.full_name);
-          setPassword(""); // Reset or clear password field for security
-        } catch (error) {
-          console.error("Error fetching user data:", error);
-        }
-      };
-
-      fetchUser();
+    const fetchUser = async (userId) => {
+      try {
+        const response = await axios.get(`/api/user/${userId}`);
+        setUser(response.data[0]);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+    if (userId) {
+      fetchUser(userId);
     }
-  }, [id]);
+  }, [userId]);
 
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
 
-  const handleOpChange = (e) => {
-    e.preventDefault();
-    setIsChange(true);
-  };
-
-  const handleCLChange = () => setIsChange(false);
+  const handleOpChange = () => setIsChange(!isChange); // Toggle isChange
 
   const logOut = (e) => {
     e.preventDefault();
     cookie.remove("token", { path: "/" });
     navigate("/");
   };
-
-  if (CurrentUser === Role.Public) {
-    return <div>SignIn/SignUp</div>;
-  }
+  const handleUpdateUser = async (updatedUser) => {
+    try {
+      const response = await axios.put(
+        `/api/user/${updatedUser.id}`,
+        updatedUser
+      );
+      setUser(response.data);
+      setIsOpen(false); // Close modal after successful update
+    } catch (error) {
+      console.error("Error updating user data:", error);
+    }
+  };
 
   return (
     <div>
       <div className="body flex">
-        <div>Welcome {username}</div>
-        <div>
-          Role: {CurrentUser}
-          <button
-            type="button"
-            className="edit pen"
-            onClick={handleOpen}
-          ></button>
-          <div className="detail">
-            <form>
-              <p>
-                <label>Name:</label>
-                <input type="text" disabled value={fullName} />
-              </p>
-              <p>
-                <label>Email:</label>
-                <input type="email" disabled value={email} />
-              </p>
-              <p>
-                <label>Username:</label>
-                <input type="text" disabled value={username} />
-              </p>
-              <p>
-                <label>Phone Number:</label>
-                <input type="number" disabled value={phoneNumber} />
-              </p>
-              <p>
-                <label>Password:</label>
-                <input type="password" disabled value={password} />
-                <button
-                  type="button"
-                  className="edit pen"
-                  onClick={handleOpChange}
-                ></button>
-              </p>
-              <button type="button" onClick={logOut}>
-                SIGN OUT
-              </button>
-            </form>
+        <div className="detail">
+          <div>Welcome {user.username}</div>
+          <div>
+            Role: {CurrentUser}
+            <button
+              type="button"
+              className="edit pen"
+              onClick={handleOpen}
+            ></button>
+            <div className="detail">
+              <form>
+                <p>
+                  <label>Name:</label>
+                  <input
+                    type="text"
+                    value={user.full_name}
+                    onChange={(e) =>
+                      setUser({ ...user, full_name: e.target.value })
+                    }
+                    disabled={!isChange}
+                  />
+                </p>
+                <p>
+                  <label>Email:</label>
+                  <input
+                    type="email"
+                    value={user.email}
+                    onChange={(e) =>
+                      setUser({ ...user, email: e.target.value })
+                    }
+                    disabled={!isChange}
+                  />
+                </p>
+                <p>
+                  <label>Username:</label>
+                  <input
+                    type="text"
+                    value={user.username}
+                    onChange={(e) =>
+                      setUser({ ...user, username: e.target.value })
+                    }
+                    disabled={!isChange}
+                  />
+                </p>
+                <p>
+                  <label>Phone Number:</label>
+                  <input
+                    type="number"
+                    value={user.phone_number}
+                    onChange={(e) =>
+                      setUser({ ...user, phone_number: e.target.value })
+                    }
+                    disabled={!isChange}
+                  />
+                </p>
+                <p>
+                  <label>Password:</label>
+                  <input
+                    type="password"
+                    value={user.password}
+                    onChange={(e) =>
+                      setUser({ ...user, password: e.target.value })
+                    }
+                    disabled={!isChange}
+                  />
+                  <button
+                    type="button"
+                    className="edit pen"
+                    onClick={handleOpChange}
+                  ></button>
+                </p>
+                <button className="logOut" type="button" onClick={logOut}>
+                  SIGN OUT
+                </button>
+              </form>
+            </div>
           </div>
         </div>
         <div className="order">
-          <OrderTrack id={id} />
+          <OrderTrack id={userId} />
         </div>
       </div>
       <Modal open={isOpen} onClose={handleClose}>
         <UpdateUserModal
-          user={{ username, email, phoneNumber, fullName, id }}
+          user={user}
           isOpen={isOpen}
+          onUpdate={handleUpdateUser}
+          onClose={handleClose}
         />
       </Modal>
-      <Modal open={isChange} onClose={handleCLChange}>
-        <HandleUpdatePassword userId={id} isChange={isChange} />
+      <Modal open={isChange} onClose={handleOpChange}>
+        <HandleUpdatePassword userId={user.id} onClose={handleOpChange} />
       </Modal>
     </div>
   );

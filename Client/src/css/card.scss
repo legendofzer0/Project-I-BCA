@@ -44,10 +44,6 @@
   margin: 15px;
 }
 
-.flex {
-  display: flex;
-}
-
 .card2 {
   /* display: flex; */
   width: 40%;
@@ -118,4 +114,44 @@
   margin: 5px;
   padding: 10px;
   border-radius: 70.5px;
+}
+.cartBack {
+  width: 40%;
+  height: auto;
+  border: 0px;
+  padding: 20px;
+  margin-top: 5%;
+  margin-left: 2%;
+  border-radius: 10px;
+  background-color: #fff;
+  filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 50%));
+  font-size: 30;
+  font-weight: bold;
+  text-align: justify;
+}
+
+.image2 {
+  width: 30%;
+  height: auto;
+}
+
+.cartBtn {
+  background-color: #fff;
+  border: 0;
+  border-radius: 7px;
+  font-size: 2em;
+  width: 2em;
+  filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 50%));
+  margin: 5px;
+}
+
+.flex2 {
+  display: flex;
+  margin: 10px;
+  padding: 10px;
+}
+.shift {
+  display: inline;
+  position: absolute;
+  transform: translate(120%, -25%);
 }

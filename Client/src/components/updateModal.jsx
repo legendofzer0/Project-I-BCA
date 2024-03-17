@@ -3,10 +3,11 @@ import axios from "axios";
 import "../css/modal.css";
 
 const UpdateUserModal = ({ user }) => {
-  const [fullName, setFullName] = useState(user.fullname);
+  console.log(user);
+  const [fullName, setFullName] = useState(user.username);
   const [email, setEmail] = useState(user.email);
   const [username, setUsername] = useState(user.username);
-  const [phoneNumber, setPhoneNumber] = useState(user.phoneNumber);
+  const [phoneNumber, setPhoneNumber] = useState(user.phone_number);
   const [error, setError] = useState("");
   const isValidEmail = /\S+@\S+\.\S+/;
 

@@ -1,28 +1,35 @@
 import { useEffect, useState } from "react";
 import "../css/card.css";
+
 function OrderCard({ order }) {
-  const [itemName, setItemName] = useState();
-  const [price, setPrice] = useState();
-  const [quantity, setQuantity] = useState();
-  const [status, setStatus] = useState();
-  const [image, setImage] = useState();
+  const [itemName, setItemName] = useState("");
+  const [price, setPrice] = useState(0);
+  const [quantity, setQuantity] = useState(0);
+  const [status, setStatus] = useState("");
+  const [image, setImage] = useState("");
+
+  // Update local state when order prop changes
   useEffect(() => {
-    setItemName(order.item_name);
-    setPrice(order.price);
-    setStatus(order.status);
-    setImage(order.image);
-    setQuantity(order.quantity);
+    if (order) {
+      setItemName(order.item_name || "");
+      setPrice(order.price || 0);
+      setQuantity(order.quantity || 0);
+      setStatus(order.status || "");
+      setImage(order.image || "");
+    }
   }, [order]);
-  if (status === "delivered") return;
-  // console.log(itemName + "" + price + "" + status);
+
+  // If status is "delivered", render nothing
+  if (status === "delivered") return null;
+
   return (
-    <>
-      <div className="center">
-        <div className="flex card3">
+    <div className="center">
+      <div className="card3">
+        <div className="flex2">
           <div>
-            <img className="img" src={`api/${image}`} />
+            <img className="image2" src={`api/${image}`} alt={itemName} />
           </div>
-          <div>
+          <div className="shift">
             <h3>{itemName}</h3>
             <span>
               RS.{price} x {quantity} = <b> {price * quantity}</b>
@@ -34,7 +41,7 @@ function OrderCard({ order }) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

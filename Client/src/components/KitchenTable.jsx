@@ -60,8 +60,8 @@ const KitchenTable = () => {
         <table>
           <thead>
             <tr>
-              <th>Item</th>
-              <th>Action</th>
+              <th className="column">Item</th>
+              <th className="column">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -69,12 +69,11 @@ const KitchenTable = () => {
               {pendingItems.map((item, index) => (
                 <li key={index}>
                   <tr>
-                    <th>
-                      {" "}
+                    <th className="column">
                       <span> {item.item_name}</span>
                       <span> x{item.quantity}</span>
                     </th>
-                    <th>
+                    <th className="column">
                       <button
                         onClick={handlePendingAdd(item.order_id)}
                         className="add"

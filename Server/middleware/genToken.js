@@ -5,7 +5,7 @@ const genToken = (req, res) => {
   const { userId, role } = req.body;
   const user = { userId, role };
   const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, {
-    expiresIn: "10M",
+    expiresIn: "1H",
   });
   console.log(token);
 

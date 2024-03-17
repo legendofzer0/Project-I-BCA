@@ -1,6 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
-
+import "../css/card.css";
 function CartTile({ item }) {
   const [quantity, setQuantity] = useState(item.quantity);
 
@@ -37,18 +37,28 @@ function CartTile({ item }) {
 
   return (
     <>
-      <div>
-        <div>
-          <img src={item.image} alt={item.item_name} />
-        </div>
-        <div>
-          <span>{item.item_name}</span>
-          <span>
-            NRS.{item.price} x {quantity} = NRS.{item.price * quantity}
-          </span>
+      <div className="card3 ">
+        <div className="flex">
+          <img
+            className="image2"
+            src={`api/${item.image}`}
+            alt={item.item_name}
+          />
           <div>
-            <button onClick={handleDecrease}>-</button>
-            <button onClick={handleIncrease}>+</button>
+            <div>
+              <span className="name">{item.item_name}</span>
+            </div>
+            <span>
+              NRS.{item.price} x {quantity} = NRS.{item.price * quantity}
+            </span>
+          </div>
+          <div>
+            <button onClick={handleDecrease} className="cartBtn">
+              -
+            </button>
+            <button onClick={handleIncrease} className="cartBtn">
+              +
+            </button>
           </div>
         </div>
       </div>
