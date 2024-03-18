@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import "../css/root.css";
 import axios from "axios";
 import Cookies from "universal-cookie";
+import "../css/root.css";
 
-const Login = ({ toggleForm }) => {
-  const cookie = new Cookies();
+const Login = () => {
+  const cookies = new Cookies();
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,51 +13,51 @@ const Login = ({ toggleForm }) => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    try {
-      // console.log(email);
-      // console.log(password);
+    setError("");
 
-      setError("");
-      if (email === "" || password === "") {
-        setError("fill everything");
-        return;
-      }
-      const getUser = await axios.post("/api/user/email", {
+    if (email === "" || password === "") {
+      setError("Please fill in all fields.");
+      return;
+    }
+
+    try {
+      const hashResponse = await axios.post("/api/user/hash", {
+        password: password,
+      });
+      const hashPassword = hashResponse.data;
+      console.log(hashPassword); // Consider removing this after testing
+
+      const getUserResponse = await axios.post("/api/user/email", {
         email: email,
       });
 
-      // console.log(getUser);
-      if (getUser.data.length === 0) {
-        console.log("User doesn't exists");
-        setError("User doesn't exists");
+      if (getUserResponse.data.length === 0) {
+        setError("User doesn't exist.");
         return;
       }
-      if (
-        email === getUser.data[0].email &&
-        password === getUser.data[0].password
-      ) {
-        const login = {
-          userId: getUser.data[0].user_id,
-          role: getUser.data[0].role,
-        };
-        const token = await axios.post("/api/user/genToken", login);
-        cookie.set("token", token);
-        // console.log(token.data);
-        setError("");
+
+      const user = getUserResponse.data[0];
+      console.log(user);
+      if (email === user.email && hashPassword === user.password) {
+        const tokenResponse = await axios.post("/api/user/genToken", {
+          userId: user.user_id,
+          role: user.role,
+        });
+        cookies.set("token", tokenResponse.data, { path: "/" }); // Ensure you set the correct path
         navigate("/");
       } else {
-        setError("Email or Password is incorrect");
-        throw new Error("Email or Password is incorrect");
+        setError("Email or Password is incorrect.");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
+      setError("An error occurred. Please try again.");
     }
   };
 
   return (
     <div className="center">
       <div className="modal">
-        <form className="form">
+        <form className="form" onSubmit={handleLogin}>
           <h2>Login</h2>
           <label>Email:</label>
           <input
@@ -67,7 +67,6 @@ const Login = ({ toggleForm }) => {
           />
           <br />
           <br />
-
           <label>Password:</label>
           <input
             type="password"
@@ -76,11 +75,10 @@ const Login = ({ toggleForm }) => {
           />
           {error && <div className="error-message">{error}</div>}
           <br />
-          <button className="submit" onClick={handleLogin}>
+          <button type="submit" className="submit">
             Login
           </button>
           <div className="center line"></div>
-
           <p className="center">Don't have an account?</p>
           <div className="center">
             <Link to="/SignUp" className="login">

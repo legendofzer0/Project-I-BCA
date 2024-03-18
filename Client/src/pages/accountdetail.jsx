@@ -48,7 +48,7 @@ function Detail({ CurrentUser }) {
       fetchUser(userId);
     }
   }, [userId]);
-
+  console.log(user);
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
 

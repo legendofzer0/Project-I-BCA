@@ -14,64 +14,52 @@ const SignUp = ({ modalState }) => {
   const [error, setError] = useState("");
   const email_test = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-  const postData = {
-    full_name: name,
-    email: email,
-    password: password,
-    username: username,
-    phone_number: phoneNumber,
-  };
-
   useEffect(() => {
     setIsModalOpen(modalState);
   }, [modalState]);
-  // const toggleModal = () => setIsModalOpen(!isModalOpen);
 
   const handleSignUp = async (e) => {
-    e.preventDefault();
-    if (
-      name === "" ||
-      email === "" ||
-      password === "" ||
-      username === "" ||
-      phoneNumber === ""
-    ) {
-      setError("fill everything");
+    e.preventDefault(); // Prevent default form submission behavior
+    if (!name || !email || !password || !username || !phoneNumber) {
+      setError("Please fill in all fields.");
       return;
     }
     if (!email.match(email_test)) {
-      setError("Email is bad");
+      setError("Invalid email format.");
       return;
-    } else {
-      setError("");
-      try {
-        console.log("test");
-        const checkEmail = await axios.post("/api/user/email", {
-          email: email,
-        });
-        const checkPhone = await axios.post("/api/user/phone", {
-          phone_number: phoneNumber,
-        });
-        if (checkEmail.data.length !== 0) {
-          console.log("User already exists");
-          console.log(email + "m");
-          setError("User already exists");
-          return;
-        }
-        if (checkPhone.data.length !== 0) {
-          console.log("Phone already exist");
-          // console.log(email + "m");
-          setError("Phone already exist");
-          return;
-        }
+    }
 
-        const response = await axios.post("/api/user", postData);
-        console.log("Response:", response.data);
+    try {
+      const checkEmail = await axios.post("/api/user/email", { email });
+      const checkPhone = await axios.post("/api/user/phone", {
+        phone_number: phoneNumber,
+      });
 
-        navigate("/SignIn");
-      } catch (error) {
-        console.error("Error submitting form:", error);
+      if (checkEmail.data.length !== 0) {
+        setError("User with this email already exists.");
+        return;
       }
+      if (checkPhone.data.length !== 0) {
+        setError("Phone number is already in use.");
+        return;
+      }
+
+      const { data: hash } = await axios.post("/api/user/hash", { password });
+
+      // Now directly using the hash for the password in the API call
+      const response = await axios.post("/api/user", {
+        full_name: name,
+        email,
+        password: hash,
+        username,
+        phone_number: phoneNumber,
+      });
+
+      console.log("SignUp Success:", response.data);
+      navigate("/SignIn");
+    } catch (error) {
+      console.error("Error during sign-up:", error);
+      setError("An unexpected error occurred. Please try again later.");
     }
   };
 
@@ -79,12 +67,11 @@ const SignUp = ({ modalState }) => {
     <>
       {isModalOpen && (
         <div className="center">
-          <div className=" modal">
-            <form className="form">
+          <div className="modal">
+            <form className="form" onSubmit={handleSignUp}>
               <h2>Sign Up</h2>
               <label>Name:</label>
               <br />
-
               <input
                 type="text"
                 value={name}
@@ -94,7 +81,6 @@ const SignUp = ({ modalState }) => {
               <br />
               <label>Email:</label>
               <br />
-
               <input
                 type="email"
                 value={email}
@@ -104,7 +90,6 @@ const SignUp = ({ modalState }) => {
               <br />
               <label>Password:</label>
               <br />
-
               <input
                 type="password"
                 value={password}
@@ -112,9 +97,8 @@ const SignUp = ({ modalState }) => {
               />
               <br />
               <br />
-              <label>User Name:</label>
+              <label>Username:</label>
               <br />
-
               <input
                 type="text"
                 value={username}
@@ -124,32 +108,26 @@ const SignUp = ({ modalState }) => {
               <br />
               <label>Phone Number:</label>
               <br />
-
               <input
-                type="number"
+                type="tel" // Changed to type="tel" for better phone number handling
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
               />
+              <br />
               {error && <div className="error-message">{error}</div>}
               <br />
-
-              <button className="submit" onClick={handleSignUp}>
+              <button type="submit" className="submit">
                 Sign Up
               </button>
-
               <div className="center line"></div>
-
               <p className="center">Already have an account?</p>
-              <span className="center">
-                <Link to="/SignIn" className="login">
-                  Login
-                </Link>
-              </span>
+              <Link to="/SignIn" className="login center">
+                Login
+              </Link>
             </form>
           </div>
         </div>
       )}
-      ;
     </>
   );
 };

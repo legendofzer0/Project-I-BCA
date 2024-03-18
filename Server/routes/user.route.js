@@ -12,7 +12,9 @@ const {
 } = require("../controller/user.controller");
 const genToken = require("../middleware/genToken");
 const verifyToken = require("../middleware/verifyToken");
-const cookieGet = require("../middleware/cookieGet");
+// const cookieGet = require("../middleware/cookieGet");
+const hashPassword = require("../middleware/hashPassword");
+const comparePassword = require("../middleware/comparePassword");
 
 const router = require("express").Router();
 // const verifyAdmin = require("../middleware/verifyAdmin");
@@ -32,5 +34,7 @@ router.route("/user/role/:id").put(updateUserRoleByID);
 router.route("/user/pass/:id").put(changeUserPassword);
 router.route("/user/genToken").post(genToken);
 router.route("/user/verifyToken").post(verifyToken);
+router.route("/user/hash").post(hashPassword);
+router.route("/user/compare").post(comparePassword);
 
 module.exports = router;

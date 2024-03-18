@@ -1,10 +1,18 @@
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
-// const plainPassword = "hellothisistest";
+
 const hashPassword = (req, res) => {
-  const plainPassword = req.body;
+  const plainPassword = req.body.password;
+
   bcrypt.hash(plainPassword, saltRounds, function (err, hash) {
-    console.log(hash);
-    res.json(hash);
+    if (err) {
+      console.error("Error hashing password:", err);
+      return res.status(500).json({ error: "Error hashing password" });
+    }
+
+    console.log("Hashed password:", hash);
+    res.json({ hash });
   });
 };
+
+module.exports = hashPassword;
