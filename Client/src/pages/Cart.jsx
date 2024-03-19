@@ -10,7 +10,7 @@ function Cart() {
   const [cart, setCart] = useState([]);
 
   useEffect(() => {
-    const tokenData = cookie.get("token")?.data;
+    const tokenData = cookie.get("token");
     if (!tokenData) return;
 
     const verifyToken = async () => {
@@ -29,7 +29,8 @@ function Cart() {
 
   useEffect(() => {
     const fetchCartItems = async () => {
-      if (!userId) return; // Don't fetch if userId is null
+      console.log(userId);
+      if (!userId) return;
 
       try {
         const response = await axios.get(`/api/cart/user/${userId}`);

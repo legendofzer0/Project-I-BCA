@@ -20,7 +20,7 @@ function DescriptionPage() {
     setIsOpen(false);
   };
   useEffect(() => {
-    const tokenData = cookie.get("token")?.data;
+    const tokenData = cookie.get("token");
     if (!tokenData) return;
 
     const verifyToken = async () => {
@@ -61,6 +61,7 @@ function DescriptionPage() {
   const clickCart = async () => {
     try {
       const cartAdd = await axios.post("/api/cart", cartPayload);
+      console.log(cartAdd);
     } catch (error) {
       console.log(error);
     }

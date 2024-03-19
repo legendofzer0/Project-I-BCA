@@ -13,7 +13,7 @@ const {
 const genToken = require("../middleware/genToken");
 const verifyToken = require("../middleware/verifyToken");
 // const cookieGet = require("../middleware/cookieGet");
-const hashPassword = require("../middleware/hashPassword");
+const hashPassword = require("../middleware/hashPassword.js");
 const comparePassword = require("../middleware/comparePassword");
 
 const router = require("express").Router();

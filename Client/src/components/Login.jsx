@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Cookies from "universal-cookie";
 import "../css/root.css";
+// import comparePassword from "../../../Server/middleware/comparePassword";
 
 const Login = () => {
   const cookies = new Cookies();
@@ -21,12 +22,6 @@ const Login = () => {
     }
 
     try {
-      const hashResponse = await axios.post("/api/user/hash", {
-        password: password,
-      });
-      const hashPassword = hashResponse.data;
-      console.log(hashPassword); // Consider removing this after testing
-
       const getUserResponse = await axios.post("/api/user/email", {
         email: email,
       });
@@ -36,13 +31,21 @@ const Login = () => {
         return;
       }
 
-      const user = getUserResponse.data[0];
-      console.log(user);
-      if (email === user.email && hashPassword === user.password) {
+      const user = getUserResponse.data[0]; // Assuming you're expecting a single user
+      // console.log(user);
+
+      const checkPassResponse = await axios.post("/api/user/compare", {
+        password: password,
+        checkPassword: user.password,
+      });
+      const isPasswordCorrect = checkPassResponse.data;
+
+      if (isPasswordCorrect) {
         const tokenResponse = await axios.post("/api/user/genToken", {
           userId: user.user_id,
           role: user.role,
         });
+        console.log(tokenResponse);
         cookies.set("token", tokenResponse.data, { path: "/" }); // Ensure you set the correct path
         navigate("/");
       } else {

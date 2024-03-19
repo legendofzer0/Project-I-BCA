@@ -18,7 +18,7 @@ function Detail({ CurrentUser }) {
   const [isChange, setIsChange] = useState(false);
 
   useEffect(() => {
-    const tokenData = cookie.get("token")?.data;
+    const tokenData = cookie.get("token");
     if (!tokenData) return;
 
     const verifyToken = async () => {
@@ -134,10 +134,7 @@ function Detail({ CurrentUser }) {
                   <label>Password:</label>
                   <input
                     type="password"
-                    value={user.password}
-                    onChange={(e) =>
-                      setUser({ ...user, password: e.target.value })
-                    }
+                    value="**********"
                     disabled={!isChange}
                   />
                   <button

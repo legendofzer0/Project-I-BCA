@@ -15,20 +15,20 @@ function App() {
   const [user, setUser] = useState("Public");
 
   useEffect(() => {
-    let isMounted = true; // Flag to track mounted state
-
+    let isMounted = true;
     const verifyUser = async () => {
       const token = cookie.get("token");
       // console.log(token);
-      const parseData = token.data;
+      // const parseData = token.data;
       // console.log(parseData);
       if (token) {
         try {
           const response = await axios.post("/api/user/verifyToken", {
-            token: parseData,
+            token: token,
           });
           if (isMounted) {
             // console.log(response);
+            console.log();
             const string = response.data.role;
             const role = string.charAt(0).toUpperCase() + string.slice(1);
             // console.log(role);

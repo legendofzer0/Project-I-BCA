@@ -1,4 +1,5 @@
-const bcrypt = require("bcrypt");
+const SimpleCrypto = require("simple-crypto-js").default;
+require("dotenv").config();
 
 const comparePassword = async (req, res) => {
   const { password, checkPassword } = req.body;
@@ -10,9 +11,15 @@ const comparePassword = async (req, res) => {
   }
 
   try {
-    const isMatch = await bcrypt.compare(checkPassword, password);
-
-    console.log("Passwords match:", isMatch);
+    const simpleCrypto = new SimpleCrypto(process.env.HASHSECRETKEY);
+    const ConvertText = simpleCrypto.decrypt(checkPassword);
+    console.log(ConvertText);
+    console.log(password);
+    var isMatch = false;
+    if (ConvertText == password) {
+      isMatch = true;
+    }
+    // console.log("isMatch" + isMatch);
     res.json({ isMatch });
   } catch (error) {
     console.error("Error comparing passwords:", error);

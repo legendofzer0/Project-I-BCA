@@ -12,41 +12,45 @@ const SignUp = ({ modalState }) => {
   const [username, setUsername] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [error, setError] = useState("");
-  const email_test = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const emailTest = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
   useEffect(() => {
     setIsModalOpen(modalState);
   }, [modalState]);
 
   const handleSignUp = async (e) => {
-    e.preventDefault(); // Prevent default form submission behavior
+    e.preventDefault();
     if (!name || !email || !password || !username || !phoneNumber) {
       setError("Please fill in all fields.");
       return;
     }
-    if (!email.match(email_test)) {
+    if (!email.match(emailTest)) {
       setError("Invalid email format.");
       return;
     }
 
     try {
       const checkEmail = await axios.post("/api/user/email", { email });
-      const checkPhone = await axios.post("/api/user/phone", {
-        phone_number: phoneNumber,
-      });
-
-      if (checkEmail.data.length !== 0) {
+      if (checkEmail.data.exists) {
         setError("User with this email already exists.");
         return;
       }
-      if (checkPhone.data.length !== 0) {
+
+      const checkPhone = await axios.post("/api/user/phone", {
+        phone_number: phoneNumber,
+      });
+      if (checkPhone.data.exists) {
         setError("Phone number is already in use.");
         return;
       }
 
-      const { data: hash } = await axios.post("/api/user/hash", { password });
+      const hashResponse = await axios.post("/api/user/hash", {
+        password: password,
+      });
 
-      // Now directly using the hash for the password in the API call
+      const hash = hashResponse.data;
+      // console.log(hash);
+
       const response = await axios.post("/api/user", {
         full_name: name,
         email,
@@ -71,59 +75,42 @@ const SignUp = ({ modalState }) => {
             <form className="form" onSubmit={handleSignUp}>
               <h2>Sign Up</h2>
               <label>Name:</label>
-              <br />
               <input
                 type="text"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               />
-              <br />
-              <br />
               <label>Email:</label>
-              <br />
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <br />
-              <br />
               <label>Password:</label>
-              <br />
               <input
                 type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
-              <br />
-              <br />
               <label>Username:</label>
-              <br />
               <input
                 type="text"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
               />
-              <br />
-              <br />
               <label>Phone Number:</label>
-              <br />
               <input
-                type="tel" // Changed to type="tel" for better phone number handling
+                type="tel"
                 value={phoneNumber}
                 onChange={(e) => setPhoneNumber(e.target.value)}
               />
-              <br />
               {error && <div className="error-message">{error}</div>}
-              <br />
               <button type="submit" className="submit">
                 Sign Up
               </button>
-              <div className="center line"></div>
-              <p className="center">Already have an account?</p>
-              <Link to="/SignIn" className="login center">
-                Login
-              </Link>
+              <div className="login-prompt">
+                Already have an account? <Link to="/SignIn">Login</Link>
+              </div>
             </form>
           </div>
         </div>

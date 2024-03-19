@@ -11,7 +11,7 @@ const verifyToken = (req, res) => {
     res.json(verified);
     return true;
   } catch (e) {
-    console.error(e);
+    // console.error(e);
     res.json("expired/doesnt exist");
     return false;
   }
