@@ -6,7 +6,7 @@ const MenuItem = ({ item }) => {
   const [price, setPrice] = useState("");
   const [tag, setTag] = useState("");
   const [image, setImage] = useState("");
-  const [id, setId] = useState("");
+  const [id, setId] = useState();
 
   useEffect(() => {
     setName(item.item_name);
