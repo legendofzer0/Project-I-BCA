@@ -3,6 +3,7 @@ import axios from "axios";
 
 const ItemModal = ({ addData }) => {
   const [itemName, setItemName] = useState(addData.name);
+
   const [itemPicture, setItemPicture] = useState(null); // Change to null initially
   const [filename, setFilename] = useState("");
   console.log(addData);

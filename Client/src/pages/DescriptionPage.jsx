@@ -40,6 +40,7 @@ function DescriptionPage() {
     const fetchMenuItems = async () => {
       try {
         const response = await axios.get(`/api/item/info/${id}`);
+        console.log(response.data);
         if (response.data.length === 0) {
           navigate("*");
         }
@@ -78,6 +79,7 @@ function DescriptionPage() {
             </div>
           </div>
           <div className="card">
+            {/* {console.log(image)} */}
             <img className="image" src={`/api/${image}`} alt={item.item_name} />
             <h3 className="center name">{item.item_name}</h3>
             <span className="price center">{item.price}NRS.</span>
