@@ -3,17 +3,29 @@ import axios from "axios";
 
 const ItemModal = ({ addData }) => {
   const [itemName, setItemName] = useState(addData.name);
-  const [itemPicture, setItemPicture] = useState();
-  const [filename, setFilename] = useState();
+  const [itemPicture, setItemPicture] = useState(null); // Change to null initially
+  const [filename, setFilename] = useState("");
   console.log(addData);
-  const handleSave = () => {
-    setFilename(itemPicture);
-    const response = axios.put("/api/item/img/" + addData.Id, {
-      filename: filename,
-    });
-    console.log(response);
-    console.log("Item Name:", itemName);
-    console.log("Item Picture:", itemPicture);
+
+  const handleSave = async () => {
+    try {
+      const formData = new FormData();
+      formData.append("filename", itemPicture); // Assuming "itemImage" is the key expected by the server for the image
+
+      const response = await axios.put(
+        `/api/item/img/${addData.Id}`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
+
+      console.log("Server Response:", response.data);
+    } catch (error) {
+      console.error("Error uploading image:", error);
+    }
   };
 
   return (
@@ -32,8 +44,7 @@ const ItemModal = ({ addData }) => {
             <input
               type="file"
               accept=".jpg,.png"
-              value={itemPicture}
-              onChange={(e) => setItemPicture(e.target.value)}
+              onChange={(e) => setItemPicture(e.target.files[0])}
             />
           </form>
 
