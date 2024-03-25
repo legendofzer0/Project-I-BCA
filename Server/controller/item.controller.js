@@ -83,18 +83,12 @@ const deleteItemByID = async (req, res) => {
 
 const changeItemImage = async (req, res) => {
   const { id } = req.params;
-  const { filename } = req.body;
-  // console.log(id);
-  // console.log(filename);
-  // if (req.item.role.includes("admin")) {
+  const { file } = req.body;
   try {
-    const item = await itemService.changeItemImage({ id, filename });
+    const item = await itemService.changeItemImage({ id, file });
     return res.status(200).json(item);
   } catch (error) {
-    throw new ErrorHandler(
-      error.statusCode,
-      "item Not Found or image not uploaded"
-    );
+    console.log("item Not Found or image not uploaded");
   }
   // }
   // throw new ErrorHandler(401, "Unauthorized");

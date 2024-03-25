@@ -39,7 +39,8 @@ const SignUp = ({ modalState }) => {
       const checkPhone = await axios.post("/api/user/phone", {
         phone_number: phoneNumber,
       });
-      if (checkPhone.data.exists) {
+      // console.log(checkPhone.data);
+      if (checkPhone.data.length !== 0) {
         setError("Phone number is already in use.");
         return;
       }

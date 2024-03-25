@@ -4,16 +4,18 @@ import axios from "axios";
 const ItemModal = ({ addData }) => {
   const [itemName, setItemName] = useState(addData.name);
   const [itemPicture, setItemPicture] = useState();
-  const [filename, setFilename] = useState();
-  console.log(addData);
+  // const [filename, setFilename] = useState();
+  // console.log(addData);
   const handleSave = () => {
-    setFilename(itemPicture);
+    // setFilename(itemPicture);
     const response = axios.put("/api/item/img/" + addData.Id, {
-      filename: filename,
+      file: itemPicture,
     });
-    console.log(response);
-    console.log("Item Name:", itemName);
-    console.log("Item Picture:", itemPicture);
+    console.log(addData.Id);
+    console.log(itemPicture);
+
+    // console.log("Item Name:", itemName);
+    // console.log("Item Picture:", itemPicture);
   };
 
   return (
