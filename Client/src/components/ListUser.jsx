@@ -3,17 +3,41 @@ import axios from "axios";
 import "../css/dashboard.css";
 import { Modal } from "@mui/material";
 import UpdateModal from "../modal/modal2";
-import AdminSidebar from "../components/AdminSidebar";
+import Cookies from "universal-cookie";
+import ConformUserDelete from "../modal/ConformUserDelete";
+// import AdminSidebar from "../components/AdminSidebar";
 
 const UserList = () => {
+  const cookie = new Cookies();
+  const [Id, setId] = useState(null); // Initialize to null
+
+  useEffect(() => {
+    const tokenData = cookie.get("token");
+
+    if (!tokenData) return;
+
+    const verifyToken = async () => {
+      try {
+        const response = await axios.post("/api/user/verifyToken", {
+          token: tokenData,
+        });
+        setId(response.data.userId);
+      } catch (error) {
+        console.error("Error verifying token:", error);
+      }
+    };
+
+    verifyToken();
+  }, [cookie]);
+
   const [userList, setUserList] = useState([]);
   const [user_id, setUserId] = useState("");
   const [isOpen, setIsOpen] = useState(false);
-  const handleOpen = () => setIsOpen(true);
-  const handleClose = () => setIsOpen(false);
+  const [deleteModals, setDeleteModals] = useState({}); // Object to track delete modals for each user
+
   useEffect(() => {
     fetchUsers();
-  }, []);
+  }, [Id]); // Fetch users when Id changes
 
   // Function to fetch users
   const fetchUsers = async () => {
@@ -25,20 +49,17 @@ const UserList = () => {
     }
   };
 
-  const handleDeleteUser = async (id) => {
-    try {
-      const deleteUserResponse = await axios.delete("/api/user/" + id);
-      console.log(deleteUserResponse);
-      fetchUsers();
-    } catch (err) {
-      console.error("Failed to delete user: ", err);
-    }
+  const handleEditUser = (id) => {
+    setIsOpen(true);
+    setUserId(id);
   };
 
-  const handleEditUser = (id) => {
-    handleOpen();
-    console.log("Edit user " + id);
-    setUserId(id);
+  const handleOpenDel = (id) => {
+    setDeleteModals({ ...deleteModals, [id]: true });
+  };
+
+  const handleCloseDel = (id) => {
+    setDeleteModals({ ...deleteModals, [id]: false });
   };
 
   return (
@@ -57,35 +78,50 @@ const UserList = () => {
             </tr>
           </thead>
           <tbody>
-            {userList.map((user, index) => (
-              <tr key={user.user_id}>
-                <td className="column">{index + 1}</td>
-                <td className="column">{user.full_name}</td>
-                <td className="column">{user.username}</td>
-                <td className="column">{user.role}</td>
-                <td className="action">
-                  <span className="btn-back">
-                    <button
-                      className="edit2"
-                      onClick={() => handleEditUser(user.user_id)}
-                    />
-                  </span>
-                  <span className="btn-back">
-                    <button
-                      className="del"
-                      onClick={() => handleDeleteUser(user.user_id)}
-                    />
-                  </span>
-                </td>
-              </tr>
-            ))}
+            {userList.map((user, index) =>
+              Id !== user.user_id ? (
+                <tr key={user.user_id}>
+                  <td className="column">{index + 1}</td>
+                  <td className="column">{user.full_name}</td>
+                  <td className="column">{user.username}</td>
+                  <td className="column">{user.role}</td>
+                  <td className="action">
+                    <span className="btn-back">
+                      <button
+                        className="edit2"
+                        onClick={() => handleEditUser(user.user_id)}
+                      ></button>
+                    </span>
+                    {user.role !== "customer" && (
+                      <span className="btn-back">
+                        <button
+                          className="del"
+                          onClick={() => handleOpenDel(user.user_id)}
+                        ></button>
+                      </span>
+                    )}
+                  </td>
+                  <Modal
+                    open={isOpen && user.user_id === user_id}
+                    onClose={() => setIsOpen(false)}
+                  >
+                    <div>
+                      <UpdateModal user={user.user_id} isOpen={isOpen} />
+                    </div>
+                  </Modal>
+                  <Modal
+                    open={deleteModals[user.user_id] || false}
+                    onClose={() => handleCloseDel(user.user_id)}
+                  >
+                    <div>
+                      <ConformUserDelete user={user.user_id} />
+                    </div>
+                  </Modal>
+                </tr>
+              ) : null
+            )}
           </tbody>
         </table>
-        <Modal open={isOpen} onClose={handleClose}>
-          <div>
-            <UpdateModal user={user_id} isOpen={isOpen} />
-          </div>
-        </Modal>
       </div>
     </>
   );

@@ -5,12 +5,14 @@ import { Modal } from "@mui/material";
 
 import ItemModal from "../modal/picturemodal";
 import UpdateItemModal from "../modal/updateitem";
-import AdminSidebar from "../components/AdminSidebar";
+// import AdminSidebar from "../components/AdminSidebar";
+import ConformItemDelete from "../modal/ConformItemDelete";
 
 const ListItem = () => {
   const [itemList, setItemList] = useState([]);
   const [isAdd, setIsAdd] = useState(false);
   const [isEdit, setIsEdit] = useState(false);
+  const [isDelete, setIsDelete] = useState(false);
   const [addData, setAddData] = useState({});
   const [editData, setEditData] = useState({});
 
@@ -27,21 +29,18 @@ const ListItem = () => {
     }
   };
 
-  const handleDeleteUser = async (id) => {
+  const handleDeleteItem = async (id) => {
     try {
-      console.log("delete" + id);
-      const deleteItemResponse = await axios.delete("/api/item/" + id);
-      console.log(deleteItemResponse);
-      fetchItems();
+      setIsDelete(true);
+      // For demonstration, let's set the delete item id
+      setEditData({ id: id });
     } catch (err) {
       console.error("Failed to delete item: ", err);
     }
   };
 
-  const handleEditUser = async (id) => {
+  const handleEditItem = async (id) => {
     const response = await axios.get("/api/item/info/" + id);
-    console.log("Edit item " + id);
-    console.log(response);
     const name = response.data[0].item_name;
     const tags = response.data[0].tags;
     const price = response.data[0].price;
@@ -51,28 +50,35 @@ const ListItem = () => {
       tags: tags,
       price: price,
       description: description,
-      Id: id,
+      id: id,
     });
     setIsEdit(true);
   };
 
-  const handleEdit = () => {
-    setIsEdit(false);
-  };
-
   const handleAddImage = async (id) => {
     const response = await axios.get("/api/item/" + id);
-    console.log("Add item " + id);
-    console.log(response);
     const name = response.data[0].item_name;
     setAddData({
       name: name,
-      Id: id,
+      id: id,
     });
     setIsAdd(true);
   };
 
-  const handleAdd = () => setIsAdd(false);
+  const handleEdit = () => {
+    setIsEdit(false);
+    fetchItems();
+  };
+
+  const handleAdd = () => {
+    setIsAdd(false);
+    fetchItems();
+  };
+
+  const handleDelete = () => {
+    setIsDelete(false);
+    // Perform delete action here
+  };
 
   return (
     <>
@@ -102,19 +108,19 @@ const ListItem = () => {
                   <span className="btn-back">
                     <button
                       className="edit2"
-                      onClick={() => handleEditUser(item.item_id)}
-                    />
+                      onClick={() => handleEditItem(item.item_id)}
+                    ></button>
                   </span>
                   <span className="btn-back">
                     <button
                       className="add"
                       onClick={() => handleAddImage(item.item_id)}
-                    />
+                    ></button>
                   </span>
                   <span className="btn-back">
                     <button
                       className="del"
-                      onClick={() => handleDeleteUser(item.item_id)}
+                      onClick={() => handleDeleteItem(item.item_id)}
                     ></button>
                   </span>
                 </td>
@@ -123,14 +129,26 @@ const ListItem = () => {
           </tbody>
         </table>
       </div>
+      <Modal open={isDelete} onClose={handleDelete}>
+        <div>
+          <ConformItemDelete
+            id={editData.id}
+            onClose={() => setIsDelete(false)}
+          />
+        </div>
+      </Modal>
       <Modal open={isAdd} onClose={handleAdd}>
         <div>
-          <ItemModal addData={addData} />
+          <ItemModal addData={addData} onClose={handleAdd} />
         </div>
       </Modal>
       <Modal open={isEdit} onClose={handleEdit}>
         <div>
-          <UpdateItemModal editData={editData} fetchItems={fetchItems} />
+          <UpdateItemModal
+            editData={editData}
+            onClose={handleEdit}
+            fetchItems={fetchItems}
+          />
         </div>
       </Modal>
     </>

@@ -18,7 +18,7 @@ const UpdateItemModal = ({ editData }) => {
     };
     const response = await axios.put("/api/item/" + id, updateData);
     console.log(response);
-    window.location.reload(false);
+    window.location.reload(true);
   };
 
   return (
@@ -46,6 +46,7 @@ const UpdateItemModal = ({ editData }) => {
           />
           <br />
           <label>Description:</label>
+          <br />
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}

@@ -52,12 +52,15 @@ const UpdateModal = ({ user }) => {
         role,
       });
       console.log(response);
+      window.location.reload(true);
       return;
     } catch (error) {
       console.error("Error fetching user:", error);
       setError("An error occurred while updating the user.");
     }
   };
+
+  console.log(user);
 
   return (
     <>

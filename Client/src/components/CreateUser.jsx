@@ -1,72 +1,77 @@
 import { useState } from "react";
 import axios from "axios";
-import AdminSidebar from "./AdminSidebar";
+// import AdminSidebar from "./AdminSidebar"; // Assuming this is not used in this component
 import "../css/dashboard.css";
 
 const CreateUser = () => {
-  const email_test = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  const emailTest = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-  const [formData, setFormData] = useState({
-    full_name: "",
-    username: "",
-    email: "",
-    password: "",
-    phone_number: "",
-  });
+  const [full_name, setFull_name] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [phone_number, setPhone_number] = useState("");
+
   const [error, setError] = useState("");
-  const [sucess, setSucess] = useState("");
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  const [success, setSuccess] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
-    setSucess("");
+    setSuccess("");
     if (
-      formData.full_name === "" ||
-      formData.email === "" ||
-      formData.password === "" ||
-      formData.username === "" ||
-      formData.phone_number === ""
+      full_name === "" ||
+      email === "" ||
+      password === "" ||
+      username === "" ||
+      phone_number === ""
     ) {
-      setError("fill everything");
+      setError("Please fill in all fields");
       return;
     }
-    if (!formData.email.match(email_test)) {
-      setError("Email is bad");
+    if (!email.match(emailTest)) {
+      setError("Invalid email format");
       return;
     } else {
       setError("");
       try {
-        console.log("test");
         const checkEmail = await axios.post("/api/user/email", {
-          email: formData.email,
+          email: email,
         });
         const checkPhone = await axios.post("/api/user/phone", {
-          phone_number: formData.phoneNumber,
+          phone_number: phone_number,
         });
         if (checkEmail.data.length !== 0) {
-          console.log("User already exists");
-          setError("User already exists");
+          setError("User with this email already exists");
           return;
         }
         if (checkPhone.data.length !== 0) {
-          console.log("Phone already exist");
-          setError("Phone already exist");
+          setError("User with this phone number already exists");
           return;
         }
 
-        const response = await axios
-          .post("/api/user", formData)
-          .then(setSucess("Created Sucessfully"));
+        const hashResponse = await axios.post("/api/user/hash", {
+          password: password,
+        });
+
+        const hash = hashResponse.data;
+        const response = await axios.post("/api/user", {
+          full_name: full_name,
+          username: username,
+          email: email,
+          password: hash,
+          phone_number: phone_number,
+        });
+        setSuccess("User created successfully");
+        // Optionally, you might want to clear the form after successful submission
+        setFull_name("");
+        setUsername("");
+        setEmail("");
+        setPassword("");
+        setPhone_number("");
       } catch (error) {
         console.error("Error submitting form:", error);
+        setError("Error creating user");
       }
     }
   };
@@ -79,14 +84,16 @@ const CreateUser = () => {
           <div className="form-group">
             <h2>Create User</h2>
             <div className="error-message center">{error}</div>
-            <div className="sucess-message center">{sucess}</div>
+            <div className="success-message center">{success}</div>
             <label htmlFor="name">Name:</label>
             <input
               type="text"
               id="name"
               name="full_name"
-              value={formData.full_name}
-              onChange={handleChange}
+              value={full_name}
+              onChange={(e) => {
+                setFull_name(e.target.value);
+              }}
               className="input"
             />
           </div>
@@ -96,8 +103,10 @@ const CreateUser = () => {
               type="text"
               id="username"
               name="username"
-              value={formData.username}
-              onChange={handleChange}
+              value={username}
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
               className="input"
             />
           </div>
@@ -107,8 +116,10 @@ const CreateUser = () => {
               type="email"
               id="email"
               name="email"
-              value={formData.email}
-              onChange={handleChange}
+              value={email}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
               className="input"
             />
           </div>
@@ -118,22 +129,27 @@ const CreateUser = () => {
               type="password"
               id="password"
               name="password"
-              value={formData.password}
-              onChange={handleChange}
+              value={password}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
               className="input"
             />
           </div>
           <div className="form-group">
             <label htmlFor="phoneNumber">Phone Number:</label>
             <input
-              type="number"
+              type="text"
               id="phoneNumber"
               name="phone_number"
-              value={formData.phone_number}
-              onChange={handleChange}
-              className="input "
+              value={phone_number}
+              onChange={(e) => {
+                setPhone_number(e.target.value);
+              }}
+              className="input"
             />
-
+          </div>
+          <div className="form-group">
             <button className="submit" type="submit">
               Create User
             </button>

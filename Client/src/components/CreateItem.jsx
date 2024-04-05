@@ -36,8 +36,13 @@ const CreateItem = () => {
     e.preventDefault();
     setError("");
     setSuccess("");
-    if (itemName === "" || description === "" || price === "" || tags === "") {
-      setError("Please fill out all fields");
+    if (
+      itemName === "" ||
+      description === "" ||
+      price === "" ||
+      tags === "SELECT"
+    ) {
+      setError("Please fill out all fields and select a tag");
     } else {
       try {
         const formData = {
@@ -84,6 +89,7 @@ const CreateItem = () => {
               value={tags}
               onChange={handleChange}
             >
+              <option value="SELECT">SELECT</option>
               <option value="non-veg">Non-Veg</option>
               <option value="veg">Veg</option>
             </select>
