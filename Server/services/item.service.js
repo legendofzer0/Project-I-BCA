@@ -47,7 +47,7 @@ class ItemService {
   updateItemById = async (id) => {
     try {
       const item = await updateItemByIdDb(id);
-      console.log(item);
+      // console.log(item);
       return item;
     } catch (error) {
       console.log(error.message);

@@ -90,7 +90,7 @@ const CreateItem = () => {
               onChange={handleChange}
             >
               <option value="SELECT">SELECT</option>
-              <option value="non-veg">Non-Veg</option>
+              <option value="Non-Veg">Non-Veg</option>
               <option value="veg">Veg</option>
             </select>
           </div>
@@ -103,6 +103,7 @@ const CreateItem = () => {
               value={price}
               onChange={handleChange}
               className="input"
+              min={1}
             />
           </div>
           <div className="form-group">

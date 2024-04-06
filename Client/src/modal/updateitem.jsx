@@ -2,12 +2,13 @@ import { useState } from "react";
 import axios from "axios";
 
 const UpdateItemModal = ({ editData }) => {
-  console.log(editData);
+  // console.log("edit");
+  // console.log(editData);
   const [itemName, setItemName] = useState(editData.name);
   const [tags, setTags] = useState(editData.tags);
   const [price, setPrice] = useState(editData.price);
   const [description, setDescription] = useState(editData.description);
-  const id = editData.Id;
+  const id = editData.id;
 
   const handleUpdateItem = async () => {
     const updateData = {
@@ -16,6 +17,8 @@ const UpdateItemModal = ({ editData }) => {
       price: price,
       description: description,
     };
+    console.log(id);
+    console.log(updateData);
     const response = await axios.put("/api/item/" + id, updateData);
     console.log(response);
     window.location.reload(true);

@@ -50,6 +50,7 @@ const getItemInfoByID = async (req, res) => {
 const updateItemByID = async (req, res) => {
   const { id } = req.params;
   const { item_name, tags, price, description } = req.body;
+  // console.log(item_name, tags, price, description);
   // if (req.item.role.includes("admin")) {
   try {
     const item = await itemService.updateItemById({
