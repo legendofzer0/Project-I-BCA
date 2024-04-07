@@ -6,6 +6,7 @@ import "../css/card.css";
 const Homepage = () => {
   const [tag, setTag] = useState(0); // Default tag to 0
   const [items, setItems] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const fetchMenuItems = async () => {
@@ -27,6 +28,16 @@ const Homepage = () => {
   return (
     <>
       <div>
+        <div>
+          <label htmlFor="search">Search Item: </label>
+          <input
+            type="text"
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
+          />
+        </div>
         <label htmlFor="tag">Filter</label>
         <select id="tag" value={tag} onChange={handleTagChange}>
           <option value=" ">Select a tag</option>
@@ -39,7 +50,14 @@ const Homepage = () => {
         <div className="cards">
           {console.log(items)}
           {items.map((element) => {
-            return <MenuItem key={element.id} item={element} filter={tag} />;
+            return (
+              <MenuItem
+                key={element.id}
+                item={element}
+                filter={tag}
+                search={search}
+              />
+            );
           })}
         </div>
       </div>

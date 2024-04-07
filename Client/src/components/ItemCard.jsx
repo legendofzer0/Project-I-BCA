@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "../css/card.css";
 import { Link } from "react-router-dom";
 
-const MenuItem = ({ item, filter }) => {
+const MenuItem = ({ item, filter, search }) => {
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [tag, setTag] = useState("");
@@ -19,9 +19,28 @@ const MenuItem = ({ item, filter }) => {
     }
   }, [item]);
 
-  console.log(filter == " " || filter == tag);
+  // console.log(search);
+  console.log(name);
+  console.log(search);
 
-  if (filter == " " || filter == tag) {
+  if (name.toLowerCase().includes(search.toLowerCase())) {
+    return (
+      <Link to={"/item/" + id}>
+        <div className="card">
+          <div className="center">
+            <img className="image" src={`api/${image}`} alt={name} />
+          </div>
+          <h3 className="name center">{name}</h3>
+          <span className="price center">{price} RS.</span>
+          <div className="tagBack center">
+            <span className="tag center">{tag}</span>
+          </div>
+        </div>
+      </Link>
+    );
+  }
+
+  if ((filter == " " && search == "") || (filter == tag && search == "")) {
     return (
       <Link to={"/item/" + id}>
         <div className="card">
