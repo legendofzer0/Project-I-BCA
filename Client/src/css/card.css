@@ -178,7 +178,6 @@ input[type="number"]::-webkit-outer-spin-button {
 .tag {
   display: flex;
   flex-direction: column;
-  flex-grow: 10;
   font-weight: 500;
   text-transform: capitalize;
   background-color: rgb(239, 255, 56);
@@ -307,4 +306,26 @@ input[type="number"]::-webkit-outer-spin-button {
   display: inline;
   position: absolute;
   transform: translate(120%, -25%);
+}
+
+.home-area {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 1px solid;
+}
+
+.se-filt {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-around;
+  border: 1px solid;
+  flex-wrap: wrap;
+}
+
+.filter {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid;
 }/*# sourceMappingURL=card.css.map */

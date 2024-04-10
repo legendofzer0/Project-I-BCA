@@ -33,7 +33,6 @@
 .tag {
   display: flex;
   flex-direction: column;
-  flex-grow: ;
   font-weight: 500;
   text-transform: capitalize;
   background-color: rgba(239, 255, 56, 50);
@@ -157,4 +156,24 @@
   display: inline;
   position: absolute;
   transform: translate(120%, -25%);
+}
+.home-area{
+display: flex;
+justify-content: center;
+flex-direction: column;
+border: 1px solid;
+
+}
+.se-filt{
+ display: flex;
+ flex-direction: column;
+ justify-content: center;
+ justify-content: space-around;
+ border: 1px solid;
+ flex-wrap: wrap;
+}
+.filter{
+display: flex;
+flex-direction: row;
+border: 1px solid;
 }

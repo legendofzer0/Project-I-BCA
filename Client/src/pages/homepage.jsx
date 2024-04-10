@@ -27,7 +27,8 @@ const Homepage = () => {
 
   return (
     <>
-      <div>
+    <div className="home-area">
+      <div className="se-filt">
         <div>
           <label htmlFor="search">Search Item: </label>
           <input
@@ -38,12 +39,14 @@ const Homepage = () => {
             }}
           />
         </div>
-        <label htmlFor="tag">Filter</label>
+        <div className="filter">
+        <label htmlFor="tag">Filter:</label>
         <select id="tag" value={tag} onChange={handleTagChange}>
           <option value=" ">Select a tag</option>
           <option value="Non-Veg">Non Veg</option>
           <option value="veg">Veg</option>
         </select>
+        </div>
       </div>
       <div className="body">
         <h1>Welcome to Our Restaurant</h1>
@@ -60,6 +63,7 @@ const Homepage = () => {
             );
           })}
         </div>
+      </div>
       </div>
     </>
   );
