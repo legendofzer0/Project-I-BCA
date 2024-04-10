@@ -3,7 +3,7 @@ import axios from "axios";
 import "../css/dashboard.css";
 import { useNavigate } from "react-router-dom";
 
-import AdminSidebar from "../components/AdminSidebar";
+// import AdminSidebar from "../components/AdminSidebar";
 
 const CreateItem = () => {
   const navigate = useNavigate();
@@ -34,6 +34,7 @@ const CreateItem = () => {
     }
   };
 
+  console.log("in create item")
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -63,10 +64,12 @@ const CreateItem = () => {
         setError("An error occurred while creating the item");
       }
     }
-
+  }
+    console.log("test");
     return (
       <>
         {/* <AdminSidebar /> */}
+        
         <div className="content">
           <form onSubmit={handleSubmit}>
             <div className="form-group">
@@ -130,5 +133,5 @@ const CreateItem = () => {
       </>
     );
   };
-};
+
 export default CreateItem;
