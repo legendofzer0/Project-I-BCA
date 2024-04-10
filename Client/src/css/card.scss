@@ -3,18 +3,18 @@
 .cards {
   display: grid;
   grid-template-columns: 25em 25em 25em;
-  border: 0px;
+  border: 1px;
 }
 .card {
   display: inline-grid;
   width: 20em;
-  height: auto;
+  height: 20em;
   border: 0px;
   padding: 20px;
   margin: 10px;
   border-radius: 10px;
   background-color: #fff;
-  filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 50%));
+  filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.5));
 }
 
 .name {
@@ -31,6 +31,9 @@
 }
 
 .tag {
+  display: flex;
+  flex-direction: column;
+  flex-grow: ;
   font-weight: 500;
   text-transform: capitalize;
   background-color: rgba(239, 255, 56, 50);

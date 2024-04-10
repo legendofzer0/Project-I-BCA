@@ -19,45 +19,27 @@ const MenuItem = ({ item, filter, search }) => {
     }
   }, [item]);
 
-  // console.log(search);
-  console.log(name);
-  console.log(search);
+  // Filter and search logic combined
+  const isVisible =
+    name.toLowerCase().includes(search.toLowerCase()) &&
+    (filter === " " || filter === tag);
 
-  if (name.toLowerCase().includes(search.toLowerCase())) {
-    return (
-      <Link to={"/item/" + id}>
-        <div className="card">
-          <div className="center">
-            <img className="image" src={`api/${image}`} alt={name} />
-          </div>
-          <h3 className="name center">{name}</h3>
-          <span className="price center">{price} RS.</span>
-          <div className="tagBack center">
-            <span className="tag center">{tag}</span>
-          </div>
-        </div>
-      </Link>
-    );
-  }
+  if (!isVisible) return null;
 
-  if ((filter == " " && search == "") || (filter == tag && search == "")) {
-    return (
-      <Link to={"/item/" + id}>
-        <div className="card">
-          <div className="center">
-            <img className="image" src={`api/${image}`} alt={name} />
-          </div>
-          <h3 className="name center">{name}</h3>
-          <span className="price center">{price} RS.</span>
-          <div className="tagBack center">
-            <span className="tag center">{tag}</span>
-          </div>
+  return (
+    <Link to={`/item/${id}`}>
+      <div className="card">
+        <div className="center">
+          <img className="image" src={`api/${image}`} alt={name} />
         </div>
-      </Link>
-    );
-  } else {
-    return;
-  }
+        <h3 className="name center">{name}</h3>
+        <span className="price center">{price} RS.</span>
+        <div className="tagBack center">
+          <span className="tag center">{tag}</span>
+        </div>
+      </div>
+    </Link>
+  );
 };
 
 export default MenuItem;

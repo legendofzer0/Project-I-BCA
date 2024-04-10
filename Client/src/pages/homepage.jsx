@@ -4,7 +4,7 @@ import axios from "axios";
 import "../css/card.css";
 
 const Homepage = () => {
-  const [tag, setTag] = useState(0); // Default tag to 0
+  const [tag, setTag] = useState(" ");
   const [items, setItems] = useState([]);
   const [search, setSearch] = useState("");
 
