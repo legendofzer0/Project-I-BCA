@@ -21,7 +21,7 @@ const ItemModal = ({ addData }) => {
       formData.append("filename", itemPicture); // Assuming "itemImage" is the key expected by the server for the image
 
       const response = await axios.put(
-        `/api/item/img/${addData.Id}`,
+        `/api/item/img/${addData.id}`,
         formData,
         {
           headers: {
@@ -31,7 +31,7 @@ const ItemModal = ({ addData }) => {
       );
 
       console.log("Server Response:", response.data);
-      window.location.reload();
+      window.location.reload("/");
     } catch (error) {
       console.error("Error uploading image:", error);
       setError("An error occurred while uploading image");

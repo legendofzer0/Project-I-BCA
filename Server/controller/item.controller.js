@@ -86,11 +86,9 @@ const changeItemImage = async (req, res) => {
   const { id } = req.params;
   const { filename } = req.file;
   // console.log(id);
-  // console.log(filename);
-  // if (req.item.role.includes("admin")) {
 
   try {
-    const item = await itemService.changeItemImage({ id, filename });
+    const item = await itemService.changeItemImage(id, filename);
     return res.status(200).json(item);
   } catch (error) {
     console.log("item Not Found or image not uploaded");
