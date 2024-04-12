@@ -161,6 +161,8 @@
 display: flex;
 justify-content: center;
 flex-direction: column;
+margin-inline-start: 5%;
+margin-inline-end: 5%;
 border: 1px solid;
 
 }
@@ -172,8 +174,19 @@ border: 1px solid;
  border: 1px solid;
  flex-wrap: wrap;
 }
-.filter{
-display: flex;
-flex-direction: row;
-border: 1px solid;
+.search{
+  display: flex;
+  padding: 3px;
+  gap: 20px;
+  align-items: center;
+  font-size: larger;
 }
+.filter{
+  display: flex;
+  font-size: larger;
+  flex-direction: row;
+  border: 1px solid;
+  align-items: center;
+  padding-left: 72px;
+  gap:  8px;
+  }

@@ -25,11 +25,13 @@ const Homepage = () => {
     setTag(event.target.value);
   };
 
+  // console.log(items)
+
   return (
     <>
     <div className="home-area">
       <div className="se-filt">
-        <div>
+        <div className="search">
           <label htmlFor="search">Search Item: </label>
           <input
             type="text"
@@ -40,7 +42,7 @@ const Homepage = () => {
           />
         </div>
         <div className="filter">
-        <label htmlFor="tag">Filter:</label>
+        <label htmlFor="tag">Filter: </label>
         <select id="tag" value={tag} onChange={handleTagChange}>
           <option value=" ">Select a tag</option>
           <option value="Non-Veg">Non Veg</option>
