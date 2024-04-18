@@ -5,7 +5,7 @@
 
 button {
   background-color: #ffff00;
-  color: #c6bf16;
+  color: #c5be04;
   cursor: pointer;
 }
 
@@ -18,24 +18,8 @@ button {
   border-radius: 5px;
 }
 
-.edit {
-  width: 2.5em;
-  height: 2.5em;
-  border: 0px;
-  background-color: #fff;
-  border: 1px;
-  border-color: #000;
-}
-
-.pen {
-  width: 1em;
-  background-repeat: no-repeat;
-  background-image: url("../assets/pen-solid.svg");
-}
-
 .center {
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 .center .login {
@@ -59,11 +43,16 @@ button {
   }
 }
 .form {
-  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-around;
+  padding: 5%;
+  overflow: hidden;
+  width: 100%;
   height: auto;
-  padding: 20px;
   border-radius: 10px;
-  color: #c6bf16;
+  color: #c5be04;
   background-color: white;
   filter: drop-shadow(0 8px 32px rgba(31, 38, 135, 0.3));
   animation: 0.8s ease-out 0s 1 modal_animate;
@@ -100,6 +89,7 @@ nav {
   transform: translateX(5%);
   margin-top: 2%;
   margin-bottom: 2%;
+  margin-left: 10%;
 }
 nav .nav-element {
   padding: 10px;
@@ -125,7 +115,8 @@ input[type="number"]::-webkit-outer-spin-button {
 } */
 .image {
   width: 50%;
-  height: auto;
+  height: 100px;
+  aspect-ratio: 4/3;
 }
 
 .flex {
@@ -142,4 +133,36 @@ input[type="number"]::-webkit-outer-spin-button {
   border-radius: 20px;
   padding: 10px;
   border: 0;
+}
+
+.space {
+  height: 10px;
+}
+.space .second {
+  height: 100px;
+}
+
+.user-info {
+  display: flex;
+  border: 1px solid;
+  margin-left: 10%;
+  margin-top: 5%;
+  margin-right: 10%;
+  padding: 1%;
+}
+
+.edit {
+  width: 2.5em;
+  height: 2.5em;
+  margin: 1%;
+  margin-left: 5%;
+  background-color: #fff;
+  border: 1px;
+  border-color: #000;
+  transform: scale(0.4);
+}
+.edit .pen {
+  width: 1em;
+  background-repeat: no-repeat;
+  background-image: url("../assets/pen-solid.svg");
 }/*# sourceMappingURL=root.css.map */

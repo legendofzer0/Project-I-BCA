@@ -30,10 +30,20 @@ const Homepage = () => {
   return (
     <>
     <div className="home-area">
+    <h1>Welcome to Our Restaurant</h1>
       <div className="se-filt">
+      <div className="filter">
+        <label htmlFor="tag">Filter: </label>
+        <select id="tag" value={tag} onChange={handleTagChange}>
+          <option value=" " >Select a tag</option>
+          <option value="Non-Veg" className="opt">Non Veg</option>
+          <option value="veg" className="opt">Veg</option>
+        </select>
+        </div>
         <div className="search">
           <label htmlFor="search">Search Item: </label>
           <input
+          id="search"
             type="text"
             value={search}
             onChange={(e) => {
@@ -41,17 +51,8 @@ const Homepage = () => {
             }}
           />
         </div>
-        <div className="filter">
-        <label htmlFor="tag">Filter: </label>
-        <select id="tag" value={tag} onChange={handleTagChange}>
-          <option value=" ">Select a tag</option>
-          <option value="Non-Veg">Non Veg</option>
-          <option value="veg">Veg</option>
-        </select>
-        </div>
       </div>
       <div className="body">
-        <h1>Welcome to Our Restaurant</h1>
         <div className="cards">
           {console.log(items)}
           {items.map((element) => {

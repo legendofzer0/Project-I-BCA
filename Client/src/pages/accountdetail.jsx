@@ -74,18 +74,18 @@ function Detail({ CurrentUser }) {
 
   return (
     <div>
-      <div className="body flex">
+      <div className="user-info">
         <div className="detail">
           <div>Welcome {user.username}</div>
           <div>
-            Role: {CurrentUser}
+            Role: {CurrentUser} 
             <button
               type="button"
               className="edit pen"
               onClick={handleOpen}
             ></button>
             <div className="detail">
-              <form>
+              <form><br />
                 <p>
                   <label>Name:</label>
                   <input

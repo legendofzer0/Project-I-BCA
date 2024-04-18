@@ -5,7 +5,7 @@
 
 button {
   background-color: #ffff00;
-  color: #c6bf16;
+  color: #c5be04;
   cursor: pointer;
 }
 
@@ -35,7 +35,6 @@ button {
 
 .center {
   display: flex;
-  align-items: center;
   justify-content: center;
 }
 .center .login {
@@ -59,11 +58,16 @@ button {
   }
 }
 .form {
-  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  justify-content: space-around;
+  padding: 5%;
+  overflow: hidden;
+  width: 100%;
   height: auto;
-  padding: 20px;
   border-radius: 10px;
-  color: #c6bf16;
+  color: #c5be04;
   background-color: white;
   filter: drop-shadow(0 8px 32px rgba(31, 38, 135, 0.3));
   animation: 0.8s ease-out 0s 1 modal_animate;
@@ -100,6 +104,7 @@ nav {
   transform: translateX(5%);
   margin-top: 2%;
   margin-bottom: 2%;
+  margin-left: 10%;
 }
 nav .nav-element {
   padding: 10px;
@@ -125,7 +130,8 @@ input[type="number"]::-webkit-outer-spin-button {
 } */
 .image {
   width: 50%;
-  height: auto;
+  height: 100px;
+  aspect-ratio: 4/3;
 }
 
 .flex {
@@ -144,51 +150,23 @@ input[type="number"]::-webkit-outer-spin-button {
   border: 0;
 }
 
+.space {
+  height: 10px;
+}
+.space .second {
+  height: 100px;
+}
+
 .cards {
   display: grid;
   grid-template-columns: 25em 25em 25em;
   border: 1px;
 }
 
-.card {
-  display: inline-grid;
-  width: 20em;
-  height: 20em;
-  border: 0px;
-  padding: 20px;
-  margin: 10px;
-  border-radius: 10px;
-  background-color: #fff;
-  filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.5));
-}
-
-.name {
-  font-weight: 500;
-  text-transform: capitalize;
-  text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.45);
-}
-
-.price {
-  color: #ff6868;
-  font-weight: 500;
-  text-transform: uppercase;
-  text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.45);
-}
-
-.tag {
+.tagBack {
   display: flex;
   flex-direction: column;
-  font-weight: 500;
-  text-transform: capitalize;
-  background-color: rgb(239, 255, 56);
-  border-color: rgb(239, 255, 56);
-  border-radius: 10px;
-  width: 140px;
-  height: 33px;
-}
-
-.tagBack {
-  margin: 15px;
+  justify-content: center;
 }
 
 .card2 {
@@ -309,12 +287,16 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .home-area {
+  height: 600px;
+  width: 1250px;
   display: flex;
   justify-content: center;
+  color: #c5be04;
+  border: 1px solid;
   flex-direction: column;
   margin-inline-start: 5%;
   margin-inline-end: 5%;
-  border: 1px solid;
+  padding-left: 15px;
 }
 
 .se-filt {
@@ -322,7 +304,6 @@ input[type="number"]::-webkit-outer-spin-button {
   flex-direction: column;
   justify-content: center;
   justify-content: space-around;
-  border: 1px solid;
   flex-wrap: wrap;
 }
 
@@ -330,16 +311,103 @@ input[type="number"]::-webkit-outer-spin-button {
   display: flex;
   padding: 3px;
   gap: 20px;
+  color: #c5be04;
   align-items: center;
   font-size: larger;
 }
 
 .filter {
   display: flex;
+  color: #c5be04;
   font-size: larger;
   flex-direction: row;
-  border: 1px solid;
   align-items: center;
   padding-left: 72px;
   gap: 8px;
+}
+
+#search {
+  width: 250px;
+  height: 10px;
+  padding: 10px;
+  color: #001aff;
+  border: 1px solid #001aff;
+  border-radius: 5px;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  box-shadow: 0px 0px 5px #001aff;
+  outline: none;
+}
+
+#tag {
+  width: 270px;
+  height: 35px;
+  padding: 5px;
+  border: 1px solid #001aff;
+  border-radius: 5px;
+  color: #001aff;
+  font-size: 16px;
+  font-family: Arial, sans-serif;
+  box-shadow: 0px 0px 5px #001aff;
+  outline: none;
+  background-color: white;
+}
+
+#tag:hover {
+  background-color: #001aff;
+  color: #ffff00;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  border: 1px solid;
+  padding: 2%;
+  overflow-x: hidden;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 250px;
+  height: 250px;
+  border: 0px;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  background-color: #fff;
+  filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.5));
+}
+
+.name {
+  font-weight: 500;
+  text-transform: capitalize;
+  text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.45);
+}
+
+.price {
+  color: #ff6868;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-shadow: 2px 4px 4px rgba(0, 0, 0, 0.45);
+}
+
+.tag {
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  text-transform: capitalize;
+  background-color: rgb(239, 255, 56);
+  border-color: rgb(239, 255, 56);
+  border-radius: 10px;
+  width: 100px;
+  height: 20px;
 }/*# sourceMappingURL=card.css.map */

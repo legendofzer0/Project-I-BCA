@@ -1,6 +1,6 @@
 $main-yellow: #ffff00;
 $main-blue: #001aff;
-$main-gold: #c6bf16;
+$main-gold: #c5be04;
 
 :root {
   font-family: "Poppins";
@@ -20,24 +20,11 @@ button {
   font-weight: bold;
   border-radius: 5px;
 }
-.edit {
-  width: 2.5em;
-  height: 2.5em;
-  border: 0px;
-  background-color: #fff;
-  border: 1px;
-  border-color: #000;
-}
-.pen {
-  width: 1em;
-  background-repeat: no-repeat;
-  background-image: url("../assets/pen-solid.svg");
-}
+
+
 .center {
   display: flex;
-  align-items: center;
   justify-content: center;
-
   .login {
     text-decoration: none;
     color: $main-yellow;
@@ -62,9 +49,14 @@ button {
 }
 
 .form {
-  width: 400px;
+  display: flex;
+  flex-direction:column ;
+  justify-content: center;
+  justify-content: space-around;
+  padding: 5%;
+  overflow: hidden;
+  width: 100%;
   height: auto;
-  padding: 20px;
   border-radius: 10px;
   color: $main-gold;
   background-color: lighten($color: #fff, $amount: 10%);
@@ -103,6 +95,7 @@ nav {
   transform: translateX(5%);
   margin-top: 2%;
   margin-bottom: 2%;
+  margin-left: 10%;
   .nav-element {
     padding: 10px;
     text-decoration: none;
@@ -128,7 +121,8 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .image {
   width: 50%;
-  height: auto;
+  height: 100px;
+  aspect-ratio: 4/3;
 }
 
 .flex {
@@ -144,4 +138,33 @@ input[type="number"]::-webkit-outer-spin-button {
   border-radius: 20px;
   padding: 10px;
   border: 0;
+}
+.space{
+  height: 10px;
+  .second{
+    height: 100px;
+  }
+}
+.user-info {
+  display: flex;
+  border: 1px solid;
+  margin-left: 10%;
+  margin-top: 5%;
+  margin-right: 10%;
+  padding: 1%;
+}
+.edit {
+  width: 2.5em;
+  height: 2.5em;
+  margin: 1%;
+  margin-left: 5%;
+  background-color: #fff;
+  border: 1px;
+  border-color: #000;
+  transform: scale(0.4);
+  .pen {
+    width: 1em;
+    background-repeat: no-repeat;
+    background-image: url("../assets/pen-solid.svg");
+  }
 }

@@ -61,23 +61,22 @@ const Login = () => {
     <div className="center">
       <div className="modal">
         <form className="form" onSubmit={handleLogin}>
-          <h2>Login</h2>
+          <h2><center>Login</center></h2>
           <label>Email:</label>
           <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
-          <br />
-          <br />
+          <p className="space"></p>
           <label>Password:</label>
           <input
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
+          <p className="space second"></p>
           {error && <div className="error-message">{error}</div>}
-          <br />
           <button type="submit" className="submit">
             Login
           </button>

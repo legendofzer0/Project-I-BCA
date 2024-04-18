@@ -4,7 +4,7 @@ import "../css/dashboard.css";
 const AdminSidebar = () => {
   return (
     <div className="admin-sidebar">
-      <ul>
+      <ul className="side-navbar">
         <li>
           <Link to="/CreateUser" className="sidebar-element">
             Create User
