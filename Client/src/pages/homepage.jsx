@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import MenuItem from "../components/ItemCard"; // Assuming MenuItem is the correct component
+import MenuItem from "../components/ItemCard"; 
 import axios from "axios";
 import "../css/card.css";
 
@@ -54,7 +54,6 @@ const Homepage = () => {
       </div>
       <div className="body">
         <div className="cards">
-          {console.log(items)}
           {items.map((element) => {
             return (
               <MenuItem
