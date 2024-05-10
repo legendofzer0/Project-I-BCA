@@ -159,6 +159,7 @@ input[type="number"]::-webkit-outer-spin-button {
   background-color: #fff;
   border: 1px;
   border-color: #000;
+  transform: scale(0.4);
 }
 .edit .pen {
   width: 1em;
@@ -308,4 +309,15 @@ table .bottom {
 .action {
   width: 12%;
   height: auto;
+}
+
+.user-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.table {
+  margin-left: 5%;
 }/*# sourceMappingURL=dashboard.css.map */

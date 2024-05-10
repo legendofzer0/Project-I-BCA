@@ -15,7 +15,7 @@ function ConformItemDelete(id) {
   };
   return (
     <>
-      <div>
+      <div className="delete">
         <p>Are You Sure?</p>
         <button onClick={deleteUser}>YES</button>
         <button onClick={No}>NO</button>

@@ -149,3 +149,13 @@ table {
   width: 12%;
   height: auto;
 }
+
+.user-list{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.table{
+  margin-left: 5%;
+}
