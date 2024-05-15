@@ -39,8 +39,8 @@ const loggingMiddleware = (req, res, next) => {
   }
 
   console.log("Request body:", req.body);
-  next(); // Move on to the next middleware or route handler
-};
+  next(); 
+  };
 
 module.exports = {
   upload,

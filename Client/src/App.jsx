@@ -13,14 +13,13 @@ const cookie = new Cookies();
 
 function App() {
   const [user, setUser] = useState("Public");
+  const [intervalId, setIntervalId] = useState(null);
+  const [verifyInterval, setVerifyInterval] = useState(1000); // Initial interval of 1 second
 
   useEffect(() => {
     let isMounted = true;
     const verifyUser = async () => {
       const token = cookie.get("token");
-      // console.log(token);
-      // const parseData = token.data;
-      // console.log(parseData);
       if (token) {
         try {
           const response = await axios.post("/api/user/verifyToken", {
@@ -28,17 +27,20 @@ function App() {
           });
           if (isMounted) {
             // console.log(response);
-            console.log();
+            // console.log();
             const string = response.data.role;
             const role = string.charAt(0).toUpperCase() + string.slice(1);
             // console.log(role);
             setUser(role || "Public");
+            isMounted=false;
           }
         } catch (error) {
           console.error("Error verifying token:", error);
+          isMounted=true;
           if (isMounted) setUser("Public");
         }
       } else {
+        isMounted=true;
         if (isMounted) setUser("Public");
       }
     };
@@ -51,16 +53,18 @@ function App() {
     };
   }, []);
 
-  return user === Role.Customer || user === Role.Public ? (
-    <UserRoute user={user} />
-  ) : user === Role.Admin ? (
-    <AdminRoute user={user} />
-  ) : user === Role.Kitchen ? (
-    <KitchenRoute user={user} />
-  ) : user === Role.Rider ? (
-    <RiderRoute user={user} />
-  ) : (
-    <PageNotFound />
+  return (
+    user === Role.Customer || user === Role.Public ? (
+      <UserRoute user={user} />
+    ) : user === Role.Admin ? (
+      <AdminRoute user={user} />
+    ) : user === Role.Kitchen ? (
+      <KitchenRoute user={user} />
+    ) : user === Role.Rider ? (
+      <RiderRoute user={user} />
+    ) : (
+      <PageNotFound />
+    )
   );
 }
 
