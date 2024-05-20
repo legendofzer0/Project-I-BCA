@@ -20,6 +20,11 @@ const Login = () => {
       setError("Please fill in all fields.");
       return;
     }
+    const emailTest = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (!email.match(emailTest)) {
+      setError("Enter Correct type of email");
+      return;
+    }
 
     try {
       const getUserResponse = await axios.post("/api/user/email", {
