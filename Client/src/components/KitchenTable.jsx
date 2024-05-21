@@ -52,71 +52,68 @@ const KitchenTable = () => {
   };
 
   return (
-    <div className="kitchen">
-      <div className="section">
-        <h2 className="center">Pending</h2>
-        <table className="KtablePending">
-          <thead>
-            <tr>
-              <th className="column">Item</th>
-              <th className="column">Action</th>
+    <>
+    <table>
+    <thead>
+      <tr>
+        <th colSpan={2}>Pending</th>
+        <th colSpan={2}>Cooking</th>
+      </tr>
+      <tr>
+        <th>Item</th>
+        <th>Action</th>
+        <th>Item</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    {pendingItems.length || cookingItems.length ? (
+      <>
+        {pendingItems.map((pendingItem, index) => (
+          <tr key={index}>
+            <td>{pendingItem.item_name} x{pendingItem.quantity}</td>
+            <td>
+              <span className="button-wrapper">
+                <button onClick={handlePendingAdd(pendingItem.order_id)} className="add" aria-label="Add to Cooking"></button>
+              </span>
+            </td>
+            {cookingItems[index] ? (
+              <>
+                <td>{cookingItems[index].item_name} x{cookingItems[index].quantity}</td>
+                <td>
+                  <span className="button-wrapper">
+                    <button onClick={handleCookingAdd(cookingItems[index].order_id)} className="add" aria-label="Move to Route"></button>
+                  </span>
+                </td>
+              </>
+            ) : (
+              <td colSpan={2}></td>
+            )}
+          </tr>
+        ))}
+        {/* Handle the case where there are cooking items but no pending items */}
+        {pendingItems.length < cookingItems.length && cookingItems.map((cookingItem, index) => (
+          !pendingItems[index] && (
+            <tr key={index}>
+              <td colSpan={2}></td>
+              <td>{cookingItem.item_name} x{cookingItem.quantity}</td>
+              <td>
+                <span className="button-wrapper">
+                  <button onClick={handleCookingAdd(cookingItem.order_id)} className="add" aria-label="Move to Route"></button>
+                </span>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            <ul>
-              {pendingItems.map((item, index) => (
-                <li key={index}>
-                  <tr>
-                    <th className="column">
-                      <span> {item.item_name}</span>
-                      <span> x{item.quantity}</span>
-                    </th>
-                    <th className="column">
-                      <button
-                        onClick={handlePendingAdd(item.order_id)}
-                        className="add"
-                      />
-                    </th>
-                  </tr>
-                </li>
-              ))}
-            </ul>
-          </tbody>
-        </table>
-      </div>
-
-      <div className="section">
-        <h2 className="center">Cooking</h2>
-        <table className="KtableCooking">
-          <thead>
-            <tr>
-              <th>Item</th>
-              <th>Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            <ul>
-              <tr>
-                {cookingItems.map((item, index) => (
-                  <li key={index}>
-                    <th>
-                      <span> {item.item_name}</span>
-                      <span> x{item.quantity}</span>
-                    </th>
-                    <th>
-                      <button
-                        onClick={handleCookingAdd(item.order_id)}
-                        className="add"
-                      />
-                    </th>
-                  </li>
-                ))}
-              </tr>
-            </ul>
-          </tbody>
-        </table>
-      </div>
-    </div>
+          )
+        ))}
+      </>
+    ) : (
+      <tr>
+        <td colSpan={4}>No items to display</td>
+      </tr>
+    )}
+    </tbody>
+    </table>
+    </>
   );
 };
 
