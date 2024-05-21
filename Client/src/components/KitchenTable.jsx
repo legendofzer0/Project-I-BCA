@@ -59,21 +59,21 @@ const KitchenTable = () => {
         <h2 className="center">Pending</h2>
         <table className="KtablePending">
           <thead>
-            <tr>
-              <th className="column">Item</th>
-              <th className="column">Action</th>
+            <tr className="Pheading">
+              <th className="pcolumn">Item</th>
+              <th className="pcolumn">Action</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody >
             <ul>
               {pendingItems.map((item, index) => (
-                <li key={index}>
+                <li key={index} >
                   <tr>
-                    <th className="column">
+                    <th className="pcolumn">
                       <span> {item.item_name}</span>
                       <span> x{item.quantity}</span>
                     </th>
-                    <th className="column">
+                    <th className="pcolumn ">
                       <button
                         onClick={handlePendingAdd(item.order_id)}
                         className="add"
@@ -91,9 +91,9 @@ const KitchenTable = () => {
         <h2 className="center">Cooking</h2>
         <table className="KtableCooking">
           <thead>
-            <tr>
-              <th>Item</th>
-              <th>Action</th>
+            <tr lassName="Pheading">
+              <th className="pcolumn">Item</th>
+              <th className="pcolumn">Action</th>
             </tr>
           </thead>
           <tbody>
@@ -101,11 +101,11 @@ const KitchenTable = () => {
               <tr>
                 {cookingItems.map((item, index) => (
                   <li key={index}>
-                    <th>
+                    <th className="pcolumn">
                       <span> {item.item_name}</span>
                       <span> x{item.quantity}</span>
                     </th>
-                    <th>
+                    <th className="pcolumn">
                       <button
                         onClick={handleCookingAdd(item.order_id)}
                         className="add"
