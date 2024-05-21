@@ -9,6 +9,7 @@ const Buy = ({ itemId, userId }) => {
   const [totalPrice, setTotalPrice] = useState(0); // Initialize totalPrice to 0
   const [address, setAddress] = useState("");
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const orderPayload = {
     f_item_id: itemId,
@@ -49,6 +50,7 @@ const Buy = ({ itemId, userId }) => {
 
   const handleBuyClick = () => {
     setError("");
+    setSuccess("");
     if (address === "") {
       setError("Please Fill Out everything");
       return;
@@ -62,8 +64,7 @@ const Buy = ({ itemId, userId }) => {
       // console.log(userId);
 
       const order = axios.post("/api/order", orderPayload);
-      // document.location.reload(true);
-      // console.log(order);
+      setSuccess("Order Placed Successfully");
     } catch (error) {
       console.log(error);
     }
@@ -75,6 +76,7 @@ const Buy = ({ itemId, userId }) => {
       <div className="modal form">
         <h2>Place Order</h2>
         <div className="center error-message">{error}</div>
+        <div className="center success-message">{success}</div>
         <label>
           Item:
           <input type="text" value={item} readOnly />
