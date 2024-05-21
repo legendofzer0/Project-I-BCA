@@ -323,5 +323,15 @@ table .bottom {
 }
 
 .KtablePending {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+}
+
+.Pheading {
+  background-color: #c5be04;
+}
+
+.pcolumn {
+  width: 100%;
+  padding-right: 5em;
 }/*# sourceMappingURL=dashboard.css.map */
