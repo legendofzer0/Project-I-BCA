@@ -29,9 +29,7 @@ const MenuItem = ({ item, filter, search }) => {
   return (
     <Link to={`/item/${id}`}>
       <div className="card">
-        <div className="center">
           <img className="image" type="file" src={`api/${image}`} alt={name} />
-        </div>
         <h3 className="name center">{name}</h3>
         <span className="price center">{price} RS.</span>
         <br />
