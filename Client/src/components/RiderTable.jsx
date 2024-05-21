@@ -42,10 +42,10 @@ const RiderTable = () => {
       <table className="body">
         <thead>
           <tr>
-            <th>Item Name</th>
-            <th>Address</th>
-            <th>Number</th>
-            <th>Actions</th>
+            <th className="column">Item Name</th>
+            <th className="column">Address</th>
+            <th className="column">Number</th>
+            <th className="column">Actions</th>
           </tr>
         </thead>
         <tbody>

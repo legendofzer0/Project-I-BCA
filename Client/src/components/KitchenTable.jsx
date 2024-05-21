@@ -56,8 +56,8 @@ const KitchenTable = () => {
   return (
     <div className="kitchen">
       <div className="section">
-        <h2>Pending</h2>
-        <table>
+        <h2 className="center">Pending</h2>
+        <table className="KtablePending">
           <thead>
             <tr>
               <th className="column">Item</th>
@@ -88,8 +88,8 @@ const KitchenTable = () => {
       </div>
 
       <div className="section">
-        <h2>Cooking</h2>
-        <table>
+        <h2 className="center">Cooking</h2>
+        <table className="KtableCooking">
           <thead>
             <tr>
               <th>Item</th>

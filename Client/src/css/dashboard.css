@@ -320,4 +320,8 @@ table .bottom {
 
 .table {
   margin-left: 5%;
+}
+
+.KtablePending {
+  display: grid;
 }/*# sourceMappingURL=dashboard.css.map */
