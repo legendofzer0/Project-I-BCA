@@ -51,7 +51,7 @@ const RiderTable = () => {
         <tbody>
           {onRouteItems.map((item, index) => (
             <tr key={index}>
-              <td>{item.item_name}</td>
+              <td>{item.item_name} x {item.quantity}</td>
               <td>{item.delivery_address}</td>
               <td>{item.phone_number}</td>
               <td>

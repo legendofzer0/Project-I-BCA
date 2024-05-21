@@ -27,7 +27,8 @@ const ItemModal = ({ addData }) => {
         }
       );
 
-      console.log("Server Response:", response.data);
+      // console.log("Server Response:", response.data);
+      window.location.reload(true);
     } catch (error) {
       console.error("Error uploading image:", error);
       

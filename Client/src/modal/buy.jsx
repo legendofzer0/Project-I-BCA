@@ -62,7 +62,6 @@ const Buy = ({ itemId, userId }) => {
     }
     try {
       // console.log(userId);
-
       const order = axios.post("/api/order", orderPayload);
       setSuccess("Order Placed Successfully");
     } catch (error) {
