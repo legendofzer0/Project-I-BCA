@@ -156,13 +156,25 @@ input[type="number"]::-webkit-outer-spin-button {
   height: 2.5em;
   margin: 1%;
   margin-left: 5%;
-  background-color: #ff0000;
-  border: 1px;
+  background-color: #ffffff;
+  border: 1px solid;
   border-color: #000;
   transform: scale(0.4);
 }
 .edit .pen {
   width: 1em;
+  background-repeat: no-repeat;
+  background-image: url("../assets/pen-solid.svg");
+}
+
+.pen1 {
+  width: 2.5em;
+  height: 2.5em;
+  margin: 1%;
+  margin-left: 5%;
+  background-color: #ffffff;
+  border: 1px white solid;
+  transform: scale(0.5);
   background-repeat: no-repeat;
   background-image: url("../assets/pen-solid.svg");
 }

@@ -26,5 +26,13 @@ select {
   margin: 1em;
 }
 .delete{
-  width: 2385px;
+  align-items: center;
+  justify-content: center;
+  padding: 5%;
+}
+.move{
+  display: flex;
+  justify-content: center;
+  margin: 10%;
+  margin-left: 60%;
 }
