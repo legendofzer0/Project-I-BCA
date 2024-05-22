@@ -322,16 +322,6 @@ table .bottom {
   margin-left: 5%;
 }
 
-.KtablePending {
-  display: flex;
-  flex-direction: column;
-}
-
-.Pheading {
-  background-color: #c5be04;
-}
-
-.pcolumn {
-  width: 100%;
-  padding-right: 5em;
+.kitchen {
+  border: 1px solid;
 }/*# sourceMappingURL=dashboard.css.map */

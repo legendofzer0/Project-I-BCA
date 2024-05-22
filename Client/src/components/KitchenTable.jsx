@@ -6,9 +6,7 @@ const KitchenTable = () => {
   const [orderItems, setOrderItems] = useState([]);
   const [pendingItems, setPendingItems] = useState([]);
   const [cookingItems, setCookingItems] = useState([]);
-
-  useEffect(() => {
-    const fetchOrderItems = async () => {
+ const fetchOrderItems = async () => {
       try {
         const response = await axios.get("/api/order");
         setOrderItems(response.data);
@@ -17,6 +15,8 @@ const KitchenTable = () => {
       }
     };
 
+  useEffect(() => {
+   
     fetchOrderItems();
     const intervalId = setInterval(fetchOrderItems, 5000); // Fetch orderItems every 5 seconds
 
@@ -34,6 +34,8 @@ const KitchenTable = () => {
       const handleChange = await axios.put("/api/order/" + id, {
         status: "cooking",
       });
+    fetchOrderItems();
+
       console.log(handleChange);
     } catch (e) {
       console.log(e);
@@ -45,6 +47,7 @@ const KitchenTable = () => {
       const handleChange = await axios.put("/api/order/" + id, {
         status: "on-route",
       });
+    fetchOrderItems();
       console.log(handleChange);
     } catch (e) {
       console.log(e);
@@ -53,7 +56,7 @@ const KitchenTable = () => {
 
   return (
     <>
-    <table>
+    <table className="kitchen">
     <thead>
       <tr>
         <th colSpan={2}>Pending</th>
@@ -71,16 +74,16 @@ const KitchenTable = () => {
       <>
         {pendingItems.map((pendingItem, index) => (
           <tr key={index}>
-            <td>{pendingItem.item_name} x{pendingItem.quantity}</td>
-            <td>
+            <td><center>{pendingItem.item_name} x{pendingItem.quantity}</center></td>
+            <td className="center">
               <span className="button-wrapper">
                 <button onClick={handlePendingAdd(pendingItem.order_id)} className="add" aria-label="Add to Cooking"></button>
               </span>
             </td>
             {cookingItems[index] ? (
               <>
-                <td>{cookingItems[index].item_name} x{cookingItems[index].quantity}</td>
-                <td>
+                <td><center>{cookingItems[index].item_name} x{cookingItems[index].quantity}</center></td>
+                <td className="center">
                   <span className="button-wrapper">
                     <button onClick={handleCookingAdd(cookingItems[index].order_id)} className="add" aria-label="Move to Route"></button>
                   </span>

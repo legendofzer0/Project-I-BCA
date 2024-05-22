@@ -1,4 +1,5 @@
 import axios from "axios";
+import "../css/card.css";
 function ConformItemDelete(id) {
   const deleteUser = async () => {
     console.log(id);
@@ -14,11 +15,12 @@ function ConformItemDelete(id) {
     window.location.reload();
   };
   return (
-    <>
+    <><div className="card">
       <div className="delete">
         <p>Are You Sure?</p>
         <button onClick={deleteUser}>YES</button>
         <button onClick={No}>NO</button>
+      </div>
       </div>
     </>
   );

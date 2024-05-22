@@ -4,17 +4,16 @@ import axios from "axios";
 const RiderTable = () => {
   const [orderItems, setOrderItems] = useState([]);
   const [onRouteItems, setOnRouteItems] = useState([]);
+  const fetchOrderItems = async () => {
+    try {
+      const response = await axios.get("/api/order");
+      setOrderItems(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   useEffect(() => {
-    const fetchOrderItems = async () => {
-      try {
-        const response = await axios.get("/api/order");
-        setOrderItems(response.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
     fetchOrderItems();
     const intervalId = setInterval(fetchOrderItems, 1000);
     return () => clearInterval(intervalId);
@@ -30,6 +29,7 @@ const RiderTable = () => {
       const handleChange = await axios.put("/api/order/" + id, {
         status: "delivered",
       });
+      fetchOrderItems()
       console.log(handleChange);
     } catch (e) {
       console.log(e);
@@ -39,7 +39,7 @@ const RiderTable = () => {
   return (
     <div className="center">
       {/* <h2>Delivering</h2> */}
-      <table className="body">
+      <table className="Riderbody">
         <thead>
           <tr>
             <th className="column">Item Name</th>
@@ -48,7 +48,7 @@ const RiderTable = () => {
             <th className="column">Actions</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="ritem">
           {onRouteItems.map((item, index) => (
             <tr key={index}>
               <td>{item.item_name} x {item.quantity}</td>
