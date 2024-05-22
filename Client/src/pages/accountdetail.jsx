@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Cookies from "universal-cookie";
-import Role from "../private/role";
+// import Role from "../private/role";
 import UpdateUserModal from "../components/updateModal";
 import OrderTrack from "../components/OrderTrack";
 import HandleUpdatePassword from "../modal/passupdate"; // Ensure this is properly exported as a component
 import { Modal } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import "../css/root.css";
+import "../css/root.css"
 
 function Detail({ CurrentUser }) {
   const cookie = new Cookies();
@@ -80,8 +80,7 @@ function Detail({ CurrentUser }) {
           <div>
             Role: {CurrentUser} 
             <button
-              type="button"
-              className="edit pen"
+              className="pen1"
               onClick={handleOpen}
             ></button>
             <div className="detail">
@@ -139,7 +138,7 @@ function Detail({ CurrentUser }) {
                   />
                   <button
                     type="button"
-                    className="edit pen"
+                    className="pen1"
                     onClick={handleOpChange}
                   ></button>
                 </p>
