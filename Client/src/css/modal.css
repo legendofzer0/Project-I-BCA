@@ -179,6 +179,10 @@ input[type="number"]::-webkit-outer-spin-button {
   background-image: url("../assets/pen-solid.svg");
 }
 
+.row {
+  margin-left: 80%;
+}
+
 .modal {
   display: flex;
   flex-direction: column;
@@ -206,6 +210,8 @@ select {
 }
 
 .delete {
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 5%;
@@ -216,4 +222,8 @@ select {
   justify-content: center;
   margin: 10%;
   margin-left: 60%;
+}
+
+.save {
+  width: 81%;
 }/*# sourceMappingURL=modal.css.map */

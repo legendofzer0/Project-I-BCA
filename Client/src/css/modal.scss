@@ -26,6 +26,8 @@ select {
   margin: 1em;
 }
 .delete{
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 5%;
@@ -35,4 +37,7 @@ select {
   justify-content: center;
   margin: 10%;
   margin-left: 60%;
+}
+.save{
+  width: 81%;
 }

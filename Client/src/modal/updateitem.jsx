@@ -27,6 +27,7 @@ const UpdateItemModal = ({ editData }) => {
   return (
     <>
       <div className="center middle">
+        <div className="size">
         <div className="modal form">
           <h2>Update Item</h2>
           <label>Item Name:</label>
@@ -35,18 +36,19 @@ const UpdateItemModal = ({ editData }) => {
             value={itemName}
             onChange={(e) => setItemName(e.target.value)}
           />
-          <label>Tags:</label>
-          <select value={tags} onChange={(e) => setTags(e.target.value)}>
-            <option value="Veg">Veg</option>
-            <option value="Non-Veg">Non-Veg</option>
-          </select>
-          <br />
+          
           <label>Price:</label>
           <input
             type="text"
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           />
+          <br />
+          <label>Tags:</label>
+          <select value={tags} onChange={(e) => setTags(e.target.value)}>
+            <option value="Veg">Veg</option>
+            <option value="Non-Veg">Non-Veg</option>
+          </select>
           <br />
           <label>Description:</label>
           <br />
@@ -57,6 +59,7 @@ const UpdateItemModal = ({ editData }) => {
           <button className="submit" onClick={handleUpdateItem}>
             Update
           </button>
+        </div>
         </div>
       </div>
     </>

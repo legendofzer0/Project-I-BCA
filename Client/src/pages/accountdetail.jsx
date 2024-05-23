@@ -136,11 +136,13 @@ function Detail({ CurrentUser }) {
                     value="**********"
                     disabled={!isChange}
                   />
+                  <div className="row">
                   <button
                     type="button"
                     className="pen1"
                     onClick={handleOpChange}
                   ></button>
+                  </div>
                 </p>
                 <button className="logOut" type="button" onClick={logOut}>
                   SIGN OUT

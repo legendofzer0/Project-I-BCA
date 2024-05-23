@@ -58,10 +58,11 @@ const ItemModal = ({ addData }) => {
           </form>
 
           {error && <div className="error-message">{error}</div>}
-
+          <div className="save">
           <button className="submit" onClick={handleSave}>
             Save
           </button>
+          </div>
         </div>
       </div>
     </>

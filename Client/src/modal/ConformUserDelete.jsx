@@ -14,10 +14,16 @@ function ConformUserDelete(id) {
   };
   return (
     <>
-      <div>
+        <div className="move">
+        <div className="form">
+        <div className="delete">
         <p>Are You Sure?</p>
+        <div>
         <button onClick={deleteUser}>YES</button>
         <button onClick={No}>NO</button>
+        </div>
+      </div>
+      </div>
       </div>
     </>
   );
