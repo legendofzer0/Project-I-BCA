@@ -1,9 +1,11 @@
 import axios from "axios";
+import "../css/modal.css";
+
 function ConformUserDelete(id) {
   const deleteUser = async () => {
     try {
-      // console.log(id);
-      const deleteUserResponse = await axios.delete("/api/user/" + id);
+      console.log(id);
+      const deleteUserResponse = await axios.delete("/api/user/" + id.user);
       window.location.reload();
     } catch (e) {
       console.log(e);
@@ -14,10 +16,14 @@ function ConformUserDelete(id) {
   };
   return (
     <>
-      <div>
+      <div className="move">
+    <div className="form">
+      <div className="delete">
         <p>Are You Sure?</p>
         <button onClick={deleteUser}>YES</button>
         <button onClick={No}>NO</button>
+      </div>
+      </div>
       </div>
     </>
   );
