@@ -24,9 +24,10 @@ function OrderCard({ order }) {
 
   return (
     <div className="center">
+      <div className="eclipse">
       <div className="card3">
         <div className="flex2">
-          <div>
+          <div className="padding">
             <img className="image2" src={`api/${image}`} alt={itemName} />
           </div>
           <div className="shift">
@@ -40,6 +41,7 @@ function OrderCard({ order }) {
             </span>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );
