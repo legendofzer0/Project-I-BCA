@@ -142,6 +142,7 @@ const changeUserPassword = async (req, res) => {
 
 const deleteUserByID = async (req, res) => {
   const { id } = req.params;
+  console.log(req.params);
   // if (req.user.role.includes("admin")) {
   try {
     const user = await userService.deleteUserByID(id);

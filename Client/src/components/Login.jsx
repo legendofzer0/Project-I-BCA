@@ -43,14 +43,15 @@ const Login = () => {
         password: password,
         checkPassword: user.password,
       });
-      const isPasswordCorrect = checkPassResponse.data;
-
-      if (isPasswordCorrect) {
+      console.log(checkPassResponse);
+      // const isPasswordCorrect = checkPassResponse.data;
+      
+      if (checkPassResponse.data.isMatch) {
         const tokenResponse = await axios.post("/api/user/genToken", {
           userId: user.user_id,
           role: user.role,
         });
-        console.log(tokenResponse);
+        // console.log(tokenResponse);
         cookies.set("token", tokenResponse.data, { path: "/" }); // Ensure you set the correct path
         navigate("/");
       } else {

@@ -88,10 +88,11 @@ const changeUserPasswordDB = async ({ id, password }) => {
   );
 };
 
-const deleteUserByID = async (user_id) => {
+const deleteUserByID = async (ID) => {
+console.log(ID);
   const { rows: users } = await pool.query(
     `DELETE FROM users where user_id = $1 returning *`,
-    [user_id]
+    [ID]
   );
   return users[0];
 };
