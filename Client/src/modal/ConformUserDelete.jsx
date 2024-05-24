@@ -26,6 +26,7 @@ function ConformUserDelete(id) {
       </div>
       </div>
       </div>
+      </div>
     </>
   );
 }
