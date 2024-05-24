@@ -183,6 +183,10 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-left: 80%;
 }
 
+.size {
+  width: 50%;
+}
+
 .cards {
   display: grid;
   grid-template-columns: 25em 25em 25em;
@@ -243,9 +247,12 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .order {
+  display: flex;
+  flex-direction: column;
   margin: 0;
   padding: 10px;
   background-color: #ffff00;
+  overflow-y: scroll;
   width: 40%;
   /* transform: translate(80%, -25%); */
 }
@@ -262,12 +269,40 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .card3 {
-  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: #fffafa;
   width: 90%;
-  height: auto;
+  height: 90%;
   margin: 5px;
-  padding: 10px;
   border-radius: 70.5px;
+}
+
+.eclipse {
+  display: flex;
+  padding: 2%;
+  width: 90%;
+  height: 125px;
+}
+
+.flex2 {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 10px;
+  padding: 10px;
+}
+
+.shift {
+  transform: translate(0%, -25%);
+}
+
+.padding {
+  transform: translate(-10%, -25%);
+  align-items: center;
 }
 
 .cartBack {
@@ -286,8 +321,8 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .image2 {
-  width: 30%;
-  height: auto;
+  width: 100px;
+  height: 70px;
 }
 
 .cartBtn {
@@ -300,25 +335,12 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 5px;
 }
 
-.flex2 {
-  display: flex;
-  margin: 10px;
-  padding: 10px;
-}
-
-.shift {
-  display: inline;
-  position: absolute;
-  transform: translate(120%, -25%);
-}
-
 .home-area {
   height: 600px;
   width: 1250px;
   display: flex;
   justify-content: center;
   color: #c5be04;
-  border: 1px solid;
   flex-direction: column;
   margin-inline-start: 5%;
   margin-inline-end: 5%;
