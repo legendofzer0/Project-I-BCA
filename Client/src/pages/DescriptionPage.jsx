@@ -13,6 +13,7 @@ function DescriptionPage() {
   const [item, setItem] = useState([]);
   const [image, setImage] = useState();
   const [isOpen, setIsOpen] = useState(false);
+  const [success,setSuccess]= useState('');
   let { id } = useParams();
   const cookie = new Cookies();
 
@@ -62,7 +63,8 @@ function DescriptionPage() {
   const clickCart = async () => {
     try {
       const cartAdd = await axios.post("/api/cart", cartPayload);
-      console.log(cartAdd);
+      // console.log(cartAdd);
+      setSuccess('Added to cart')
     } catch (error) {
       console.log(error);
     }
@@ -88,7 +90,7 @@ function DescriptionPage() {
         <div className="card2">
           <p className="description">{item.description}</p>
           <br />
-          <div>
+          <span className="success-message">{success}</span> <br />
           <button className="btn1" onClick={clickBuy}>
             BUY NOW
           </button>
