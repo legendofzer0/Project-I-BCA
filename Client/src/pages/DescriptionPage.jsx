@@ -99,7 +99,6 @@ function DescriptionPage() {
           </button>
           </div>
         </div>
-      </div>
       <Modal open={isOpen} onClose={handleClose}>
         <div>
           <Buy itemId={id} userId={userId} />
