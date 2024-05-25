@@ -30,7 +30,7 @@ const Homepage = () => {
   return (
     <>
     <div className="home-area">
-    <h1>Welcome to Our Restaurant</h1>
+    <h1 className="center">Welcome to Our Restaurant</h1>
       <div className="se-filt">
       <div className="filter">
         <label htmlFor="tag">Filter: </label>
@@ -41,7 +41,7 @@ const Homepage = () => {
         </select>
         </div>
         <div className="search">
-          <label htmlFor="search">Search Item: </label>
+          <label htmlFor="search">Search: </label>
           <input
           id="search"
             type="text"

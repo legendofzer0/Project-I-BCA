@@ -65,6 +65,7 @@ const UpdateModal = ({ user }) => {
   return (
     <>
       <div className="center middle">
+        <div className="width">
         <div className="modal form">
           <h2>Update User Data</h2>
           <form>
@@ -119,6 +120,7 @@ const UpdateModal = ({ user }) => {
               Update
             </button>
           </form>
+        </div>
         </div>
       </div>
     </>

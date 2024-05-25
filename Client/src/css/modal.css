@@ -1,6 +1,7 @@
 :root {
   font-family: "Poppins";
   src: url("https://fonts.googleapis.com/css2?family=Mukta:wght@800&family=Poppins&family=Roboto&family=Ubuntu&display=swap");
+  overflow-x: hidden;
 }
 
 button {
@@ -116,7 +117,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .image {
   width: 50%;
   height: 100px;
-  aspect-ratio: 4/3;
+  aspect-ratio: 16/9;
 }
 
 .flex {
@@ -183,6 +184,28 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-left: 80%;
 }
 
+.size {
+  width: 50%;
+}
+
+.role {
+  display: flex;
+  flex-direction: row;
+  width: 26%;
+  padding-top: 2%;
+  margin-top: 5%;
+  background-color: rgb(255, 255, 255);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.password {
+  background-color: #ffffff;
+  width: 350px;
+  display: grid;
+  grid-template-columns: 320px 5px;
+}
+
 .modal {
   display: flex;
   flex-direction: column;
@@ -226,4 +249,8 @@ select {
 
 .save {
   width: 81%;
+}
+
+.width {
+  width: 40%;
 }/*# sourceMappingURL=modal.css.map */

@@ -12,13 +12,16 @@
 }
 
 .card2 {
-  /* display: flex; */
+  display: grid;
+  grid-template-rows: 100px 100px;
+  grid-template-columns: 100%;
   width: 40%;
   height: 15em;
   border: 0px;
   padding: 20px;
-  margin-top: 5%;
+  margin-top: 8%;
   margin-left: 2%;
+  margin-right: 2%;
   border-radius: 10px;
   background-color: #fff;
   filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 50%));
@@ -60,7 +63,7 @@
 .order {
   display: flex;
   flex-direction: column;
-  margin: 0;
+  margin-left: 10%;
   padding: 10px;
   background-color: $main-yellow;
   overflow-y: scroll;
@@ -73,7 +76,7 @@
   opacity: 0.8;
 }
 
-.img {
+.img{
   width: 10em;
   margin: 1em;
 }
@@ -127,6 +130,7 @@
 .image2 {
   width: 100px;
   height: 70px;
+  aspect-ratio: 16/9;
 }
 
 .cartBtn {
@@ -159,6 +163,7 @@ padding-left: 15px;
 .search{
   display: flex;
   padding: 3px;
+  padding-left: 52px;
   gap: 20px;
   color: $main-gold;
   align-items: center;
@@ -214,7 +219,6 @@ padding-left: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
-
 }
 
 .card{

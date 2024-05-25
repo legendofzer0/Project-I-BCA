@@ -7,7 +7,7 @@ import OrderTrack from "../components/OrderTrack";
 import HandleUpdatePassword from "../modal/passupdate"; // Ensure this is properly exported as a component
 import { Modal } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import "../css/root.css"
+import "../css/root.css";
 
 function Detail({ CurrentUser }) {
   const cookie = new Cookies();
@@ -78,11 +78,17 @@ function Detail({ CurrentUser }) {
         <div className="detail">
           <div>Welcome {user.username}</div>
           <div>
+            <div className="role">
             Role: {CurrentUser} 
+            <div>
+              <div>
             <button
               className="pen1"
               onClick={handleOpen}
             ></button>
+            </div>
+            </div>
+            </div>
             <div className="detail">
               <form><br />
                 <p>
@@ -131,17 +137,21 @@ function Detail({ CurrentUser }) {
                 </p>
                 <p>
                   <label>Password:</label>
+                  <div className="password">
                   <input
                     type="password"
                     value="**********"
                     disabled={!isChange}
                   />
                   <div className="row">
+                    <div>
                   <button
                     type="button"
                     className="pen1"
                     onClick={handleOpChange}
                   ></button>
+                  </div>
+                  </div>
                   </div>
                 </p>
                 <button className="logOut" type="button" onClick={logOut}>
@@ -164,7 +174,7 @@ function Detail({ CurrentUser }) {
         />
       </Modal>
       <Modal open={isChange} onClose={handleOpChange}>
-        <HandleUpdatePassword userId={user.id} onClose={handleOpChange} />
+        <HandleUpdatePassword userId={user.user_id} onClose={handleOpChange} />
       </Modal>
     </div>
   );

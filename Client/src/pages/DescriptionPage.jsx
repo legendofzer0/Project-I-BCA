@@ -88,12 +88,14 @@ function DescriptionPage() {
         <div className="card2">
           <p className="description">{item.description}</p>
           <br />
+          <div>
           <button className="btn1" onClick={clickBuy}>
             BUY NOW
           </button>
           <button className="btn2" onClick={clickCart}>
             ADD TO CART
           </button>
+          </div>
         </div>
       </div>
       <Modal open={isOpen} onClose={handleClose}>

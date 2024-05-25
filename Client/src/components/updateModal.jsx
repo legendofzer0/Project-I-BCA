@@ -46,6 +46,7 @@ const UpdateUserModal = ({ user }) => {
 
   return (
     <div className="center middle">
+      <div className="width">
       <div className="modal form">
         <form onSubmit={handleSubmit}>
           <h2>Update User</h2>
@@ -91,6 +92,7 @@ const UpdateUserModal = ({ user }) => {
             Update
           </button>
         </form>
+      </div>
       </div>
     </div>
   );

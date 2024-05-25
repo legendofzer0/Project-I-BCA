@@ -5,6 +5,7 @@ $main-gold: #c5be04;
 :root {
   font-family: "Poppins";
   src: url("https://fonts.googleapis.com/css2?family=Mukta:wght@800&family=Poppins&family=Roboto&family=Ubuntu&display=swap");
+  overflow-x: hidden;
 }
 
 button {
@@ -119,10 +120,10 @@ input[type="number"]::-webkit-outer-spin-button {
   appearance: none;
 } */
 
-.image {
+.image{
   width: 50%;
   height: 100px;
-  aspect-ratio: 4/3;
+  aspect-ratio: 16/9;
 }
 
 .flex {
@@ -163,7 +164,6 @@ input[type="number"]::-webkit-outer-spin-button {
   border-color: #000;
   transform: scale(0.4);
   .pen {
-  
     width: 1em;
     background-repeat: no-repeat;
     background-image: url("../assets/pen-solid.svg");
@@ -187,3 +187,22 @@ input[type="number"]::-webkit-outer-spin-button {
 .size{
   width: 50%;
 }
+.role{
+  display: flex;
+  flex-direction: row;
+  width: 30%;
+  padding-top: 2%;
+  margin-top: 5%;
+  background-color: rgb(255, 255, 255);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.password{
+  display: grid;
+  background-color: #ffffff;
+  width: 350px;
+  grid-template-columns: 320px 5px;
+}
+
+
+
