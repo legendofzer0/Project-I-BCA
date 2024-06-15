@@ -191,7 +191,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .role {
   display: flex;
   flex-direction: row;
-  width: 26%;
+  width: 30%;
   padding-top: 2%;
   margin-top: 5%;
   background-color: rgb(255, 255, 255);
@@ -200,9 +200,9 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .password {
+  display: grid;
   background-color: #ffffff;
   width: 350px;
-  display: grid;
   grid-template-columns: 320px 5px;
 }
 
