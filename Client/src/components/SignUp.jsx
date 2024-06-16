@@ -20,6 +20,7 @@ const SignUp = ({ modalState }) => {
 
   const handleSignUp = async (e) => {
     e.preventDefault();
+    setError("");
     if (!name || !email || !password || !username || !phoneNumber) {
       setError("Please fill in all fields.");
       return;
@@ -31,7 +32,9 @@ const SignUp = ({ modalState }) => {
 
     try {
       const checkEmail = await axios.post("/api/user/email", { email });
-      if (checkEmail.data != null) {
+      console.log(checkEmail.data.length == 0);
+
+      if (checkEmail.data.length != 0) {
         setError("User with this email already exists.");
         return;
       }
@@ -59,7 +62,7 @@ const SignUp = ({ modalState }) => {
         username,
         phone_number: phoneNumber,
       });
-
+      response;
       // console.log("SignUp Success:", response.data);
       navigate("/SignIn");
     } catch (error) {
