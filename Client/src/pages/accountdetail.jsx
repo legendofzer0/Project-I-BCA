@@ -78,16 +78,14 @@ function Detail({ CurrentUser }) {
         <div className="detail">
           <div>Welcome {user.username}</div>
           <div>
-            <div className="role">
-            Role: {CurrentUser} 
-            <div>
+            <div className="rol">
               <div>
+            Role: {CurrentUser}  
+            </div>
             <button
               className="pen1"
               onClick={handleOpen}
             ></button>
-            </div>
-            </div>
             </div>
             <div className="detail">
               <form><br />
@@ -135,23 +133,24 @@ function Detail({ CurrentUser }) {
                     disabled={!isChange}
                   />
                 </p>
+                <div></div>
                 <p>
+                  <div className="desc-last">
                   <label>Password:</label>
-                  <div className="password">
+                  
                   <input
                     type="password"
                     value="**********"
                     disabled={!isChange}
                   />
-                  <div className="row">
-                    <div>
+                  
+                    
                   <button
                     type="button"
                     className="pen1"
                     onClick={handleOpChange}
                   ></button>
-                  </div>
-                  </div>
+                  
                   </div>
                 </p>
                 <button className="logOut" type="button" onClick={logOut}>
