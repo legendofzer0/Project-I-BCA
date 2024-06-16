@@ -31,7 +31,7 @@ const SignUp = ({ modalState }) => {
 
     try {
       const checkEmail = await axios.post("/api/user/email", { email });
-      if (checkEmail.data.exists) {
+      if (checkEmail.data != null) {
         setError("User with this email already exists.");
         return;
       }
@@ -60,7 +60,7 @@ const SignUp = ({ modalState }) => {
         phone_number: phoneNumber,
       });
 
-      console.log("SignUp Success:", response.data);
+      // console.log("SignUp Success:", response.data);
       navigate("/SignIn");
     } catch (error) {
       console.error("Error during sign-up:", error);
