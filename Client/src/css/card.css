@@ -6,7 +6,7 @@
 
 button {
   background-color: #ffff00;
-  color: #c5be04;
+  color: #c4be16;
   cursor: pointer;
 }
 
@@ -22,6 +22,7 @@ button {
 .center {
   display: flex;
   justify-content: center;
+  text-decoration: none;
 }
 .center .login {
   text-decoration: none;
@@ -53,7 +54,7 @@ button {
   width: 100%;
   height: auto;
   border-radius: 10px;
-  color: #c5be04;
+  color: #c4be16;
   background-color: white;
   filter: drop-shadow(0 8px 32px rgba(31, 38, 135, 0.3));
   animation: 0.8s ease-out 0s 1 modal_animate;
@@ -107,6 +108,7 @@ nav .nav-element {
 
 .body {
   margin: 3%;
+  text-decoration: none;
 }
 
 /* input[type="number"]::-webkit-inner-spin-button,
@@ -127,6 +129,7 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .logOut {
+  margin-top: 15px;
   background-color: #f00;
   color: white;
   font-size: 1.3em;
@@ -134,6 +137,10 @@ input[type="number"]::-webkit-outer-spin-button {
   border-radius: 20px;
   padding: 10px;
   border: 0;
+}
+
+.logO :hover {
+  box-shadow: 0 0 2px rgb(189, 104, 104), 0 0 25px rgb(226, 17, 17), 0 0 10px rgb(185, 24, 24), 0 0 10px rgb(255, 0, 0), 0 0 10px rgb(230, 70, 70);
 }
 
 .space {
@@ -180,36 +187,64 @@ input[type="number"]::-webkit-outer-spin-button {
   background-image: url("../assets/pen-solid.svg");
 }
 
-.row {
-  margin-left: 80%;
-}
-
 .size {
   width: 50%;
 }
 
-.role {
-  display: flex;
-  flex-direction: row;
-  width: 30%;
-  padding-top: 2%;
-  margin-top: 5%;
-  background-color: rgb(255, 255, 255);
+.rol {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 100%;
+}
+.rol :nth-child(1) {
+  padding-top: 5px;
+  align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
 }
 
-.password {
+.desc-last {
   display: grid;
-  background-color: #ffffff;
-  width: 350px;
-  grid-template-columns: 320px 5px;
+  grid-template-columns: 35% 35% 30%;
+}
+.desc-last :nth-child(1) {
+  margin-top: 15px;
+}
+.desc-last :nth-child(2) {
+  margin: 5% 0% 0% 16%;
+  grid-row: 1;
+  grid-column: 2/4;
+}
+.desc-last :nth-child(3) {
+  margin-top: 12px;
+  grid-column: 4;
 }
 
 .cards {
   display: grid;
   grid-template-columns: 25em 25em 25em;
   border: 1px;
+}
+
+.cards div {
+  opacity: 0; /* Initially hide the paragraphs */
+  animation: fadeIn 1s ease-in-out forwards; /* Define the animation */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+/* Trigger the animation based on scroll position */
+.cards div:nth-child(odd) {
+  animation-delay: calc(2s * scroll-position-y / 100vh); /* Delay based on scroll */
+}
+
+.cards div:nth-child(even) {
+  animation-delay: calc(0.4s * scroll-position-y / 100vh); /* Delay based on scroll */
 }
 
 .tagBack {
@@ -221,7 +256,7 @@ input[type="number"]::-webkit-outer-spin-button {
 .card2 {
   display: grid;
   grid-template-rows: 100px 100px;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: 25% 5% 25% 22% 23%;
   width: 40%;
   height: 15em;
   border: 0px;
@@ -247,16 +282,14 @@ input[type="number"]::-webkit-outer-spin-button {
 .card2 :nth-child(4):hover {
   grid-row: 3;
   grid-column: 1;
-  box-shadow: 0 0 2px rgb(229, 255, 0), 0 0 25px rgb(193, 225, 8), 0 0 10px rgb(225, 255, 0), 0 0 10px rgb(255, 255, 0), 0 0 10px rgb(201, 236, 7);
 }
 .card2 :nth-child(5) {
   grid-row: 3;
-  grid-column: 2;
+  grid-column: 3;
 }
 .card2 :nth-child(5):hover {
   grid-row: 3;
-  grid-column: 2;
-  box-shadow: 0 0 2px rgb(237, 253, 95), 0 0 25px rgb(228, 252, 92), 0 0 10px rgb(250, 252, 142), 0 0 10px rgb(255, 255, 0), 0 0 10px rgb(201, 236, 7);
+  grid-column: 3;
 }
 
 .mid2 {
@@ -278,6 +311,10 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-right: 5em;
 }
 
+.btn1:hover {
+  box-shadow: 0 0 2px rgb(207, 207, 204), 0 0 25px rgb(231, 231, 4), 0 0 10px rgb(220, 245, 30), 0 0 10px rgb(255, 255, 0), 0 0 10px rgb(201, 236, 7);
+}
+
 .btn2 {
   width: 10em;
   height: 3em;
@@ -288,6 +325,10 @@ input[type="number"]::-webkit-outer-spin-button {
   font-weight: bolder;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.5));
   margin-right: 5em;
+}
+
+.btn2:hover {
+  box-shadow: 0 0 2px rgb(237, 253, 95), 0 0 25px rgb(228, 252, 92), 0 0 10px rgb(250, 252, 142), 0 0 10px rgb(255, 255, 0), 0 0 10px rgb(201, 236, 7);
 }
 
 .order {
@@ -385,7 +426,7 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 1250px;
   display: flex;
   justify-content: center;
-  color: #c5be04;
+  color: #c4be16;
   flex-direction: column;
   margin-inline-start: 5%;
   margin-inline-end: 5%;
@@ -405,14 +446,14 @@ input[type="number"]::-webkit-outer-spin-button {
   padding: 3px;
   padding-left: 52px;
   gap: 20px;
-  color: #c5be04;
+  color: #c4be16;
   align-items: center;
   font-size: larger;
 }
 
 .filter {
   display: flex;
-  color: #c5be04;
+  color: #c4be16;
   font-size: larger;
   flex-direction: row;
   align-items: center;
@@ -478,8 +519,12 @@ input[type="number"]::-webkit-outer-spin-button {
   padding: 20px;
   margin: 10px;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.9568627451);
   filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.5));
+}
+.card :nth-child(1):hover {
+  transform: translateY(-10px);
+  transition: transform 0.5s ease-in-out;
 }
 
 .name {

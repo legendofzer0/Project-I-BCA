@@ -5,6 +5,28 @@
   grid-template-columns: 25em 25em 25em;
   border: 1px;
 }
+.cards div {
+  opacity: 0; /* Initially hide the paragraphs */
+  animation: fadeIn 1s ease-in-out forwards; /* Define the animation */
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Trigger the animation based on scroll position */
+.cards div:nth-child(odd) {
+  animation-delay: calc(2s * scroll-position-y / 100vh); /* Delay based on scroll */
+}
+
+.cards div:nth-child(even) {
+  animation-delay: calc(0.4s * scroll-position-y / 100vh); /* Delay based on scroll */
+}
 .tagBack {
   display: flex;
   flex-direction: column;
@@ -14,7 +36,7 @@
 .card2 {
   display: grid;
   grid-template-rows: 100px 100px;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: 25%  5% 25% 22% 23%;
   width: 40%;
   height: 15em;
   border: 0px;
@@ -39,20 +61,15 @@
   :nth-child(4):hover{
     grid-row: 3;
     grid-column: 1;
-    box-shadow: 0 0 2px rgb(229, 255, 0),
-    0 0 25px rgb(193, 225, 8), 0 0 10px rgb(225, 255, 0),
-    0 0 10px rgb(255, 255, 0), 0 0 10px rgb(201, 236, 7);
+
   }
   :nth-child(5){
     grid-row: 3;
-    grid-column: 2; 
+    grid-column: 3; 
   }
   :nth-child(5):hover{
     grid-row: 3;
-    grid-column: 2;
-    box-shadow: 0 0 2px rgb(237, 253, 95),
-    0 0 25px rgb(228, 252, 92), 0 0 10px rgb(250, 252, 142),
-    0 0 10px rgb(255, 255, 0), 0 0 10px rgb(201, 236, 7);
+    grid-column: 3;
   }
   
 }
@@ -76,6 +93,11 @@
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 50%));
   margin-right: 5em;
 }
+.btn1:hover{
+  box-shadow: 0 0 2px rgb(207, 207, 204),
+  0 0 25px rgb(231, 231, 4), 0 0 10px rgb(220, 245, 30),
+  0 0 10px rgb(255, 255, 0), 0 0 10px rgb(201, 236, 7);
+}
 .btn2 {
   width: 10em;
   height: 3em;
@@ -86,6 +108,11 @@
   font-weight: bolder;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 50%));
   margin-right: 5em;
+}
+.btn2:hover{
+  box-shadow: 0 0 2px rgb(237, 253, 95),
+  0 0 25px rgb(228, 252, 92), 0 0 10px rgb(250, 252, 142),
+  0 0 10px rgb(255, 255, 0), 0 0 10px rgb(201, 236, 7);
 }
 
 .order {
@@ -260,8 +287,12 @@ padding-left: 15px;
   padding: 20px;
   margin: 10px;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: #fffffff4;
   filter: drop-shadow(2px 4px 4px rgba(0, 0, 0, 0.5));
+  :nth-child(1):hover{
+    transform: translateY(-10px);
+  transition: transform 0.5s ease-in-out; 
+  }
 }
 .name {
   font-weight: 500;
