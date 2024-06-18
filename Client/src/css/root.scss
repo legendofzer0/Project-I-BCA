@@ -22,7 +22,6 @@ button {
   border-radius: 5px;
 }
 
-
 .center {
   display: flex;
   justify-content: center;
@@ -52,7 +51,7 @@ button {
 
 .form {
   display: flex;
-  flex-direction:column ;
+  flex-direction: column;
   justify-content: center;
   justify-content: space-around;
   padding: 5%;
@@ -105,6 +104,12 @@ nav {
   }
 }
 
+.nav-element {
+  padding: 10px;
+  text-decoration: none;
+  color: #000;
+}
+
 .error-message {
   color: #f00;
   font-weight: bold;
@@ -122,7 +127,7 @@ input[type="number"]::-webkit-outer-spin-button {
   appearance: none;
 } */
 
-.image{
+.image {
   width: 50%;
   height: 100px;
   aspect-ratio: 16/9;
@@ -143,16 +148,16 @@ input[type="number"]::-webkit-outer-spin-button {
   padding: 10px;
   border: 0;
 }
-.logO{
-  :hover{
-    box-shadow: 0 0 2px rgb(189, 104, 104),
-    0 0 25px rgb(226, 17, 17), 0 0 10px rgb(185, 24, 24),
-    0 0 10px rgb(255, 0, 0), 0 0 10px rgb(230, 70, 70);
+.logO {
+  :hover {
+    box-shadow: 0 0 2px rgb(189, 104, 104), 0 0 25px rgb(226, 17, 17),
+      0 0 10px rgb(185, 24, 24), 0 0 10px rgb(255, 0, 0),
+      0 0 10px rgb(230, 70, 70);
   }
 }
-.space{
+.space {
   height: 10px;
-  .second{
+  .second {
     height: 100px;
   }
 }
@@ -180,6 +185,27 @@ input[type="number"]::-webkit-outer-spin-button {
   }
 }
 
+.hover-element {
+  position: relative;
+}
+
+.hide {
+  display: none;
+  position: absolute;
+  top: 100%; /* Adjust as necessary */
+  left: 0;
+  background-color: rgb(203, 203, 203); /* Adjust as necessary */
+  border: 1px solid #ccc;
+  padding: 10px; /* Adjust as necessary */
+  z-index: 1000;
+}
+
+.hover-element:hover .hide {
+  display: block;
+  width: 10vw;
+  height: auto;
+}
+
 .pen1 {
   width: 2.5em;
   height: 2.5em;
@@ -191,35 +217,32 @@ input[type="number"]::-webkit-outer-spin-button {
   background-repeat: no-repeat;
   background-image: url("../assets/pen-solid.svg");
 }
-.size{
+.size {
   width: 50%;
 }
-.rol{
+.rol {
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   grid-template-rows: 100%;
-  :nth-child(1){
+  :nth-child(1) {
     padding-top: 5px;
     align-items: center;
     justify-content: center;
   }
 }
-.desc-last{
+.desc-last {
   display: grid;
   grid-template-columns: 35% 35% 30%;
-  :nth-child(1){
+  :nth-child(1) {
     margin-top: 15px;
   }
-  :nth-child(2){
+  :nth-child(2) {
     margin: 5% 0% 0% 16%;
     grid-row: 1;
     grid-column: 2/4;
   }
-  :nth-child(3){
+  :nth-child(3) {
     margin-top: 12px;
     grid-column: 4;
   }
 }
-
-
-

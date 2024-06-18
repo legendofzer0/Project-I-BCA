@@ -8,9 +8,27 @@ function AdminNavbar() {
         <Link to="/" className="nav-element">
           Home
         </Link>
-        <Link to="/Admin" className="nav-element">
+        <span className="hover-element">
           Dashboard
-        </Link>
+          <spam className="hide">
+            <Link to="/CreateUser" className="nav-element">
+              Create User
+            </Link>
+            <br />
+            <Link to="/CreateItem" className="nav-element">
+              Create Item
+            </Link>
+            <br />
+            <Link to="/ListUser" className="nav-element">
+              List User
+            </Link>
+            <br />
+            <Link to="/ListItem" className="nav-element">
+              List Item
+            </Link>
+            <br />
+          </spam>
+        </span>
         <Link to="/MyAccount" className="nav-element">
           MyAccount
         </Link>

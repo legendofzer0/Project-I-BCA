@@ -175,6 +175,25 @@ input[type="number"]::-webkit-outer-spin-button {
   background-image: url("../assets/pen-solid.svg");
 }
 
+.hover-element {
+  position: relative;
+}
+
+.hide {
+  display: none;
+  position: absolute;
+  top: 100%; /* Adjust as necessary */
+  left: 0;
+  background-color: white; /* Adjust as necessary */
+  border: 1px solid #ccc; /* Adjust as necessary */
+  padding: 10px; /* Adjust as necessary */
+  z-index: 1000;
+}
+
+.hover-element:hover .hide {
+  display: block;
+}
+
 .pen1 {
   width: 2.5em;
   height: 2.5em;

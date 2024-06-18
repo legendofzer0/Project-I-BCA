@@ -99,6 +99,12 @@ nav .nav-element {
   color: #000;
 }
 
+.nav-element {
+  padding: 10px;
+  text-decoration: none;
+  color: #000;
+}
+
 .error-message {
   color: #f00;
   font-weight: bold;
@@ -173,6 +179,27 @@ input[type="number"]::-webkit-outer-spin-button {
   width: 1em;
   background-repeat: no-repeat;
   background-image: url("../assets/pen-solid.svg");
+}
+
+.hover-element {
+  position: relative;
+}
+
+.hide {
+  display: none;
+  position: absolute;
+  top: 100%; /* Adjust as necessary */
+  left: 0;
+  background-color: rgb(203, 203, 203); /* Adjust as necessary */
+  border: 1px solid #ccc;
+  padding: 10px; /* Adjust as necessary */
+  z-index: 1000;
+}
+
+.hover-element:hover .hide {
+  display: block;
+  width: 10vw;
+  height: auto;
 }
 
 .pen1 {
