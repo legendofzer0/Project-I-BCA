@@ -89,14 +89,27 @@ button {
 
 nav {
   transform: translateX(5%);
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 110px 110px 110px;
   margin-top: 2%;
   margin-bottom: 2%;
   margin-left: 10%;
 }
 nav .nav-element {
-  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
   text-decoration: none;
   color: #000;
+}
+nav .nav-element:hover {
+  background-color: #ffff00;
+  color: #001aff;
+  border-radius: 12%;
+  transition-delay: 0.1s;
+  opacity: 0.3s;
 }
 
 .nav-element {
@@ -182,12 +195,21 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 .hover-element {
-  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hover-element:hover {
+  color: #001aff;
+  background-color: #ffff00;
+  border-radius: 12%;
 }
 
 .hide {
-  display: none;
-  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   top: 100%; /* Adjust as necessary */
   left: 0;
   background-color: rgb(203, 203, 203); /* Adjust as necessary */

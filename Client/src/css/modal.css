@@ -19,6 +19,11 @@ button {
   border-radius: 5px;
 }
 
+.grid {
+  display: grid;
+  grid-template-rows: 25px 25px 25px;
+}
+
 .center {
   display: flex;
   justify-content: center;
@@ -97,6 +102,13 @@ nav .nav-element {
   padding: 10px;
   text-decoration: none;
   color: #000;
+}
+nav .nav-element:hover {
+  background-color: #ffff00;
+  color: #001aff;
+  border-radius: 12%;
+  transition-delay: 0.1s;
+  opacity: 0.3s;
 }
 
 .error-message {
@@ -236,6 +248,10 @@ input[type="number"]::-webkit-outer-spin-button {
 .desc-last :nth-child(3) {
   margin-top: 12px;
   grid-column: 4;
+}
+
+html {
+  text-decoration: none;
 }
 
 .modal {

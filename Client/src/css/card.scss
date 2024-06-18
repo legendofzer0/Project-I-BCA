@@ -114,7 +114,12 @@
   0 0 25px rgb(228, 252, 92), 0 0 10px rgb(250, 252, 142),
   0 0 10px rgb(255, 255, 0), 0 0 10px rgb(201, 236, 7);
 }
-
+.opt{
+background-color: #efff38;
+}
+.opt:hover{
+  background-color: #efff38;
+}
 .order {
   display: flex;
   flex-direction: column;

@@ -10,7 +10,7 @@ function AdminNavbar() {
         </Link>
         <span className="hover-element">
           Dashboard
-          <spam className="hide">
+          <span className="hide">
             <Link to="/CreateUser" className="nav-element">
               Create User
             </Link>
@@ -27,7 +27,7 @@ function AdminNavbar() {
               List Item
             </Link>
             <br />
-          </spam>
+          </span>
         </span>
         <Link to="/MyAccount" className="nav-element">
           MyAccount

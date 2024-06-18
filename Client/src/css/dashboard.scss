@@ -31,12 +31,14 @@
   }
 }
 .side-navbar{
-  display: flex;
-  align-items: center;
-  flex-direction: column;
+  display: grid;
+  grid-template-rows: 50px 100px 100px 50px;
   font-size: small;
   margin-top: 80%;
   overflow: visible;
+  :nth-child(1):hover{
+    color:rgb(166, 166, 221);
+  }
 }
 
 
