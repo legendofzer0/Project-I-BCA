@@ -106,16 +106,10 @@ nav .nav-element {
 }
 nav .nav-element:hover {
   background-color: #ffff00;
+  height: 5%;
   color: #001aff;
-  border-radius: 12%;
-  transition-delay: 0.1s;
+  border-radius: 1px;
   opacity: 0.3s;
-}
-
-.nav-element {
-  padding: 10px;
-  text-decoration: none;
-  color: #000;
 }
 
 .error-message {

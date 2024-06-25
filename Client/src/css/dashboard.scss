@@ -163,4 +163,23 @@ table {
 }
 .kitchen{
   border: 1px solid;
+  color: #000;
+  tbody{
+    background-color: #fff;
+    color: #000;
+    tr{
+      display: grid;
+      grid-auto-flow: column;
+      grid-template-columns: 75% 25%;
+    }
+  }
+  button:hover{
+    transform: translateY(-10%);
+  }
+  .k-head{
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 75% 25%;
+  }
+
 }

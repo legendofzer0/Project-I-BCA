@@ -50,6 +50,7 @@ button {
   }
 }
 
+
 .form {
   display: flex;
   flex-direction: column;
@@ -111,19 +112,12 @@ nav {
   }
   .nav-element:hover{
     background-color: $main-yellow;
+    height: 5%;
     color:$main-blue;
-    border-radius: 12%;
-    transition-delay: 0.1s;
+    border-radius: 1px;
     opacity: 0.3s;
   }
 }
-
-.nav-element {
-  padding: 10px;
-  text-decoration: none;
-  color: #000;
-}
-
 .error-message {
   color: #f00;
   font-weight: bold;

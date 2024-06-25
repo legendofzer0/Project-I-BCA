@@ -60,12 +60,12 @@ const KitchenTable = () => {
           <tr>
             <th colSpan={2}>Pending</th>
           </tr>
-          <tr>
+          <tr className="k-head">
             <th>Item</th>
             <th>Action</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="k-body">
           {pendingItems.length ? (
             <>
               {pendingItems.map((pendingItem, index) => (
@@ -89,22 +89,23 @@ const KitchenTable = () => {
             </>
           ) : (
             <tr>
-              <td colSpan={4}>No items to display</td>
+              <center> <td colSpan={4}>No items to display</td></center>
             </tr>
           )}
         </tbody>
       </table>
+      <br />
       <table className="kitchen">
         <thead>
           <tr>
             <th colSpan={2}>Cooking</th>
           </tr>
-          <tr>
+          <tr className="k-head">
             <th>Item</th>
             <th>Action</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="k-body">
           {cookingItems.length ? (
             <>
               {cookingItems.map((cookingItems, index) => (
@@ -128,7 +129,7 @@ const KitchenTable = () => {
             </>
           ) : (
             <tr>
-              <td colSpan={4}>No items to display</td>
+              <center><td colSpan={4}>No items to display</td></center>
             </tr>
           )}
         </tbody>
