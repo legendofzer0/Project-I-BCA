@@ -1,6 +1,5 @@
 :root {
-  font-family: "Poppins";
-  src: url("https://fonts.googleapis.com/css2?family=Mukta:wght@800&family=Poppins&family=Roboto&family=Ubuntu&display=swap");
+  font-family: "Poppins", sans-serif;
   overflow-x: hidden;
 }
 
@@ -14,14 +13,9 @@ button {
   width: 100%;
   height: 2.5em;
   margin-top: 1.5em;
-  border: 0px;
+  border: 0;
   font-weight: bold;
   border-radius: 5px;
-}
-
-.grid {
-  display: grid;
-  grid-template-rows: 25px 25px 25px;
 }
 
 .center {
@@ -52,7 +46,6 @@ button {
 .form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   justify-content: space-around;
   padding: 5%;
   overflow: hidden;
@@ -93,22 +86,51 @@ button {
 }
 
 nav {
-  transform: translateX(5%);
-  margin-top: 2%;
-  margin-bottom: 2%;
-  margin-left: 10%;
+  display: grid;
+  grid-template-columns: repeat(3, 110px);
+  margin: 2% 0 2% 10%;
 }
 nav .nav-element {
-  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
   text-decoration: none;
   color: #000;
+  position: relative;
 }
 nav .nav-element:hover {
   background-color: #ffff00;
   color: #001aff;
-  border-radius: 12%;
-  transition-delay: 0.1s;
-  opacity: 0.3s;
+  border-radius: 1px;
+  transition: 0.3s;
+}
+nav .dropdown {
+  position: relative;
+}
+nav .dropdown .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: #c4c4c4;
+  padding: 10px;
+  border: 1px solid #ccc;
+  z-index: 1000;
+  width: 150px;
+}
+nav .dropdown .dropdown-content .dropdown-item {
+  text-decoration: none;
+  color: #000;
+  display: block;
+  padding: 5px 10px;
+}
+nav .dropdown .dropdown-content .dropdown-item:hover {
+  background-color: #ffff00;
+  color: #001aff;
+}
+nav .dropdown:hover .dropdown-content {
+  display: block;
 }
 
 .error-message {
@@ -123,11 +145,6 @@ nav .nav-element:hover {
   text-decoration: none;
 }
 
-/* input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
-  appearance: none;
-} */
 .image {
   width: 50%;
   height: 100px;
@@ -151,7 +168,7 @@ input[type="number"]::-webkit-outer-spin-button {
   border: 0;
 }
 
-.logO :hover {
+.logO:hover {
   box-shadow: 0 0 2px rgb(189, 104, 104), 0 0 25px rgb(226, 17, 17), 0 0 10px rgb(185, 24, 24), 0 0 10px rgb(255, 0, 0), 0 0 10px rgb(230, 70, 70);
 }
 
@@ -165,20 +182,16 @@ input[type="number"]::-webkit-outer-spin-button {
 .user-info {
   display: flex;
   border: 1px solid;
-  margin-left: 10%;
-  margin-top: 5%;
-  margin-right: 10%;
+  margin: 5% 10%;
   padding: 1%;
 }
 
 .edit {
   width: 2.5em;
   height: 2.5em;
-  margin: 1%;
-  margin-left: 5%;
-  background-color: #ffffff;
-  border: 1px solid;
-  border-color: #000;
+  margin: 1% 0 1% 5%;
+  background-color: #fff;
+  border: 1px solid #000;
   transform: scale(0.4);
 }
 .edit .pen {
@@ -187,32 +200,13 @@ input[type="number"]::-webkit-outer-spin-button {
   background-image: url("../assets/pen-solid.svg");
 }
 
-.hover-element {
-  position: relative;
-}
-
-.hide {
-  display: none;
-  position: absolute;
-  top: 100%; /* Adjust as necessary */
-  left: 0;
-  background-color: white; /* Adjust as necessary */
-  border: 1px solid #ccc; /* Adjust as necessary */
-  padding: 10px; /* Adjust as necessary */
-  z-index: 1000;
-}
-
-.hover-element:hover .hide {
-  display: block;
-}
-
 .pen1 {
   width: 2.5em;
   height: 2.5em;
   margin: 1%;
   margin-left: 5%;
-  background-color: #ffffff;
-  border: 1px white solid;
+  background-color: #fff;
+  border: 1px solid #fff;
   transform: scale(0.5);
   background-repeat: no-repeat;
   background-image: url("../assets/pen-solid.svg");
@@ -241,17 +235,13 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-top: 15px;
 }
 .desc-last :nth-child(2) {
-  margin: 5% 0% 0% 16%;
+  margin: 5% 0 0 16%;
   grid-row: 1;
   grid-column: 2/4;
 }
 .desc-last :nth-child(3) {
   margin-top: 12px;
   grid-column: 4;
-}
-
-html {
-  text-decoration: none;
 }
 
 .modal {
