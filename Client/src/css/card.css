@@ -4,7 +4,7 @@
 }
 
 button {
-  background-color: #ffff00;
+  background-color: rgba(253, 253, 52, 0.9450980392);
   color: #c4be16;
   cursor: pointer;
 }
@@ -25,7 +25,7 @@ button {
 }
 .center .login {
   text-decoration: none;
-  color: #ffff00;
+  color: rgba(253, 253, 52, 0.9450980392);
 }
 .center .line {
   background-color: #000;
@@ -101,7 +101,7 @@ nav .nav-element {
   position: relative;
 }
 nav .nav-element:hover {
-  background-color: #ffff00;
+  background-color: rgba(253, 253, 52, 0.9450980392);
   color: #001aff;
   border-radius: 15px;
   transition: 0.3s;
@@ -127,7 +127,7 @@ nav .dropdown .dropdown-content .dropdown-item {
   padding: 5px 10px;
 }
 nav .dropdown .dropdown-content .dropdown-item:hover {
-  background-color: #ffff00;
+  background-color: rgba(253, 253, 52, 0.9450980392);
   color: #001aff;
 }
 nav .dropdown:hover .dropdown-content {
@@ -303,6 +303,7 @@ nav .dropdown:hover .dropdown-content {
 .card2 :nth-child(2) {
   grid-row: 3/5;
   grid-column: 4/6;
+  transition-delay: 5ms;
 }
 .card2 :nth-child(3) {
   grid-row: 3/5;
@@ -374,7 +375,7 @@ nav .dropdown:hover .dropdown-content {
   flex-direction: column;
   margin-left: 10%;
   padding: 10px;
-  background-color: #ffff00;
+  background-color: rgba(253, 253, 52, 0.9450980392);
   width: 40%;
   height: 500px;
   /* transform: translate(80%, -25%); */
