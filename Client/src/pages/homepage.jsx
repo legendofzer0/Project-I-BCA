@@ -35,7 +35,7 @@ const Homepage = () => {
       <div className="filter">
         <label htmlFor="tag">Filter: </label>
         <select id="tag" value={tag} onChange={handleTagChange}>
-          <option value=" " >Select a tag</option>
+          <option value=" " className="opt" >Select a tag</option>
           <option value="Non-Veg" className="opt">Non Veg</option>
           <option value="veg" className="opt">Veg</option>
         </select>

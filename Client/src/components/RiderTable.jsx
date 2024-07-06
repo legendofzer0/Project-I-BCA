@@ -37,7 +37,7 @@ const RiderTable = () => {
   };
   console.log(onRouteItems);
   return (
-    <div className="center">
+    <div>
       {/* <h2>Delivering</h2> */}
       <table className="Riderbody">
         <thead>
@@ -51,14 +51,14 @@ const RiderTable = () => {
         <tbody className="ritem">
           {onRouteItems.map((item, index) => (
             <tr key={index}>
-              <td>{item.item_name} x {item.quantity}</td>
-              <td>{item.delivery_address}</td>
-              <td>{item.phone_number}</td>
-              <td>
+              <td className="center">{item.item_name} x {item.quantity}</td>
+              <td><center>{item.delivery_address}</center></td>
+              <td><center>{item.phone_number}</center></td>
+              <td><center>
                 <button
                   onClick={handleRiderAdd(item.order_id)}
                   className="add"
-                ></button>
+                ></button></center>
               </td>
             </tr>
           ))}

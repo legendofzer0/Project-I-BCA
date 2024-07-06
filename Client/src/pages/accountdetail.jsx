@@ -153,11 +153,11 @@ function Detail({ CurrentUser }) {
                   
                   </div>
                 </p>
-                <div className="logO">
+                
                 <button className="logOut" type="button" onClick={logOut}>
                   SIGN OUT
                 </button>
-                </div>
+                
               </form>
             </div>
           </div>

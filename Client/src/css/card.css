@@ -94,7 +94,8 @@ nav .nav-element {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 5px;
+  margin: 0;
   text-decoration: none;
   color: #000;
   position: relative;
@@ -102,7 +103,7 @@ nav .nav-element {
 nav .nav-element:hover {
   background-color: #ffff00;
   color: #001aff;
-  border-radius: 1px;
+  border-radius: 15px;
   transition: 0.3s;
 }
 nav .dropdown {
@@ -167,8 +168,7 @@ nav .dropdown:hover .dropdown-content {
   padding: 10px;
   border: 0;
 }
-
-.logO:hover {
+.logOut:hover {
   box-shadow: 0 0 2px rgb(189, 104, 104), 0 0 25px rgb(226, 17, 17), 0 0 10px rgb(185, 24, 24), 0 0 10px rgb(255, 0, 0), 0 0 10px rgb(230, 70, 70);
 }
 
@@ -300,6 +300,14 @@ nav .dropdown:hover .dropdown-content {
   grid-row: 1/3;
   grid-column: 1/5;
 }
+.card2 :nth-child(2) {
+  grid-row: 3/5;
+  grid-column: 4/6;
+}
+.card2 :nth-child(3) {
+  grid-row: 3/5;
+  grid-column: 4/6;
+}
 .card2 :nth-child(4) {
   grid-row: 3;
   grid-column: 1;
@@ -357,11 +365,8 @@ nav .dropdown:hover .dropdown-content {
 }
 
 .opt {
-  background-color: #efff38;
-}
-
-.opt:hover {
-  background-color: #efff38;
+  background-color: #001aff;
+  color: white;
 }
 
 .order {
@@ -370,9 +375,13 @@ nav .dropdown:hover .dropdown-content {
   margin-left: 10%;
   padding: 10px;
   background-color: #ffff00;
-  overflow-y: scroll;
   width: 40%;
+  height: 500px;
   /* transform: translate(80%, -25%); */
+}
+.order .order-list {
+  overflow-y: scroll;
+  height: 83%;
 }
 
 .title {
@@ -523,7 +532,7 @@ nav .dropdown:hover .dropdown-content {
 
 #tag:hover {
   background-color: #001aff;
-  color: #ffff00;
+  color: white;
 }
 
 .body {

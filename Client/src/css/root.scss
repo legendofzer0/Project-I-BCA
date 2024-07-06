@@ -1,4 +1,4 @@
-$main-yellow: #ffff00;
+$main-yellow: #fdfd34f1;
 $main-blue: #001aff;
 $main-gold: #c4be16;
 
@@ -105,7 +105,7 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px;
+    padding: 5px;
     margin: 0;
     text-decoration: none;
     color: #000;
@@ -185,13 +185,14 @@ nav {
   border-radius: 20px;
   padding: 10px;
   border: 0;
+  &:hover {
+    box-shadow: 0 0 2px rgb(189, 104, 104), 0 0 25px rgb(226, 17, 17),
+      0 0 10px rgb(185, 24, 24), 0 0 10px rgb(255, 0, 0),
+      0 0 10px rgb(230, 70, 70);
+  }
 }
 
-.logO:hover {
-  box-shadow: 0 0 2px rgb(189, 104, 104), 0 0 25px rgb(226, 17, 17),
-    0 0 10px rgb(185, 24, 24), 0 0 10px rgb(255, 0, 0),
-    0 0 10px rgb(230, 70, 70);
-}
+
 
 .space {
   height: 10px;

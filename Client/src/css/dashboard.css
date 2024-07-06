@@ -4,7 +4,7 @@
 }
 
 button {
-  background-color: #ffff00;
+  background-color: rgba(253, 253, 52, 0.9450980392);
   color: #c4be16;
   cursor: pointer;
 }
@@ -25,7 +25,7 @@ button {
 }
 .center .login {
   text-decoration: none;
-  color: #ffff00;
+  color: rgba(253, 253, 52, 0.9450980392);
 }
 .center .line {
   background-color: #000;
@@ -94,15 +94,16 @@ nav .nav-element {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 5px;
+  margin: 0;
   text-decoration: none;
   color: #000;
   position: relative;
 }
 nav .nav-element:hover {
-  background-color: #ffff00;
+  background-color: rgba(253, 253, 52, 0.9450980392);
   color: #001aff;
-  border-radius: 1px;
+  border-radius: 15px;
   transition: 0.3s;
 }
 nav .dropdown {
@@ -126,7 +127,7 @@ nav .dropdown .dropdown-content .dropdown-item {
   padding: 5px 10px;
 }
 nav .dropdown .dropdown-content .dropdown-item:hover {
-  background-color: #ffff00;
+  background-color: rgba(253, 253, 52, 0.9450980392);
   color: #001aff;
 }
 nav .dropdown:hover .dropdown-content {
@@ -167,8 +168,7 @@ nav .dropdown:hover .dropdown-content {
   padding: 10px;
   border: 0;
 }
-
-.logO:hover {
+.logOut:hover {
   box-shadow: 0 0 2px rgb(189, 104, 104), 0 0 25px rgb(226, 17, 17), 0 0 10px rgb(185, 24, 24), 0 0 10px rgb(255, 0, 0), 0 0 10px rgb(230, 70, 70);
 }
 
@@ -247,7 +247,7 @@ nav .dropdown:hover .dropdown-content {
 .admin-sidebar {
   display: flex;
   flex-direction: row;
-  background-color: #ffff00;
+  background-color: rgba(253, 253, 52, 0.9450980392);
   height: 100%;
   width: 10%;
   position: fixed;
@@ -310,7 +310,7 @@ nav .dropdown:hover .dropdown-content {
 
 table {
   table-layout: auto;
-  background-color: #ffff00;
+  background-color: rgba(253, 253, 52, 0.9450980392);
   margin-left: 20%;
   width: 70%;
   border-collapse: collapse;
@@ -400,6 +400,13 @@ table .bottom {
 .table {
   margin-left: 5%;
 }
+.table tr {
+  color: black;
+}
+.table tbody {
+  background: rgb(249, 249, 179);
+  color: #000;
+}
 
 .kitchen {
   border: 1px solid;
@@ -421,4 +428,12 @@ table .bottom {
   display: grid;
   grid-auto-flow: column;
   grid-template-columns: 75% 25%;
+}
+
+.Riderbody {
+  color: #000;
+}
+
+.ritem {
+  background-color: rgb(255, 255, 149);
 }/*# sourceMappingURL=dashboard.css.map */

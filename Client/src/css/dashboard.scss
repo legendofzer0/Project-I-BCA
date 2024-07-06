@@ -160,6 +160,13 @@ table {
 }
 .table{
   margin-left: 5%;
+  tr{
+    color: black;
+  }
+  tbody{
+    background: rgb(249, 249, 179);
+    color: #000;
+  }
 }
 .kitchen{
   border: 1px solid;
@@ -182,4 +189,12 @@ table {
     grid-template-columns: 75% 25%;
   }
 
+}
+.Riderbody{
+  color: #000;
+}
+.ritem{
+  background-color: rgb(255, 255, 149);
+  tr{
+  }
 }

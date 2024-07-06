@@ -81,7 +81,7 @@ const UserList = () => {
             {userList.map((user, index) =>
               Id !== user.user_id ? (
                 <tr key={user.user_id}>
-                  <td className="column">{index + 1}</td>
+                  <td className="column"><center>{index + 1}</center></td>
                   <td className="column">{user.full_name}</td>
                   <td className="column">{user.username}</td>
                   <td className="column">{user.role}</td>
