@@ -48,7 +48,7 @@ function Detail({ CurrentUser }) {
       fetchUser(userId);
     }
   }, [userId]);
-  console.log(user);
+  // console.log(user);
   const handleOpen = () => setIsOpen(true);
   const handleClose = () => setIsOpen(false);
 
@@ -79,16 +79,12 @@ function Detail({ CurrentUser }) {
           <div>Welcome {user.username}</div>
           <div>
             <div className="rol">
-              <div>
-            Role: {CurrentUser}  
-            </div>
-            <button
-              className="pen1"
-              onClick={handleOpen}
-            ></button>
+              <div>Role: {CurrentUser}</div>
+              <button className="pen1" onClick={handleOpen}></button>
             </div>
             <div className="detail">
-              <form><br />
+              <form>
+                <br />
                 <p>
                   <label>Name:</label>
                   <input
@@ -136,28 +132,25 @@ function Detail({ CurrentUser }) {
                 <div></div>
                 <p>
                   <div className="desc-last">
-                  <label>Password:</label>
-                  
-                  <input
-                    type="password"
-                    value="**********"
-                    disabled={!isChange}
-                  />
-                  
-                    
-                  <button
-                    type="button"
-                    className="pen1"
-                    onClick={handleOpChange}
-                  ></button>
-                  
+                    <label>Password:</label>
+
+                    <input
+                      type="password"
+                      value="**********"
+                      disabled={!isChange}
+                    />
+
+                    <button
+                      type="button"
+                      className="pen1"
+                      onClick={handleOpChange}
+                    ></button>
                   </div>
                 </p>
-                
+
                 <button className="logOut" type="button" onClick={logOut}>
                   SIGN OUT
                 </button>
-                
               </form>
             </div>
           </div>
