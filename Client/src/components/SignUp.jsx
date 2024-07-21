@@ -112,9 +112,12 @@ const SignUp = ({ modalState }) => {
               <button type="submit" className="submit">
                 Sign Up
               </button>
-              <div className="login-prompt">
-                Already have an account? <Link to="/SignIn">Login</Link>
+              <br />
+              <center><div className="login-prompt">
+                Already have an account?              
               </div>
+              <Link to="/SignIn">Login</Link>
+              </center>
             </form>
           </div>
         </div>
