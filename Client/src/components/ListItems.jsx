@@ -45,11 +45,13 @@ const ListItem = () => {
     const tags = response.data[0].tags;
     const price = response.data[0].price;
     const description = response.data[0].description;
+    const quantity_type = response.data[0].quantity_type;
     setEditData({
       name: name,
       tags: tags,
       price: price,
       description: description,
+      quantity_type: quantity_type,
       id: id,
     });
     setIsEdit(true);
