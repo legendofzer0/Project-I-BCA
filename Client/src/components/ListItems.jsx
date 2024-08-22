@@ -92,6 +92,7 @@ const ListItem = () => {
               <th className="column bottom">Item Name</th>
               <th className="column bottom">Tag</th>
               <th className="column bottom">Price</th>
+              <th className="column bottom">Quantity Type</th>
               <th className="column Description bottom">Description</th>
               <th className="bottom">Actions</th>
             </tr>
@@ -103,6 +104,7 @@ const ListItem = () => {
                 <td className="column">{item.item_name}</td>
                 <td className="column">{item.tags}</td>
                 <td className="column">{item.price}</td>
+                <td className="column">{item.quantity_type}</td>
                 <td className="column Description">{item.description}</td>
                 <td className="action">
                   <span className="btn-back">

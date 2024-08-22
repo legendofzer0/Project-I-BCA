@@ -5,7 +5,8 @@ import axios from "axios";
 const Buy = ({ itemId, userId }) => {
   const [item, setItem] = useState("");
   const [quantity, setQuantity] = useState(1);
-  const [itemPrice, setItemPrice] = useState(0); // Ensure itemPrice is initialized to a number to avoid NaN errors
+  const [itemPrice, setItemPrice] = useState(0);
+  const [type, setType] = useState(); // Ensure itemPrice is initialized to a number to avoid NaN errors
   const [totalPrice, setTotalPrice] = useState(0); // Initialize totalPrice to 0
   const [address, setAddress] = useState("");
   const [error, setError] = useState("");
@@ -21,9 +22,11 @@ const Buy = ({ itemId, userId }) => {
     const fetchMenuItem = async () => {
       try {
         const response = await axios.get(`/api/item/info/${itemId}`);
+        // console.log(response);
         const itemData = response.data[0]; // Store this in a variable for cleaner code
         setItem(itemData.item_name);
         setItemPrice(itemData.price);
+        setType(itemData.quantity_type);
       } catch (err) {
         console.log(err);
       }
@@ -81,13 +84,16 @@ const Buy = ({ itemId, userId }) => {
           <input type="text" value={item} readOnly />
         </label>
         <label>
-          Quantity:
-          <input
-            type="number"
-            value={quantity}
-            onChange={handleQuantityChange}
-            min="1"
-          />
+          <div>
+            Quantity:
+            <input
+              type="number"
+              value={quantity}
+              onChange={handleQuantityChange}
+              min="1"
+            />
+            {type}
+          </div>
         </label>
         <label>
           Total Price:

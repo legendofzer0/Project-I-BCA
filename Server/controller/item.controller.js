@@ -6,7 +6,7 @@ const getAllItem = async (req, res) => {
 };
 
 const createItem = async (req, res) => {
-  const { item_name, tags, price, description } = req.body;
+  const { item_name, tags, price, description, quantity_type } = req.body;
   console.log(req.body);
   // try {
   const item = await itemService.createItem({
@@ -14,6 +14,7 @@ const createItem = async (req, res) => {
     tags,
     price,
     description,
+    quantity_type,
   });
   res.status(201).json({
     status: "success",
@@ -59,6 +60,7 @@ const updateItemByID = async (req, res) => {
       tags,
       price,
       description,
+      quantity_type,
     });
 
     return res.status(200).json(item);
