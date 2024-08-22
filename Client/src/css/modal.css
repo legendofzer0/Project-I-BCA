@@ -297,4 +297,8 @@ select {
 
 .width {
   width: 40%;
+}
+
+.type {
+  transform: translate(190px, -202px);
 }/*# sourceMappingURL=modal.css.map */

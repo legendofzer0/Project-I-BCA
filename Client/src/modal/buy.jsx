@@ -74,6 +74,7 @@ const Buy = ({ itemId, userId }) => {
   };
 
   return (
+    
     <div className="center middle">
       <div className="modal form">
         <div className="placeOrder">
@@ -93,7 +94,6 @@ const Buy = ({ itemId, userId }) => {
               onChange={handleQuantityChange}
               min="1"
             />
-            {type}
           </div>
         </label>
         <label>
@@ -111,6 +111,9 @@ const Buy = ({ itemId, userId }) => {
         <button className="submit" onClick={handleBuyClick}>
           Buy
         </button>
+        <div className="type">
+            {type}
+            </div>
         </div>
       </div>
     </div>
