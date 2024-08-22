@@ -76,6 +76,7 @@ const Buy = ({ itemId, userId }) => {
   return (
     <div className="center middle">
       <div className="modal form">
+        <div className="placeOrder">
         <h2>Place Order</h2>
         <div className="center error-message">{error}</div>
         <div className="center success-message">{success}</div>
@@ -110,6 +111,7 @@ const Buy = ({ itemId, userId }) => {
         <button className="submit" onClick={handleBuyClick}>
           Buy
         </button>
+        </div>
       </div>
     </div>
   );

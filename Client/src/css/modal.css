@@ -4,12 +4,13 @@
 }
 
 button {
-  background-color: #ffff00;
+  background-color: rgba(253, 253, 52, 0.9450980392);
   color: #c4be16;
   cursor: pointer;
 }
 
 .submit {
+  color: rgb(103, 103, 255);
   width: 100%;
   height: 2.5em;
   margin-top: 1.5em;
@@ -25,7 +26,7 @@ button {
 }
 .center .login {
   text-decoration: none;
-  color: #ffff00;
+  color: rgba(253, 253, 52, 0.9450980392);
 }
 .center .line {
   background-color: #000;
@@ -101,7 +102,7 @@ nav .nav-element {
   position: relative;
 }
 nav .nav-element:hover {
-  background-color: #ffff00;
+  background-color: rgba(253, 253, 52, 0.9450980392);
   color: #001aff;
   border-radius: 15px;
   transition: 0.3s;
@@ -127,7 +128,7 @@ nav .dropdown .dropdown-content .dropdown-item {
   padding: 5px 10px;
 }
 nav .dropdown .dropdown-content .dropdown-item:hover {
-  background-color: #ffff00;
+  background-color: rgba(253, 253, 52, 0.9450980392);
   color: #001aff;
 }
 nav .dropdown:hover .dropdown-content {
@@ -250,8 +251,13 @@ nav .dropdown:hover .dropdown-content {
   justify-content: center;
   align-items: center;
   height: 15%;
-  width: 25%;
+  width: 5%;
   padding: 10px;
+}
+
+.placeOrder {
+  display: flex;
+  flex-direction: column;
 }
 
 .middle {
